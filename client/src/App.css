@@ -33,12 +33,13 @@
   
 }
 nav a {
-  color: #ffffff;
+  color: #f5f5f5;
   font-size: 1rem;
 }
 
 a {
-  color: #E5E7EB;
+  color: #5F98AE;
+  text-decoration: none;
 }
 
 span > a:visited {
@@ -46,7 +47,12 @@ span > a:visited {
 }
 
 a:hover {
-  color: #B3D0DA;
+  color: #9bc1ce;
+}
+
+.footer a {
+  color: #f5f5f5;
+  font-size: 1rem;
 }
 
 .AddMedication {

@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 import Spinner from '../components/Spinner';
 import NoteForm from '../components/forms/NoteForm';
 import NoteItem from '../components/items/NoteItem';
@@ -50,8 +51,7 @@ function Notes() {
             </section>
             <br />
             <NoteForm />
-
-
+            <Footer />
         </>
     )
 }

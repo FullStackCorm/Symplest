@@ -7,6 +7,7 @@ import Button from '@mui/material/Button';
 import LoginIcon from '@mui/icons-material/Login';
 import TextField from '@mui/material/TextField';
 import Spinner from '../components/Spinner';
+import Footer from '../components/Footer';
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -99,6 +100,7 @@ function Login() {
       </form>
 
       <span><Link to='/register'>Create an Account</Link></span>
+      <Footer />
     </div>
   )
 }

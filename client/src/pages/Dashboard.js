@@ -3,6 +3,7 @@ import {useNavigate, Link} from 'react-router-dom';
 import {useSelector, useDispatch} from 'react-redux';
 import Spinner from '../components/Spinner';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 import NoteForm from '../components/forms/NoteForm';
 import { getNotes } from '../features/notes/noteSlice';
 import { reset } from '../features/auth/authSlice';
@@ -40,6 +41,7 @@ export default function Dashboard () {
             <Header />
             <h1>Dashboard</h1>
             <NoteForm />
+            <Footer />
         </div>
     )
 }

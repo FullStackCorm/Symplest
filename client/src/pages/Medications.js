@@ -3,6 +3,7 @@ import { createMedication } from '../features/medications/medSlice';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 const Medications = (props) => {
     const [medication, setMedication] = useState({
@@ -130,6 +131,7 @@ const Medications = (props) => {
               </div>
             </div>
           </div>
+          <Footer />
         </div>
       );
 }
