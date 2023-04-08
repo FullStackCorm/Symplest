@@ -9,10 +9,10 @@ const initialState = {
     message: '',
 };
 
-export const createMedication = createAsyncThunk('medications/create', async (medData, thunkAPI) => {
+export const createMedication = createAsyncThunk('medications/create', async (medicationData, thunkAPI) => {
         try {
             const token = thunkAPI.getState().auth.user.token;
-            return await medService.createMedication(medData, token);
+            return await medService.createMedication(medicationData, token);
         } catch (error) {
             const message = 
                 (error.response &&

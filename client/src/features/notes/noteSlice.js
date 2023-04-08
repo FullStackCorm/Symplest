@@ -2,7 +2,7 @@ import {createSlice, createAsyncThunk} from '@reduxjs/toolkit';
 import noteService from './noteService';
 
 const initialState = {
-  notess: [],
+  notes: [],
   isError: false,
   isLoading: false,
   isSuccess: false,

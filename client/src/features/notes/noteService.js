@@ -9,12 +9,10 @@ const createNote = async (noteData, token) => {
         }
     }
 
-
     const response = await axios.post(API_URL, noteData, config)
 
     return response.data
 }
-
 
 const getNotes = async (token) => {
     const config = {
@@ -39,7 +37,6 @@ const deleteNote = async (noteId, token) => {
 
     return response.data
 }
-
 
 const noteService = {
     createNote,
