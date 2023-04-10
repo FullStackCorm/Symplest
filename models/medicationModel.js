@@ -14,6 +14,9 @@ const MedSchema = new mongoose.Schema({
         type: String,
         required: [true, 'Medication strength is required']
     },
+    doseForm: {
+        type: String,
+    },
     directions: {
         type: String,
         required: [true, 'Directions are required']

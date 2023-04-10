@@ -23,6 +23,7 @@ const createMedication = asyncHandler(async (req, res) => {
     const medication = await Medication.create({
         name: req.body.name,
         strength: req.body.strength,
+        doseForm: req.body.doseForm,
         directions: req.body.directions,
         prescriber: req.body.prescriber,
         timeOfDay: req.body.timeOfDay,
