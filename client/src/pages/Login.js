@@ -4,10 +4,12 @@ import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { login, reset } from '../features/auth/authSlice';
 import Button from '@mui/material/Button';
-import LoginIcon from '@mui/icons-material/Login';
+import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
+import Header from '../components/Header';
 import Spinner from '../components/Spinner';
 import Footer from '../components/Footer';
+import SymplestImage from '../images/symplest.png';
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -59,47 +61,49 @@ function Login() {
     return <Spinner />
   }
 
-  const handleCancel = () => {
-    setDialogOpen(false);
-  };
-
   return ( 
     <div>
-      <form onSubmit={onSubmit}>
-        <TextField
-          id=''
-          variant='outlined'
-          label='email'
-          type='email'
-          name='email'
-          placeholder='example@email.com'
-          value={email}
-          onChange={onChange}
-          required 
-        />
+      <img src={SymplestImage} alt={'Symplest: your data, your choice'} className='symplest-image img-fluid ' />
+      <div class='container mt-5'>
+        <form onSubmit={onSubmit} className='pt-5 pl-5 pr-5'>
+          <Stack
+            direction='column'
+            spacing={2}
+          >
+            <TextField
+            id=''
+            variant='outlined'
+            label='email'
+            type='email'
+            name='email'
+            placeholder='example@email.com'
+            value={email}
+            onChange={onChange}
+            required 
+          />
 
-        <TextField
-          id=''
-          variant='outlined'
-          label='password'
-          type='password'
-          name='password'
-          value={password}
-          onChange={onChange}
-          required
-        />
-        
-        <Button
-          type='submit'
-          variant='contained'
-          size='large'
-          endIcon={<LoginIcon/>}
-        >
-          Login
-        </Button>
-      </form>
+          <TextField
+            id=''
+            variant='outlined'
+            label='password'
+            type='password'
+            name='password'
+            value={password}
+            onChange={onChange}
+            required
+          />
 
+          <Button
+            type='submit'
+            variant='contained'
+            size='large'
+          >
+            Login
+          </Button>
+          </Stack>
+        </form>
       <span><Link to='/register'>Create an Account</Link></span>
+      </div>
       <Footer />
     </div>
   )
