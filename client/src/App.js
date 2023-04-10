@@ -16,7 +16,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Notes from './pages/Notes';
 import Medications from './pages/Medications';
-
+import Calendar from './pages/Calendar';
 
 function App() {
   return (
@@ -29,6 +29,7 @@ function App() {
             <Route path ='/register' element={<Register />} />
             <Route path='/notes' element={<Notes />} />
             <Route path='/medications' element={<Medications />} />
+            <Route path='/calendar' element={<Calendar />} />
           </Routes>
         </div>
       </Router>

@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import MenuIcon from '@mui/icons-material/Menu';
-import PermIdentityIcon from '@mui/icons-material/PermIdentity';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { AppBar, Box, IconButton, Typography, Menu, Container, Button, Toolbar, Tooltip, MenuItem, Grid } from '@mui/material';
 import { logout, reset } from '../features/auth/authSlice';
 import Favicon from '../images/favicon-32x32.png';
@@ -18,8 +18,8 @@ function NavbarTop() {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
 
-    const pageTitles = [{ page:'/', text: ''}, { page: '/medications', text: 'Medication Management' }]
-    const navbarHeader = pageTitles.find(el => el.page === location.pathname)?.text
+    const pages = [{ page:'/', text: "Dashboard"}, { page: '/medications', text: "Medication Management" }, { page: '/symptoms', text: "Symptom Tracking"}, { page: '/appointments', text: "Appointments" }, { page: '/calendar', text: "Calendar" }, { page: '/notes', text: "Notes" },]
+    const navbarHeader = pages.find(el => el.page === location.pathname)?.text
 
     const handleLogout = () => {
       dispatch(logout());
@@ -132,6 +132,27 @@ function NavbarTop() {
                                 sx={{ my:2, color: 'white', display: 'block' }}
                             >
                                  Medications
+                            </Button>
+                            <Button  
+                                href='/'
+                                onClick={handleCloseNavMenu}
+                                sx={{ my:2, color: 'white', display: 'block' }}
+                            >
+                                 Symptoms
+                            </Button>
+                            <Button  
+                                href='/'
+                                onClick={handleCloseNavMenu}
+                                sx={{ my:2, color: 'white', display: 'block' }}
+                            >
+                                 Appointments
+                            </Button>
+                            <Button  
+                                href='/calendar'
+                                onClick={handleCloseNavMenu}
+                                sx={{ my:2, color: 'white', display: 'block' }}
+                            >
+                                 Calendar
                             </Button> 
                             <Button  
                                 href='/notes'
@@ -163,7 +184,7 @@ function NavbarTop() {
                         <Box sx={{ flexGrow: 0}}>
                             <Tooltip title='Open settings'>
                                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0}}>
-                                    <PermIdentityIcon sx={{ color: 'white' }}/>
+                                    <AccountCircleIcon sx={{ color: 'white' }}/>
                                 </IconButton>
                             </Tooltip>
                             <Menu

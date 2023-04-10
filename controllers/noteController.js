@@ -30,7 +30,7 @@ const createNote = asyncHandler(async (req, res) => {
 })
 
 // @desc Update note
-// @route PUT /api/notes/id:
+// @route PUT /api/notes/:id
 // @access Private
 const updateNote = asyncHandler(async (req, res) => {
   const note = await Note.findById(req.params.id)
@@ -60,7 +60,7 @@ const updateNote = asyncHandler(async (req, res) => {
 })
 
 // @desc Deletes note
-// @route DELETE /api/notes/id:
+// @route DELETE /api/notes/:id
 // @access Private
 const deleteNote = asyncHandler(async (req, res) => {
   const note = await Note.findById(req.params.id)

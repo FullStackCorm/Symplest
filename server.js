@@ -23,6 +23,7 @@ app.get('/', (req, res) => res.send('App is live'));
 app.use('/api/users', require('./routes/userRoutes'));
 app.use('/api/notes', require('./routes/noteRoutes'));
 app.use('/api/medications', require('./routes/medRoutes'));
+app.use('/api/calendar', require('./routes/calendarRoutes'));
 
 const port = process.env.PORT || 5000;
 

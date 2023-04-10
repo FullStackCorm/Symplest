@@ -5,6 +5,11 @@
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
+    "@fullcalendar/core": "^6.1.5",
+    "@fullcalendar/daygrid": "^6.1.5",
+    "@fullcalendar/interaction": "^6.1.5",
+    "@fullcalendar/react": "^6.1.5",
+    "@fullcalendar/timegrid": "^6.1.5",
     "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.11.16",
     "@reduxjs/toolkit": "^1.9.3",
@@ -16,6 +21,7 @@
     "material-icons": "^1.13.4",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.2",
+    "react-calendar": "^4.2.1",
     "react-dom": "^18.2.0",
     "react-icons": "^4.8.0",
     "react-redux": "^8.0.5",
@@ -47,5 +53,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.3.1"
   }
 }

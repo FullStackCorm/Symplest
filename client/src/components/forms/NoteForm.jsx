@@ -15,7 +15,7 @@ function NoteForm() {
   }
 
   return (
-    <div className='page'>
+    <div className=''>
       <div className='container'>
         <form onSubmit={onSubmit}>
           <div className="form-group">
