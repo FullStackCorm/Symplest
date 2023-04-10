@@ -76,11 +76,21 @@ function NavbarTop() {
                                     display: { xs: 'block', md: 'none' },
                                 }}
                             >
-                                {pages.map((page) => (
-                                    <MenuItem key={ page } onClick={handleCloseNavMenu}>
-                                        <Typography textAlign='center'>{ page }</Typography>
-                                    </MenuItem>
-                                ))}
+                                <MenuItem onClick={handleCloseNavMenu}>
+                                    <Typography textAlign='center'>
+                                        <Link to='/'>Home</Link>
+                                    </Typography>
+                                </MenuItem>
+                                <MenuItem onClick={handleCloseNavMenu}>
+                                    <Typography textAlign='center'>
+                                        <Link to='/medications'>Medications</Link>
+                                    </Typography>
+                                </MenuItem>
+                                <MenuItem onClick={handleCloseNavMenu}>
+                                    <Typography textAlign='center'>
+                                        <Link to='/notes'>Notes</Link>
+                                    </Typography>
+                                </MenuItem>
                             </Menu>
                         </Box>
 
@@ -107,7 +117,7 @@ function NavbarTop() {
                             Symplest
                         </Typography>
                         <Box sx={{ flexGrow: 1, display: { xs:'none', md: 'flex' } }}>
-                            {pages.map((page) => (
+                            {/* {pages.map((page) => (
                                 <Button
                                     key={page}
                                     onClick={handleCloseNavMenu}
@@ -115,7 +125,28 @@ function NavbarTop() {
                                 >
                                     {page}
                                 </Button>
-                            ))}
+                            ))} */}
+                            <Button  
+                                href='/'
+                                onClick={handleCloseNavMenu}
+                                sx={{ my:2, color: 'white', display: 'block' }}
+                            >
+                                 Home
+                            </Button>
+                            <Button  
+                                href='/medications'
+                                onClick={handleCloseNavMenu}
+                                sx={{ my:2, color: 'white', display: 'block' }}
+                            >
+                                 Medications
+                            </Button> 
+                            <Button  
+                                href='/notes'
+                                onClick={handleCloseNavMenu}
+                                sx={{ my:2, color: 'white', display: 'block' }}
+                            >
+                                 Notes
+                            </Button>        
                         </Box>
 
                         {/** Settings Menu */}
@@ -150,17 +181,6 @@ function NavbarTop() {
                         </Box>
                     </Toolbar>
                 </Container>
-                <ul>
-                    <li>
-                        <Link to='/'>Home</Link>
-                    </li>
-                    <li>
-                        <Link to='/notes'>Notes</Link>
-                    </li>
-                    <li>
-                        <Link to='/medications'>Medications</Link>
-                    </li>
-                </ul>
             </AppBar>
         </>
     );
