@@ -8,8 +8,6 @@ import { AppBar, Box, IconButton, Typography, Menu, Container, Button, Toolbar, 
 import { logout, reset } from '../features/auth/authSlice';
 import Favicon from '../images/favicon-32x32.png';
 
-const pages = ['Home', 'Medications', 'Notes'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 // https://mui.com/material-ui/react-app-bar/
 
 function NavbarTop() {
@@ -19,7 +17,7 @@ function NavbarTop() {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
 
-    const onLogout = () => {
+    const handleLogout = () => {
       dispatch(logout());
       dispatch(reset());
       navigate('/');
@@ -42,7 +40,7 @@ function NavbarTop() {
 
     return (
         <>
-            <AppBar position='static'>
+            <AppBar position='fixed' elevation='0'>
                 <Container maxWidth='xl'>
                     <Toolbar disableGutters>
                         <Box sx={{ flexGrow: 1, display: { sx: 'flex', md: 'none'} }}>
@@ -117,15 +115,6 @@ function NavbarTop() {
                             Symplest
                         </Typography>
                         <Box sx={{ flexGrow: 1, display: { xs:'none', md: 'flex' } }}>
-                            {/* {pages.map((page) => (
-                                <Button
-                                    key={page}
-                                    onClick={handleCloseNavMenu}
-                                    sx={{ my:2, color: 'white', display: 'block' }}
-                                >
-                                    {page}
-                                </Button>
-                            ))} */}
                             <Button  
                                 href='/'
                                 onClick={handleCloseNavMenu}
@@ -172,11 +161,15 @@ function NavbarTop() {
                                 open={Boolean(anchorElUser)}
                                 onClose={handleCloseUserMenu}
                             >
-                                {settings.map((setting) => (
-                                    <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                                        <Typography textAlign='center'>{setting}</Typography>
-                                    </MenuItem>
-                                ))}
+                                <MenuItem onClick={handleCloseUserMenu}>
+                                    <Typography textAlign='center' onClick={handleCloseUserMenu}>Account</Typography>
+                                </MenuItem>
+                                <MenuItem onClick={handleCloseUserMenu}>
+                                    <Typography textAlign='center' onClick={handleCloseUserMenu}>Settings</Typography>
+                                </MenuItem>
+                                <MenuItem onClick={handleCloseUserMenu}>
+                                    <Typography textAlign='center' onClick={handleLogout}>Logout</Typography>
+                                </MenuItem>
                             </Menu>
                         </Box>
                     </Toolbar>

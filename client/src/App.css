@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  min-height: 100vh;
 }
 
 .App-logo {
@@ -37,23 +38,23 @@ nav a {
   font-size: 1rem;
 }
 
-a {
+/* a {
   color: #5F98AE;
   text-decoration: none;
-}
+} */
 
-span > a:visited {
+/* span > a:visited {
   color: #5F98AE;
-}
+} */
 
 a:hover {
-  color: #9bc1ce;
+  color: #e6e6e6;
 }
 
-.footer a {
+/* .footer a {
   color: #f5f5f5;
   font-size: 1rem;
-}
+} */
 
 .AddMedication {
   background-color: #2c3e50;

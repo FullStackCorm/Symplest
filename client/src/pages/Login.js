@@ -3,9 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { login, reset } from '../features/auth/authSlice';
-import Button from '@mui/material/Button';
-import Stack from '@mui/material/Stack';
-import TextField from '@mui/material/TextField';
+import { Container, Button, Stack, TextField } from '@mui/material';
 import Header from '../components/Header';
 import Spinner from '../components/Spinner';
 import Footer from '../components/Footer';
@@ -63,13 +61,17 @@ function Login() {
 
   return ( 
     <div>
-      <img src={SymplestImage} alt={'Symplest: your data, your choice'} className='symplest-image img-fluid ' />
-      <div class='container mt-5'>
+      <div style={{
+        maxWidth: 500,
+        margin: 'auto',
+        marginTop: '5rem'
+      }}>
         <form onSubmit={onSubmit} className='pt-5 pl-5 pr-5'>
           <Stack
             direction='column'
-            spacing={2}
+            spacing={2.25}
           >
+            <img src={SymplestImage} alt={'Symplest: your data, your choice'} className='symplest-image' />
             <TextField
             id=''
             variant='outlined'

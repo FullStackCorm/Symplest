@@ -2,7 +2,7 @@ import {useEffect} from 'react';
 import {useNavigate, Link} from 'react-router-dom';
 import {useSelector, useDispatch} from 'react-redux';
 import Spinner from '../components/Spinner';
-import Header from '../components/Header';
+import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import NoteForm from '../components/forms/NoteForm';
 import { getNotes } from '../features/notes/noteSlice';
@@ -38,9 +38,17 @@ export default function Dashboard () {
 
     return (
         <div>
-            <Header />
-            <h1>Dashboard</h1>
-            <NoteForm />
+            <Navbar />
+            <div style={{
+              maxWidth: 500,
+              margin: 'auto',
+              marginTop: '5rem'
+            }}
+            >
+              <h1>Dashboard</h1>
+              <NoteForm />
+            </div>
+
             <Footer />
         </div>
     )

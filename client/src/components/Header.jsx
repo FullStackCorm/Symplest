@@ -3,13 +3,14 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { logout, reset } from '../features/auth/authSlice'
 import Navbar from '../components/Navbar';
+import { AppBar, Container, Toolbar, Box, Typography } from '@mui/material';
 
 function Header() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const { user } = useSelector((state) => state.auth)
 
-  const onLogout = () => {
+  const handleLogout = () => {
     dispatch(logout())
     dispatch(reset())
     navigate('/')
@@ -24,7 +25,7 @@ function Header() {
         {user ? (
           <li>
           <Navbar />
-            <button className='btn' onClick={onLogout}>
+            <button className='btn' onClick={handleLogout}>
               <FaSignOutAlt /> Logout
             </button>
           </li>
