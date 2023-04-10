@@ -1,7 +1,8 @@
-import { useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux';
 import { createMedication } from '../../features/medications/medSlice';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Modal, Typography, Button, Box } from '@mui/material';
 
 const MedForm = (props) => {
 
@@ -10,7 +11,7 @@ const MedForm = (props) => {
     const [directions, setDirections] = useState('');
     const [timeOfDay, setTimeOfDay] = useState('');
     const [prescriber, setPrescriber] = useState('');
-
+    
     const dispatch = useDispatch();
     
     const onSubmit = (e) => {
@@ -25,8 +26,10 @@ const MedForm = (props) => {
     
     };
 
+    
+
     return (
-        <div className='page'>
+        <div className=''>
           <div className='container'>
             <div className='row'>
               <div className='col-md-8 m-auto'>
