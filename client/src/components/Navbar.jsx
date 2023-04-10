@@ -1,21 +1,25 @@
 import '../App.css';
 import * as React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import MenuIcon from '@mui/icons-material/Menu';
 import PermIdentityIcon from '@mui/icons-material/PermIdentity';
-import { AppBar, Box, IconButton, Typography, Menu, Container, Button, Toolbar, Tooltip, MenuItem } from '@mui/material';
+import { AppBar, Box, IconButton, Typography, Menu, Container, Button, Toolbar, Tooltip, MenuItem, Grid } from '@mui/material';
 import { logout, reset } from '../features/auth/authSlice';
 import Favicon from '../images/favicon-32x32.png';
 
 // https://mui.com/material-ui/react-app-bar/
 
 function NavbarTop() {
+    const location = useLocation();
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const { user } = useSelector((state) => state.auth);
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
+
+    const pageTitles = [{ page:'/', text: ''}, { page: '/medications', text: 'Medication Management' }]
+    const navbarHeader = pageTitles.find(el => el.page === location.pathname)?.text
 
     const handleLogout = () => {
       dispatch(logout());
@@ -40,7 +44,7 @@ function NavbarTop() {
 
     return (
         <>
-            <AppBar position='fixed' elevation='0'>
+            <AppBar position='fixed' elevation='0' sx={{backgroundColor: 'black'}}>
                 <Container maxWidth='xl'>
                     <Toolbar disableGutters>
                         <Box sx={{ flexGrow: 1, display: { sx: 'flex', md: 'none'} }}>
@@ -93,21 +97,21 @@ function NavbarTop() {
                         </Box>
 
                         {/** Desktop Menu */}
-                        <a href='/'>
+                        <Link to='/'>
                             <img src={Favicon} alt={'Symplest Favicon'} sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-                        </a>
+                        </Link>
                         <Typography
                             variant='h5'
                             noWrap
                             component='a'
-                            href=''
+                            href='/'
                             sx={{
                                 mr: 1,
                                 ml: 0.5,
                                 display: { xs: 'flex', md: 'none' },
                                 flexGrow: 1,
                                 fontWeight: 400,
-                                letterSpacing: '.1rem',
+                                letterSpacing: '0.1rem',
                                 color: 'inherit',
                                 textDecoration: 'none'
                             }}
@@ -136,9 +140,26 @@ function NavbarTop() {
                             >
                                  Notes
                             </Button>        
+                        </Box>     
+                        <Box sx={{ flexGrow: 1, display: { xs:'none', md: 'flex' } }}>
+                            <Typography
+                                variant='h1'
+                                noWrap
+                                sx={{
+                                    display: {xs: 'none', sm: 'flex' },
+                                    flexGrow: 1,
+                                    fontWeight: 400,
+                                    letterSpacing: '0.1rem',
+                                    color: 'inherit',
+                                    textAlign: 'center',
+
+                                }}
+                            >
+                                <h4>{navbarHeader}</h4>
+                            </Typography>
                         </Box>
 
-                        {/** Settings Menu */}
+                        {/** Settings/Logout Menu */}
                         <Box sx={{ flexGrow: 0}}>
                             <Tooltip title='Open settings'>
                                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0}}>

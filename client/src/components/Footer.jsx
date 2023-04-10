@@ -4,13 +4,6 @@ import { Box, Link, Container, Grid, Typography } from '@mui/material';
 
 export default function Footer() {
     return (
-        // <div className='footer flex items-stretch px-20'>
-        //     <ul className='pt-3'>
-        //         <a href={'https://www.github.com/FullStackCorm'} className='py-2 px-4 text-lg'><GitHubIcon className='text-2xl'/> Source Code </a>
-        //         <span> | </span>
-        //         <a href={'https://www.twitter.com/FullStackCorm'}>&copy; FullStackCorm</a>
-        //     </ul>
-        // </div>
         <Container sx={{ maxWidth: 'xl', direction: 'row' }}>
             <Box>
                 <Grid 
@@ -21,7 +14,7 @@ export default function Footer() {
                         width: '100%',
                         direction: 'row',
                         alignItems: 'center',
-                        backgroundColor:'#007bff',
+                        backgroundColor:'black',
                         pt: '0.1rem',
                         pb: '0.1rem'
                     }}
@@ -35,7 +28,6 @@ export default function Footer() {
                     </Grid>
                 </Grid>
             </Box>
-        </Container>
-        
+        </Container>      
     );
 }
