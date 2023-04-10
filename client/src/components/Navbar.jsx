@@ -85,7 +85,9 @@ function NavbarTop() {
                         </Box>
 
                         {/** Desktop Menu */}
-                        <img src={Favicon} alt={'Symplest Favicon'} sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+                        <a href='/'>
+                            <img src={Favicon} alt={'Symplest Favicon'} sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+                        </a>
                         <Typography
                             variant='h5'
                             noWrap
