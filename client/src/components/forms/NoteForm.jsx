@@ -1,6 +1,7 @@
 import { useState } from "react"
 import {useDispatch} from 'react-redux'
 import {createNote} from '../../features/notes/noteSlice'
+import { Button } from '@mui/material';
 
 function NoteForm() {
   const [text, setText] = useState('')
