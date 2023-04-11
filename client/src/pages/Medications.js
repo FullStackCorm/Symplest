@@ -4,10 +4,11 @@ import { useSelector, useDispatch } from 'react-redux'
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import Spinner from '../components/Spinner';
-import ModalMedForm from '../components/modals/ModalMedForm';
+import MedFormModal from '../components/modals/MedFormModal';
 import MedItem from '../components/items/MedItem';
 import { getMedications } from '../features/medications/medSlice';
 import { reset } from '../features/auth/authSlice';
+
 
 function Medications () {
   const navigate = useNavigate();
@@ -44,7 +45,7 @@ function Medications () {
             marginTop: '5rem'
           }}>
             <h1 className='text-center'>All Medications</h1>
-            <ModalMedForm />
+            <MedFormModal />
             <div className='col-md-11'>
                 <br />
                 <br />

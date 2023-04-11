@@ -17,6 +17,7 @@ import Register from './pages/Register';
 import Notes from './pages/Notes';
 import Medications from './pages/Medications';
 import Calendar from './pages/Calendar';
+import NoPage from './pages/NoPage';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
             <Route path='/notes' element={<Notes />} />
             <Route path='/medications' element={<Medications />} />
             <Route path='/calendar' element={<Calendar />} />
+            <Route path='*' element={<NoPage />} />
           </Routes>
         </div>
       </Router>

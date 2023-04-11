@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { createMedication } from '../../features/medications/medSlice';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Modal, Typography, Button, Box, Grid, Tooltip, Menu, MenuItem } from '@mui/material';
 import MedForm from '../forms/MedForm';
@@ -18,7 +18,7 @@ const style = {
   p: 4,
 };
 
-const ModalMedForm = (props) => {
+const MedFormModal = (props) => {
 
     const [name, setName] = useState('');
     const [strength, setStrength] = useState('');
@@ -29,7 +29,7 @@ const ModalMedForm = (props) => {
     
     const dispatch = useDispatch();
 
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     
@@ -72,4 +72,4 @@ const ModalMedForm = (props) => {
       );
 }
 
-export default ModalMedForm
+export default MedFormModal

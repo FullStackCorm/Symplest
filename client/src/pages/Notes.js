@@ -5,9 +5,10 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import Spinner from '../components/Spinner';
 import NoteForm from '../components/forms/NoteForm';
-import NoteItem from '../components/items/NoteItem';
+import NoteCard from '../components/cards/NoteCard';
 import { getNotes } from '../features/notes/noteSlice';
 import { reset } from '../features/auth/authSlice';
+import { Grid, Container } from '@mui/material';
 
 function Notes() {
     const navigate = useNavigate();
@@ -38,19 +39,36 @@ function Notes() {
     return (
         <>
             <Navbar />
-            
-            <h1>{ pageTitle }</h1>
-            <section className='content'>
-                {notes !== undefined && notes.length >= 0 ? (
-                    <div className='notes'>
-                        {notes.map((note) => (
-                            <NoteItem key={note._id} note={note} />
-                        ))}
-                    </div>
-                ) : (<h4>No notes have been added yet.</h4>)}
-            </section>
-            <br />
-            <NoteForm />
+            <div 
+                // className='container'
+                style={{
+                    maxWidth: 500,
+                    margin: 'auto',
+                    marginTop: '5rem'
+                }}
+            >
+                <Grid
+                    // container
+                    // spacing={0}
+                    // direction='column'
+                    // alignItems='center'
+                    // justifyContent='center'
+                >
+                    <Container>
+                        <h1 style={{color: 'white'}}>{ pageTitle }</h1>
+                        <section>
+                            {notes !== undefined && notes.length >= 0 ? (
+                                <div className='notes'>
+                                    {notes.map((note) => (
+                                        <NoteCard key={note._id} note={note} />
+                                    ))}
+                                </div>
+                            ) : (<h4>No notes have been added yet.</h4>)}
+                        </section>
+                        <NoteForm />
+                    </Container>
+                </Grid>
+            </div>  
             <Footer />
         </>
     )
