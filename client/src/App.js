@@ -14,9 +14,11 @@ import Dashboard from './pages/Dashboard';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import Appointments from './pages/Appointments';
 import Notes from './pages/Notes';
 import Medications from './pages/Medications';
 import Calendar from './pages/Calendar';
+import Events from './pages/Events';
 import NoPage from './pages/NoPage';
 
 function App() {
@@ -28,9 +30,10 @@ function App() {
             <Route path='/' element={<Dashboard />} />
             <Route path='/login' element={<Login />} />
             <Route path ='/register' element={<Register />} />
+            <Route path='/appointments' element={<Appointments />} />
             <Route path='/notes' element={<Notes />} />
             <Route path='/medications' element={<Medications />} />
-            <Route path='/calendar' element={<Calendar />} />
+            <Route path='/events' element={<Events />} />
             <Route path='*' element={<NoPage />} />
           </Routes>
         </div>

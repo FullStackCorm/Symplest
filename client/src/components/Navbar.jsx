@@ -18,7 +18,7 @@ function NavbarTop() {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
 
-    const pages = [{ page:'/', text: "Dashboard"}, { page: '/medications', text: "Medication Management" }, { page: '/symptoms', text: "Symptom Tracking"}, { page: '/appointments', text: "Appointments" }, { page: '/calendar', text: "Calendar" }, { page: '/notes', text: "Notes" },]
+    const pages = [{ page:'/', text: "Dashboard"}, { page: '/medications', text: "Medication Management" }, { page: '/symptoms', text: "Symptom Tracking"}, { page: '/appointments', text: "Appointments" }, { page: '/events', text: "Calendar" }, { page: '/notes', text: "Notes" },]
     const navbarHeader = pages.find(el => el.page === location.pathname)?.text
 
     const handleLogout = () => {
@@ -44,7 +44,7 @@ function NavbarTop() {
 
     return (
         <>
-            <AppBar position='fixed' elevation='0' sx={{backgroundColor: 'black'}}>
+            <AppBar position='fixed' elevation='0' sx={{ backgroundColor: 'black', }}>
                 <Container maxWidth='xl'>
                     <Toolbar disableGutters>
                         <Box sx={{ flexGrow: 1, display: { sx: 'flex', md: 'none'} }}>
@@ -141,14 +141,14 @@ function NavbarTop() {
                                  Symptoms
                             </Button>
                             <Button  
-                                href='/'
+                                href='/appointments'
                                 onClick={handleCloseNavMenu}
                                 sx={{ my:2, color: 'white', display: 'block' }}
                             >
                                  Appointments
                             </Button>
                             <Button  
-                                href='/calendar'
+                                href='/events'
                                 onClick={handleCloseNavMenu}
                                 sx={{ my:2, color: 'white', display: 'block' }}
                             >
@@ -164,7 +164,7 @@ function NavbarTop() {
                         </Box>     
                         <Box sx={{ flexGrow: 1, display: { xs:'none', md: 'flex' } }}>
                             <Typography
-                                variant='h1'
+                                variant='h4'
                                 noWrap
                                 sx={{
                                     display: {xs: 'none', sm: 'flex' },
@@ -176,7 +176,7 @@ function NavbarTop() {
 
                                 }}
                             >
-                                <h4>{navbarHeader}</h4>
+                                {navbarHeader}
                             </Typography>
                         </Box>
 
