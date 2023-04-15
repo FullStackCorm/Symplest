@@ -1,8 +1,7 @@
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { createMedication } from '../../features/medications/medSlice';
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Modal, Typography, Button, Box, Grid, Tooltip, Menu, MenuItem } from '@mui/material';
+import { Modal, Typography, Button, Box, Grid } from '@mui/material';
 import MedForm from '../forms/MedForm';
 import FilterMedsMenu from '../FilterMedsMenu';
 
@@ -12,11 +11,22 @@ const style = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: 400,
-  bgcolor: 'background.paper',
+  bgcolor: '#3D3737',
   border: '2px solid #000',
   boxShadow: 24,
   p: 4,
 };
+
+const addButtonStyle = {
+  backgroundColor: '#524747',
+  color: '#C69F9F',
+  borderRadius: 5,
+  m: 1,
+  '&:hover': {
+    backgroundColor: '#C69F9F',
+    color: '#F8F8F8',
+  }
+}
 
 const MedFormModal = (props) => {
 
@@ -50,7 +60,11 @@ const MedFormModal = (props) => {
         <div>
           <form onSubmit={onSubmit}>
               <Grid container justifyContent='center'>
-                  <Button onClick={handleOpen}>+ Add New Medication</Button>
+                  <Button 
+                    sx={addButtonStyle}
+                    onClick={handleOpen}>
+                      + Add New Medication
+                  </Button>
                   <FilterMedsMenu />
               </Grid>                   
             <Modal
@@ -61,7 +75,7 @@ const MedFormModal = (props) => {
               keepMounted
             >
               <Box sx={style}>
-                <Typography id='modal-modal-title' variant='h6' component='h2'>
+                <Typography id='modal-modal-title' variant='h6' component='h2' color='#E89D9D' marginBottom='1em'>
                     Add a New Medication
                 </Typography> 
                 <MedForm />

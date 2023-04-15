@@ -1,6 +1,8 @@
 import { useDispatch } from 'react-redux';
 import {deleteMedication} from '../../features/medications/medSlice';
-import { Container, Grid, Box, Button } from '@mui/material';
+import {  Box, Button, Card, CardHeader, CardContent, Container, Grid, Typography, } from '@mui/material';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 // https://mui.com/material-ui/react-dialog/ to confirm delete medication
 
@@ -9,37 +11,43 @@ function MedCard({medication}) {
 
   return (
     <div>
-      <Grid container margin='auto' width='80%'> 
+      <Grid 
+        container
+        spacing={2} 
+        margin='auto'
+        direction='column'
+        alignItems='center'
+        justifyContent='center' 
+      > 
         <Grid item xs={12}>
-          <h5>Medication: {medication.name} {medication.strength}{medication.doseForm}</h5>
-        </Grid>
-        <Grid item xs={12}>
-          <span>Directions: {medication.directions}</span>
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <span>Time of Day: {medication.timeOfDay}</span>
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <span>Prescriber: {medication.prescriber}</span>
-        </Grid>
+          <Card sx={{ height: 250, width: 330 }}>
+            <CardContent>
+              <CardHeader
+                variant='h1' 
+                title={`Medication: ${medication.name} ${medication.strength}${medication.doseForm}`}
+              />
+              <Typography variant='body1'>
+                Directions: {medication.directions}
+              </Typography>
+              <Typography variant='caption'>
+                Time of Day: {medication.timeOfDay} | Prescriber: {medication.prescriber}
+              </Typography>
+              <br />
+              <Typography variant='button'>
+                <Button>
+                  <EditIcon />
+                </Button>
+                <Button
+                  onClick={() => dispatch(deleteMedication(medication._id))} 
+                >
+                  <DeleteIcon />
+                </Button>
+              </Typography>
+            </CardContent>
 
-        <Grid item xs={6}>
-          <Button 
-            type='button' 
-          >
-            Edit Medication
-          </Button>
+          </Card>
         </Grid>
-        <Grid item xs={6}>
-          <Button 
-            type='button'
-            onClick={() => dispatch(deleteMedication(medication._id))} 
-          >
-            Delete Medication
-          </Button>
-        </Grid>   
-      </Grid> 
-      <hr />
+      </Grid>
     </div>  
   );
 }

@@ -8,8 +8,6 @@ import { AppBar, Box, IconButton, Typography, Menu, Container, Button, Toolbar, 
 import { logout, reset } from '../features/auth/authSlice';
 import Favicon from '../images/favicon-32x32.png';
 
-// https://mui.com/material-ui/react-app-bar/
-
 function NavbarTop() {
     const location = useLocation();
     const navigate = useNavigate();
@@ -43,8 +41,8 @@ function NavbarTop() {
     };
 
     return (
-        <>
-            <AppBar position='fixed' elevation='0' sx={{ backgroundColor: 'black', }}>
+        <div className='ml-auto mb-6'>
+            <AppBar position='fixed' elevation={0} sx={{ backgroundColor: 'black', }}>
                 <Container maxWidth='xl'>
                     <Toolbar disableGutters>
                         <Box sx={{ flexGrow: 1, display: { sx: 'flex', md: 'none'} }}>
@@ -171,7 +169,7 @@ function NavbarTop() {
                                     flexGrow: 1,
                                     fontWeight: 400,
                                     letterSpacing: '0.1rem',
-                                    color: 'inherit',
+                                    color: '#F8F8F8',
                                     textAlign: 'center',
 
                                 }}
@@ -217,7 +215,7 @@ function NavbarTop() {
                     </Toolbar>
                 </Container>
             </AppBar>
-        </>
+        </div>
     );
 }
 

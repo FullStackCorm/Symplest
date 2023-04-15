@@ -1,7 +1,13 @@
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { createMedication } from '../../features/medications/medSlice';
-import React, { useState } from 'react';
 import { TextField, Button, Stack, Select, MenuItem } from '@mui/material';
+
+const style = {
+  color: '#C69F9F',
+  backgroundColor: '#524747',
+  input: { color: '#C69F9F' }
+}
 
 const MedForm = (props) => {
 
@@ -14,7 +20,7 @@ const MedForm = (props) => {
     
     const dispatch = useDispatch();
 
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     
@@ -32,7 +38,7 @@ const MedForm = (props) => {
     };
 
     return (
-                  <form onSubmit={onSubmit}>
+                  <form onSubmit={onSubmit} sx={style}>
                     <Stack
                       direction='column'
                       spacing={2}
@@ -44,6 +50,7 @@ const MedForm = (props) => {
                         name='name'
                         value={name}
                         onChange={(e) => setName(e.target.value)}
+                        sx={style}
                       />
                       <TextField
                         type='text'
@@ -52,15 +59,12 @@ const MedForm = (props) => {
                         name='strength'
                         value={strength}
                         onChange={(e) => setStrength(e.target.value)}
+                        sx={style}
                       />
                       <Select
-                        // sx={{
-                        //   marginTop: 1,
-                        //   width: 250,
-                        //   height: 50,
-                        // }}
                         onChange={(e) => setDoseForm(e.target.value)}
                         defaultValue='mg' placeholder='Dose Form'
+                        sx={style}
                       >
                         <MenuItem value='mg'>mg</MenuItem>
                         <MenuItem value='mcg'>mcg</MenuItem>
@@ -74,6 +78,7 @@ const MedForm = (props) => {
                         name='directions'
                         value={directions}
                         onChange={(e) => setDirections(e.target.value)}
+                        sx={style}
                       />
                       <TextField
                         type='text'
@@ -82,10 +87,13 @@ const MedForm = (props) => {
                         name='prescriber'
                         value={prescriber}
                         onChange={(e) => setPrescriber(e.target.value)}
+                        sx={style}
                       />
                       <Select
                         onChange={(e) => setTimeOfDay(e.target.value)}
-                        defaultValue='Morning' placeholder='Time of Day'>
+                        defaultValue='Morning' placeholder='Time of Day'
+                        sx={style}
+                      >
                         <MenuItem value='Morning'>Morning</MenuItem>
                         <MenuItem value='Noon'>Noon</MenuItem>
                         <MenuItem value='Afternoon'>Afternoon</MenuItem>
@@ -97,6 +105,14 @@ const MedForm = (props) => {
                       </Select>
                       <Button
                         type='submit'
+                        sx={{
+                          backgroundColor: '#524747',
+                          color: '#CBC0C0',
+                          '&:hover': {
+                            backgroundColor: '#C69F9F',
+                            color: '#F8F8F8'
+                          }
+                        }}
                       >
                         Submit
                       </Button>
