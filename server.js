@@ -25,6 +25,7 @@ app.use('/api/medications', require('./routes/medRoutes'));
 app.use('/api/notes', require('./routes/noteRoutes'));
 app.use('/api/calendar', require('./routes/calendarRoutes'));
 app.use('/api/events', require('./routes/eventRoutes'));
+app.use('/api/symptoms', require('./routes/symptomRoutes'));
 
 const port = process.env.PORT || 5000;
 

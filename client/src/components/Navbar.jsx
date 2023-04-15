@@ -132,7 +132,7 @@ function NavbarTop() {
                                  Medications
                             </Button>
                             <Button  
-                                href='/'
+                                href='/symptoms'
                                 onClick={handleCloseNavMenu}
                                 sx={{ my:2, color: 'white', display: 'block' }}
                             >

@@ -19,6 +19,7 @@ import Notes from './pages/Notes';
 import Medications from './pages/Medications';
 import Calendar from './pages/Calendar';
 import Events from './pages/Events';
+import Symptoms from './pages/Symptoms';
 import NoPage from './pages/NoPage';
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
             <Route path='/notes' element={<Notes />} />
             <Route path='/medications' element={<Medications />} />
             <Route path='/events' element={<Events />} />
+            <Route path='/symptoms' element={<Symptoms />} />
             <Route path='*' element={<NoPage />} />
           </Routes>
         </div>
