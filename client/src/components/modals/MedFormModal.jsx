@@ -44,7 +44,6 @@ const style = {
   p: 4,
 };
 
-
 const MedFormModal = (props) => {
 
     const [name, setName] = useState('');
@@ -96,7 +95,7 @@ const MedFormModal = (props) => {
               keepMounted
             >
               <Box sx={style}>
-                <Typography id='modal-modal-title' variant='h6' component='h2' color='primary.dark' marginBottom='1em'>
+                <Typography id='modal-modal-title' variant='h6' component='h2' color='primary.main' marginBottom='1em'>
                     Add a New Medication
                 </Typography> 
                 <MedForm />
