@@ -1,16 +1,43 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux';
+
+// Components //
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import Spinner from '../components/Spinner';
+import MedTable from '../components/MedTable';
+import MedDataGridTable from '../components/MedDataGrid';
 import MedFormModal from '../components/modals/MedFormModal';
-import MedItem from '../components/items/MedItem';
 import { getMedications } from '../features/medications/medSlice';
 import { reset } from '../features/auth/authSlice';
 
+// MUI //
+import { Typography, Grid } from '@mui/material';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { brown, pink, blue, ivory } from '../colors';
 
 function Medications () {
+
+  const theme = createTheme({
+    palette: {
+        primary: {
+            main: blue[200],
+            light: brown[100],
+            dark: blue[500],
+            contrastText: brown[50]
+        },
+        secondary: {
+            main: pink[100],
+            contrastText: pink[50]
+        },
+        text: {
+            main: ivory[50]
+        }
+    }
+
+  });
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -36,33 +63,28 @@ function Medications () {
   }
 
     return (
-        <div className='page'>
+      <ThemeProvider theme={theme}>
+        <div>
           <Navbar />
-        <div className='container'
-          style={{
-            maxWidth: 800,
-            margin: 'auto',
-            marginTop: '5rem'
-          }}>
-            <h1 className='text-center'>All Medications</h1>
-            <MedFormModal />
-            <div className='col-md-11'>
-                <br />
-                <br />
-                <hr />
-              </div>
-                <section className='content'>
-                    {medications !== undefined && medications.length >= 0 ? (
-                        <div className='medications'>
-                            {medications.map((medication) => (
-                                <MedItem key={medication._id} medication={medication} />
-                            ))}
-                        </div>
-                    ) : (<h4>No medications have been added yet.</h4>)}
-                </section>
+            <div
+              style={{
+                margin: 'auto',
+                marginTop: '5rem',
+              }}>
+              <section>
+                  <Grid container>
+                    <Grid item xs={12}>
+                      <Typography component='h1' variant='h3' sx={{ color: 'black' }}> All Medications</Typography>
+                      <MedFormModal />
+                      <hr />
+                      <MedDataGridTable />
+                    </Grid>
+                  </Grid>                      
+              </section>
             </div>
           <Footer />
         </div>
+      </ThemeProvider>       
       );
 }
 

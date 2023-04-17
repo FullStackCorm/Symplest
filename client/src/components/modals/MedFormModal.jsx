@@ -1,9 +1,35 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+
+ // Components //
 import { createMedication } from '../../features/medications/medSlice';
-import { Modal, Typography, Button, Box, Grid } from '@mui/material';
 import MedForm from '../forms/MedForm';
 import FilterMedsMenu from '../FilterMedsMenu';
+
+// MUI //
+import { Modal, Typography, Button, Box, Grid } from '@mui/material';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { brown, blue, ivory } from '../../colors';
+
+const theme = createTheme({
+  palette: {
+      primary: {
+      main: blue[700],
+      light: blue[400],
+      dark: blue[800],
+      contrastText: brown[50]
+      },
+      secondary: {
+          main: brown[100],
+          light: brown[50],
+          dark: brown[300],
+          contrastText: brown[700]
+      },
+      text: {
+          main: ivory[50]
+      }
+  }
+});
 
 const style = {
   position: 'absolute',
@@ -11,22 +37,13 @@ const style = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: 400,
-  bgcolor: '#3D3737',
-  border: '2px solid #000',
+  bgcolor: 'secondary.main',
+  border: '2px solid #004e87',
+  borderRadius: 5,
   boxShadow: 24,
   p: 4,
 };
 
-const addButtonStyle = {
-  backgroundColor: '#524747',
-  color: '#C69F9F',
-  borderRadius: 5,
-  m: 1,
-  '&:hover': {
-    backgroundColor: '#C69F9F',
-    color: '#F8F8F8',
-  }
-}
 
 const MedFormModal = (props) => {
 
@@ -57,11 +74,15 @@ const MedFormModal = (props) => {
     };
 
     return (
-        <div>
+        <ThemeProvider theme={theme}>
           <form onSubmit={onSubmit}>
               <Grid container justifyContent='center'>
                   <Button 
-                    sx={addButtonStyle}
+                    sx={{ bgcolor: 'primary.main', color: 'text.main', borderRadius: 5, m: 1,
+                    '&:hover': {
+                      backgroundColor: 'primary.light',
+                      color: 'text.main',
+                    } }}
                     onClick={handleOpen}>
                       + Add New Medication
                   </Button>
@@ -75,14 +96,14 @@ const MedFormModal = (props) => {
               keepMounted
             >
               <Box sx={style}>
-                <Typography id='modal-modal-title' variant='h6' component='h2' color='#E89D9D' marginBottom='1em'>
+                <Typography id='modal-modal-title' variant='h6' component='h2' color='primary.dark' marginBottom='1em'>
                     Add a New Medication
                 </Typography> 
                 <MedForm />
               </Box>
             </Modal>
           </form>     
-       </div>
+       </ThemeProvider>
       );
 }
 
