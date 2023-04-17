@@ -3,11 +3,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { login, reset } from '../features/auth/authSlice';
-import { Container, Button, Stack, TextField } from '@mui/material';
-import Header from '../components/Header';
+import { Box, Container, Button, TextField, Typography, AppBar, Toolbar } from '@mui/material';
 import Spinner from '../components/Spinner';
 import Footer from '../components/Footer';
 import SymplestImage from '../images/symplest.png';
+import CssBaseline from '@mui/material/CssBaseline';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { brown, blue } from '../colors';
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -22,8 +24,6 @@ function Login() {
   const { user, isLoading, isError, isSuccess, message } = useSelector(
     (state) => state.auth
   )
-
-  const [openDialog, setDialogOpen] = useState(true);
 
   useEffect(() => {
     if (isError) {
@@ -59,56 +59,96 @@ function Login() {
     return <Spinner />
   }
 
-  return ( 
-    <div>
-      <div style={{
-        maxWidth: 500,
-        margin: 'auto',
-        marginTop: '5rem'
-      }}>
-        <form onSubmit={onSubmit} className='pt-5 pl-5 pr-5'>
-          <Stack
-            direction='column'
-            spacing={2.25}
-          >
-            <img src={SymplestImage} alt={'Symplest: your data, your choice'} className='symplest-image' />
-            <TextField
-            id=''
-            variant='outlined'
-            label='email'
-            type='email'
-            name='email'
-            placeholder='example@email.com'
-            value={email}
-            onChange={onChange}
-            required 
-          />
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: brown[500],
+        light: brown[50]
+      },
+      secondary: {
+        main: blue[700],
+        light: blue[300],
+        dark: blue[800]
+      },
+    }
+  })
 
-          <TextField
-            id=''
-            variant='outlined'
-            label='password'
-            type='password'
-            name='password'
-            value={password}
-            onChange={onChange}
-            required
-          />
+  return (
+    <ThemeProvider theme={theme}>
+      <Container component='main' maxWidth='xs'>
+        <CssBaseline />
+        <AppBar position='fixed' elevation={0} sx={{ bgcolor: 'primary.dark', color: 'text.main' }} >
+          <Container maxWidth='xl'>
+            <Toolbar disableGutters>
 
-          <Button
-            type='submit'
-            variant='contained'
-            size='large'
-          >
-            Login
-          </Button>
-          </Stack>
-        </form>
-      <span><Link to='/register'>Create an Account</Link></span>
-      </div>
-      <Footer />
-    </div>
-  )
+            </Toolbar>
+          </Container>
+        </AppBar>
+          <Box
+            sx={{
+              marginTop: 8,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center'
+            }}>
+            <Container
+              margin='normal'
+              maxWidth='sm'
+              sx={{ width: 1 }}
+            >
+              <img src={SymplestImage} 
+                alt={'Symplest: your data, your choice'} 
+                style={{ maxWidth: '100%', height: 'auto' }} 
+              />
+            </Container>
+            <Typography component="h1" variant="h5" paddingTop='1rem'>
+              Sign in
+            </Typography>
+            <Box component='form' onSubmit={onSubmit} sx={{ mt: 1 }}>
+              <TextField
+                margin='normal'
+                id='email'
+                variant='outlined'
+                label='Email Address'
+                type='email'
+                name='email'
+                autoComplete='email'
+                autoFocus
+                placeholder='example@email.com'
+                value={email}
+                onChange={onChange}
+                required
+                sx={{ width: 1 }}
+              />
+              <TextField
+                margin='normal'
+                id='password'
+                variant='outlined'
+                label='Password'
+                type='password'
+                name='password'
+                autoComplete='current-password'
+                value={password}
+                onChange={onChange}
+                required
+                sx={{ width: 1, '&:focus': { bgcolor: 'primary.light' } }}
+              />
+              <Button
+                type='submit'
+                variant='contained'
+                sx={{ width: 1, mt: 3, mb: 2, borderRadius: 5, bgcolor: 'secondary.main', '&:hover': { bgcolor: 'secondary.dark' }}}
+              >
+                Sign In
+              </Button>
+              <span><Link to='/register' color='secondary.main'>Create an Account</Link></span>
+            </Box>       
+          </Box>        
+
+        <Footer />
+      </Container>
+    </ThemeProvider> 
+    
+  );
 }
 
 export default Login
