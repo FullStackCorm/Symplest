@@ -5,6 +5,7 @@ import medReducer from '../features/medications/medSlice';
 import calendarReducer from '../features/calendar/calendarSlice';
 import eventReducer from '../features/events/eventSlice';
 import symptomReducer from '../features/symptoms/symptomSlice';
+import moodReducer from '../features/moods/moodSlice';
 
 export const store = configureStore({
     reducer: {
@@ -13,6 +14,7 @@ export const store = configureStore({
         medications: medReducer,
         calendar: calendarReducer,
         event: eventReducer,
-        symptoms: symptomReducer
+        symptoms: symptomReducer,
+        moods: moodReducer,
     }
 });
