@@ -13,6 +13,7 @@ export const createMood = createAsyncThunk('moods/create', async(moodData, thunk
   try {
     const token = thunkAPI.getState().auth.user.token
     return await moodService.createMood(moodData, token)
+
   } catch (error) {
     const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString() 
   return thunkAPI.rejectWithValue(message)

@@ -16,14 +16,15 @@ const moods = await Mood.find({ user: req.user.id })
 // @route POST /api/moods
 // @access Private
 const createMood = asyncHandler(async (req, res) => {
-  if(!req.body.text) {
+  if(req.body.mood < 0) {
     res.status(400)
-    throw new Error('Text entry is required')
+    throw new Error('Mood selection is required')
   }
 
   const mood = await Mood.create({
     moodText: req.body.moodText,
     mood: req.body.mood,
+    date: req.body.date,
     user: req.user.id,
   })
    
