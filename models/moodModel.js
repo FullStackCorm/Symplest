@@ -7,10 +7,10 @@ const moodSchema = mongoose.Schema(
         required: true,
         ref: 'User'
     },
-    moodText: {
+    note: {
         type: String,
     },
-    mood: {
+    rating: {
         type: Number,
         required: true,
     },

@@ -8,6 +8,8 @@ import Footer from '../components/Footer';
 import Spinner from '../components/Spinner';
 import SymptomItem from '../components/items/SymptomItem';
 import { Grid, Container } from '@mui/material';
+import SymptomCategoryCheckbox from '../components/forms/SymptomCheckboxForm';
+import MoodCard from '../components/cards/MoodCard';
 
 function Symptoms () {
     const navigate = useNavigate();
@@ -37,36 +39,41 @@ function Symptoms () {
     return (
         <div>
             <Navbar />
-            <div
-                className='container'
-                style={{
-                    maxWidth: 800,
-                    margin: 'auto',
-                    marginTop: '5rem'
-                }}
-            >
-                <Grid
-                    container
-                    spacing={0}
-                    direction='column'
-                    alignItems='center'
-                    justifyContent='center'
+                <div
+                    className='container'
+                    style={{
+                        maxWidth: 800,
+                        margin: 'auto',
+                        marginTop: '5rem'
+                    }}
                 >
-                    <Container>
-                        <h1 style={{color: 'white'}}>Symptoms</h1>
-                        <section className='content'>
-                            {symptoms && symptoms.length > 0 ? (
-                                <div>
-                                    {symptoms.map((symptom) => (
-                                        <SymptomItem key={symptom._id} symptom={symptom} />
-                                    ))}
-                                </div>
-                            ) : (<h4>No symptoms have been added yet.</h4>)}
-                        </section>
-                    </Container>
-                </Grid>
-
-            </div>
+                    <Grid
+                        container
+                        spacing={0}
+                        direction='column'
+                        alignItems='center'
+                        justifyContent='center'
+                    >
+                        <Container>
+                            <h1 style={{color: 'white'}}>Symptoms</h1>
+                            <section className='content'>
+                                {symptoms && symptoms.length > 0 ? (
+                                    <div>
+                                        {symptoms.map((symptom) => (
+                                            <SymptomItem key={symptom._id} symptom={symptom} />
+                                        ))}
+                                    </div>
+                                ) : (
+                                    <div>
+                                        <h4>No symptom categories have been added yet.</h4>
+                                        <SymptomCategoryCheckbox />
+                                        <MoodCard />
+                                    </div>
+                                    )}
+                            </section>
+                        </Container>
+                    </Grid>
+                </div>
             <Footer />
         </div>
     );

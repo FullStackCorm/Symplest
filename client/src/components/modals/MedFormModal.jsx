@@ -69,7 +69,7 @@ const MedFormModal = (props) => {
       setDirections('')
       setPrescriber('')
       setTimeOfDay('')
- 
+
     };
 
     return (
@@ -102,7 +102,7 @@ const MedFormModal = (props) => {
               </Box>
             </Modal>
           </form>     
-       </ThemeProvider>
+      </ThemeProvider>
       );
 }
 
