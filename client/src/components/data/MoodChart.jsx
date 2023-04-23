@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import LineChart from '../components/common/LineChart';
+import LineChart from '../common/LineChart';
 import 'chartjs-adapter-date-fns';
 
 // MUI //
 import { Modal, Typography, IconButton, Box, Stack } from '@mui/material';
 import EqualizerIcon from '@mui/icons-material/Equalizer';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { brown, blue, ivory, } from '../colors';
+import { brown, blue, ivory, } from '../../colors';
 
 const theme = createTheme({
     palette: {

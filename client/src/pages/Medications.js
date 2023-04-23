@@ -6,8 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import Spinner from '../components/Spinner';
-import MedTable from '../components/MedTable';
-import MedDataGridTable from '../components/MedDataGrid';
+import MedDataGridTable from '../components/data/MedDataGrid';
 import MedFormModal from '../components/modals/MedFormModal';
 import { getMedications } from '../features/medications/medSlice';
 import { reset } from '../features/auth/authSlice';
@@ -17,7 +16,7 @@ import { Typography, Grid } from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { brown, pink, blue, ivory } from '../colors';
 
-function Medications () {
+function Medications() {
 
   const theme = createTheme({
     palette: {

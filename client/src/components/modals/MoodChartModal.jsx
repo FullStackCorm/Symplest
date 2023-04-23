@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getMoods } from '../../features/moods/moodSlice';
 import { reset } from '../../features/auth/authSlice';
 import Spinner from '../Spinner';
-import MoodChart from '../MoodChart';
+import MoodChart from '../data/MoodChart';
 
 // MUI //
 import { styled, ThemeProvider, createTheme } from '@mui/material/styles';
