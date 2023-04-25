@@ -9,24 +9,24 @@ import FilterMedsMenu from '../FilterMedsMenu';
 // MUI //
 import { Modal, Typography, Button, Box, Grid } from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { brown, blue, ivory } from '../../colors';
+import { blue, purple, white } from '../../colors';
 
 const theme = createTheme({
   palette: {
       primary: {
-      main: blue[700],
-      light: blue[400],
-      dark: blue[800],
-      contrastText: brown[50]
+      main: purple[700],
+      light: purple[400],
+      dark: purple[800],
+      contrastText: blue[50]
       },
       secondary: {
-          main: brown[100],
-          light: brown[50],
-          dark: brown[300],
-          contrastText: brown[700]
+          main: blue[100],
+          light: blue[50],
+          dark: blue[300],
+          contrastText: blue[700]
       },
       text: {
-          main: ivory[50]
+          main: white[100]
       }
   }
 });
@@ -37,7 +37,7 @@ const style = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: 400,
-  bgcolor: 'secondary.main',
+  bgcolor: 'secondary.light',
   border: '2px solid #004e87',
   borderRadius: 5,
   boxShadow: 24,

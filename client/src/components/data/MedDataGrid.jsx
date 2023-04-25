@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 // Components //
 import { deleteMedication } from '../../features/medications/medSlice';
 import ConfirmDelete from '../common/ConfirmDelete';
+import UpdateMedModal from '../modals/UpdateMedModal';
 
 // MUI //
 import { Box, Button, Table, TableHead, TableBody, TableFooter, TableCell, TableContainer, TableRow, TablePagination, Paper } from '@mui/material';
@@ -15,7 +16,7 @@ import IconButton from '@mui/material/IconButton';
 import FirstPageIcon from '@mui/icons-material/FirstPage';
 import LastPageIcon from '@mui/icons-material/LastPage';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { brown, pink, blue, ivory } from '../../colors';
+import { blue, pink, purple, white } from '../../colors';
 
 
 function TablePaginationActions(props) {
@@ -23,13 +24,13 @@ function TablePaginationActions(props) {
     const theme = createTheme({
         palette: {
             primary: {
-                main: blue[200],
-                light: brown[100],
-                dark: blue[500],
-                contrastText: brown[50]
+                main: purple[200],
+                light: blue[100],
+                dark: purple[500],
+                contrastText: blue[50]
             },
             text: {
-                main: ivory[50]
+                main: white[100]
             }
         }
 
@@ -98,16 +99,17 @@ TablePaginationActions.propTypes = {
 
 
 export default function MedDataGridTable() {
+    const rows = []
 
     // Constants, Hooks, Event Handlers, etc. //
     const theme = createTheme({
         palette: {
             primary: {
-            main: blue[700],
-            dark: blue[800],
+            main: purple[700],
+            dark: purple[800],
             },
             text: {
-                main: ivory[50]
+                main: white[100]
             }
         }
     });
@@ -133,8 +135,6 @@ export default function MedDataGridTable() {
     function createData(name, directions, timeOfDay, prescriber, _id) {
         return { name, directions, timeOfDay, prescriber, _id };
     };
-
-    const rows = []
     
     if (medications) {
         medications.map(medication =>
@@ -145,7 +145,7 @@ export default function MedDataGridTable() {
     };
 
     return (
-        <ThemeProvider theme={theme} component={Paper}>
+        <ThemeProvider theme={theme}>
             <TableContainer sx={{ maxHeight: 500 }}>
                 <Table size='small' sx={{ margin: 'auto', mt: 5, maxWidth: 1200, }} aria-label='medication table'>
                     <TableHead>
@@ -177,7 +177,7 @@ export default function MedDataGridTable() {
                             </TableCell>
                             <TableCell align='center' sx={{ fontSize: 16, pt: 0.5, pb: 0.5 }} >
                                     <Button sx={{ color: 'primary.main' }}>
-                                        <EditIcon />
+                                        <UpdateMedModal />
                                     </Button>
                                     {/* <ConfirmDelete /> */}
                                     <Button
@@ -196,22 +196,22 @@ export default function MedDataGridTable() {
                     </TableBody>
                     <TableFooter style={{ align: 'right' }}>
                         <TableRow>
-                        <TablePagination
-                            rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
-                            colSpan={8}
-                            count={rows.length}
-                            rowsPerPage={rowsPerPage}
-                            page={page}
-                            SelectProps={{
-                                inputProps: {
-                                'aria-label': 'use the arrows to change pages',
-                                },
-                                native: true,
-                            }}
-                            onPageChange={handleChangePage}
-                            onRowsPerPageChange={handleChangeRowsPerPage}
-                            ActionsComponent={TablePaginationActions}
-                        />
+                            <TablePagination
+                                rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
+                                colSpan={8}
+                                count={rows.length + 1}
+                                rowsPerPage={rowsPerPage}
+                                page={page}
+                                SelectProps={{
+                                    inputProps: {
+                                    'aria-label': 'use the arrows to change pages',
+                                    },
+                                    native: true,
+                                }}
+                                onPageChange={handleChangePage}
+                                onRowsPerPageChange={handleChangeRowsPerPage}
+                                ActionsComponent={TablePaginationActions}
+                            />
                         </TableRow>
                     </TableFooter>
                 </Table>

@@ -19,7 +19,6 @@ import Register from './pages/Register';
 import Appointments from './pages/Appointments';
 import Notes from './pages/Notes';
 import Medications from './pages/Medications';
-import Calendar from './pages/Calendar';
 import Events from './pages/Events';
 import Symptoms from './pages/Symptoms';
 import NoPage from './pages/NoPage';

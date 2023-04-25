@@ -17,21 +17,21 @@ export const pink = {
     200: '#e89d9d'
 };
 
-export const ivory = {
-    50: '#f8f8f8'
+export const white = {
+    100: '#fafafa'
 };
 
 export const blue = {
-    50: '#dff3fa',
-    100: '#aee1f3',
-    200: '#79cdeb',
-    300: '#42b9e3',
-    400: '#00abdf',
-    500: '#009ddb',
-    600: '#0090cd',
-    700: '#007dba',
-    800: '#006da7',
-    900: '#004e87' 
+    50: '#e4f3ff',
+    100: '#bedfff',
+    200: '#95cdff',
+    300: '#6bb8ff',
+    400: '#4ea9ff',
+    500: '#389aff',
+    600: '#378bf2',
+    700: '#3479de',
+    800: '#3167cc',
+    900: '#2b48ac' 
 }
 
 export const periBlue = {
@@ -71,4 +71,17 @@ export const magenta = {
     700: '#9d008c',
     800: '#8c0087',
     900: '#6e007d' 
+}
+
+export const green = {
+    50: '#f7fbe7',
+    100: '#ecf5c3',
+    200: '#dfef9c',
+    300: '#d3e975',
+    400: '#c9e356',
+    500: '#c1de38',
+    600: '#b5cc31',
+    700: '#a5b628',
+    800: '#959f20',
+    900: '#7b780f'
 }

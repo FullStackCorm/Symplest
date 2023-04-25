@@ -2,7 +2,7 @@ import * as React from 'react';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import { Box, Link, Container, Grid, Typography } from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { brown, pink, ivory } from '../colors';
+import { brown, pink, white } from '../colors';
 
 export default function Footer() {
 
@@ -19,7 +19,7 @@ export default function Footer() {
             contrastText: pink[50]
           },
           text: {
-            main: ivory[50]
+            main: white[100]
           }
         }
       });

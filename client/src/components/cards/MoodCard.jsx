@@ -17,31 +17,29 @@ import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDiss
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { brown, blue, ivory } from '../../colors';
+import { blue, purple, white } from '../../colors';
 
 const theme = createTheme({
     palette: {
         primary: {
-        main: blue[700],
-        light: blue[400],
-        dark: blue[800],
-        contrastText: brown[50]
+        main: purple[700],
+        light: purple[400],
+        dark: purple[800],
+        contrastText: white[100]
         },
         secondary: {
-            main: brown[100],
-            light: brown[50],
-            dark: brown[400],
-            contrastText: brown[700]
+            main: white[100],
+            light: blue[50]
         },
         text: {
-            main: ivory[50]
+            main: white[100]
         },
     }
   });
 
   const style = {
     color: 'primary.dark',
-    backgroundColor: 'secondary.light',
+    backgroundColor: 'secondary.main',
     input: { color: 'primary.dark' },
     maxWidth: 400,
     height: 'auto',
@@ -149,7 +147,7 @@ export default function MoodCard() {
                                         clearable='true'
                                         style={style}
                                     />
-                                    <Typography variant='body1' color='text.secondary'>
+                                    <Typography variant='body1' color='text.main'>
                                         How was your day?
                                     </Typography>
                                     <form onSubmit={onSubmit}>

@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import LineChart from '../common/LineChart';
+import LineChartt from '../common/LineChart';
 import 'chartjs-adapter-date-fns';
+import { ResponsiveContainer, LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts';
+import { format, compareAsc } from 'date-fns'
+import dayjs from 'dayjs';
 
 // MUI //
 import { Modal, Typography, IconButton, Box, Stack } from '@mui/material';
 import EqualizerIcon from '@mui/icons-material/Equalizer';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { brown, blue, ivory, } from '../../colors';
+import { brown, blue, white, } from '../../colors';
+import { model } from 'mongoose';
 
 const theme = createTheme({
     palette: {
@@ -22,7 +26,7 @@ const theme = createTheme({
             contrastText: blue[50]
         },
         text: {
-            main: ivory[50]
+            main: white[100]
         }
     }
 });
@@ -33,7 +37,7 @@ const style = {
     left: '50%',
     transform: 'translate(-50%, -50%)',
     height: 400,
-    width: 800,
+    width: 700,
     bgcolor: 'secondary.main',
     border: '2px solid #004e87',
     borderRadius: 5,
@@ -63,50 +67,21 @@ const MoodChart = (props) => {
                 data.push(createData(mood.rating, mood.note, mood.date, mood._id))
             }
         );
-        // console.log(data);
     };
 
-    data.sort(function (a, b) {
-        return new Date(a.date) - new Date(b.date);
-    })
-    console.log(data)
+    // const sortedDates = data.filter((e) => {
+    //     const newDate = new Date(e.date);
+    //     const options = {year: 'numeric', month: 'short', day: 'numeric'};
 
-    const [chartData, setChartData] = useState({
-        // labels: data.map((data) => data.date),
-        labels: data.map((data) => data.date),
-        datasets: [
-            {
-                label: "Mood Rating",
-                data: data.map((data) => data.rating),
-                backgroundColor: '#b595f6',
-                borderColor: '#7a43f1',
-                lineTension: 0.5,
-            },       
-        ],
-        options: {
-            responsive: true,
-            title: {
-                display: true,
-                text: 'Mood Ratings',
-                font: {
-                    width: 'bold',
-                    size: 14,
-                }
-            },
-            scales: {
-                y: {
-                    ticks: {
-                        callback: function (value) {
-                            return value % 1 === 0 ? value : '';
-                        }
-                    }
-                },
-                x: {
-                    display: false
-                }    
-            }
-        }
+    //     return (new Intl.DateTimeFormat('en-US').format(newDate))
+    // })
+
+
+    // Must sort dates since users can enter symptom data after a date has already passed //
+    const sortedDates = data.sort(function (a, b) {
+        return new Date(a.date) - new Date(b.date);
     });
+
 
     return (
         <ThemeProvider theme={theme}>
@@ -127,7 +102,16 @@ const MoodChart = (props) => {
                 keepMounted
             >
                 <Box sx={style}>
-                    <LineChart chartData={chartData} />
+                    <Typography variant='h6' component='h2' textAlign='center'>Mood Ratings</Typography>
+                    <ResponsiveContainer width={600} height={'80%'}>
+                        <LineChart data={data} margin={{ top: 5, right: 5, bottom: 5, left: 5 }}>
+                            <Line type='monotone' dataKey='rating' stroke='#7a43f1' />
+                            <CartesianGrid stroke='#ccc' strokeDashArray='5 5' />
+                            <XAxis dataKey='date' />
+                            <YAxis />
+                            <Tooltip />
+                        </LineChart>
+                    </ResponsiveContainer>               
                 </Box>
             </Modal>                
         </ThemeProvider>

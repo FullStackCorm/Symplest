@@ -57,7 +57,8 @@ function Symptoms () {
                         <Container>
                             <h1 style={{color: 'white'}}>Symptoms</h1>
                             <section className='content'>
-                                {symptoms && symptoms.length > 0 ? (
+                                <MoodCard />
+                                {/* {symptoms && symptoms.length > 0 ? (
                                     <div>
                                         {symptoms.map((symptom) => (
                                             <SymptomItem key={symptom._id} symptom={symptom} />
@@ -67,9 +68,8 @@ function Symptoms () {
                                     <div>
                                         <h4>No symptom categories have been added yet.</h4>
                                         <SymptomCategoryCheckbox />
-                                        <MoodCard />
                                     </div>
-                                    )}
+                                    )} */}
                             </section>
                         </Container>
                     </Grid>

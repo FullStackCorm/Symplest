@@ -2,8 +2,6 @@ import { FaSignInAlt, FaSignOutAlt, FaUser } from 'react-icons/fa'
 import { Link, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { logout, reset } from '../features/auth/authSlice'
-import Navbar from '../components/Navbar';
-import { AppBar, Container, Toolbar, Box, Typography } from '@mui/material';
 
 function Header() {
   const navigate = useNavigate()
@@ -18,13 +16,12 @@ function Header() {
 
   return (
     <header className='header'>
-      {/* <div className='logo'>
-        <Link to='/dashboard'>Symplest</Link>
-      </div> */}
+      <div className='logo'>
+        <Link to='/'>Symplest</Link>
+      </div>
       <ul>
         {user ? (
           <li>
-          <Navbar />
             <button className='btn' onClick={handleLogout}>
               <FaSignOutAlt /> Logout
             </button>

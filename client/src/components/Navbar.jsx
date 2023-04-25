@@ -8,7 +8,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { AppBar, Box, IconButton, Typography, Menu, Container, Button, Toolbar, Tooltip, MenuItem } from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { brown, blue, ivory } from '../colors';
+import { brown, blue, white } from '../colors';
 
 function NavbarTop() {
 
@@ -56,7 +56,7 @@ function NavbarTop() {
             contrastText: blue[50]
           },
           text: {
-            main: ivory[50]
+            main: white[100]
           }
         }
       });
@@ -111,6 +111,11 @@ function NavbarTop() {
                                     </MenuItem>
                                     <MenuItem onClick={handleCloseNavMenu}>
                                         <Typography textAlign='center'>
+                                            <Link to='/symptoms'>Symptoms</Link>
+                                        </Typography>
+                                    </MenuItem>
+                                    <MenuItem onClick={handleCloseNavMenu}>
+                                        <Typography textAlign='center'>
                                             <Link to='/notes'>Notes</Link>
                                         </Typography>
                                     </MenuItem>
@@ -161,7 +166,7 @@ function NavbarTop() {
                                 >
                                      Symptoms
                                 </Button>
-                                <Button  
+                                {/* <Button  
                                     href='/appointments'
                                     onClick={handleCloseNavMenu}
                                     sx={{ my:2, color: 'white', display: 'block' }}
@@ -174,7 +179,7 @@ function NavbarTop() {
                                     sx={{ my:2, color: 'white', display: 'block' }}
                                 >
                                      Calendar
-                                </Button> 
+                                </Button>  */}
                                 <Button  
                                     href='/notes'
                                     onClick={handleCloseNavMenu}

@@ -14,24 +14,24 @@ import { reset } from '../features/auth/authSlice';
 // MUI //
 import { Typography, Grid } from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { brown, pink, blue, ivory } from '../colors';
+import { blue, pink, purple, white } from '../colors';
 
 function Medications() {
 
   const theme = createTheme({
     palette: {
         primary: {
-            main: blue[200],
-            light: brown[100],
-            dark: blue[500],
-            contrastText: brown[50]
+            main: purple[200],
+            light: blue[100],
+            dark: purple[500],
+            contrastText: blue[50]
         },
         secondary: {
             main: pink[100],
             contrastText: pink[50]
         },
         text: {
-            main: ivory[50]
+            main: white[50]
         }
     }
 
@@ -71,8 +71,8 @@ function Medications() {
                 marginTop: '5rem',
               }}>
               <section>
-                  <Grid container>
-                    <Grid item xs={12}>
+                  <Grid container justifyContent='center'>
+                    <Grid item md={12} xs={10}>
                       <Typography component='h1' variant='h3' sx={{ color: 'black' }}> All Medications</Typography>
                       <MedFormModal />
                       <hr />

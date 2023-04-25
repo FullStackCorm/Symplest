@@ -10,7 +10,7 @@ import MoodChart from '../data/MoodChart';
 
 // MUI //
 import { styled, ThemeProvider, createTheme } from '@mui/material/styles';
-import { brown, blue, ivory, } from '../../colors';
+import { brown, blue, white, } from '../../colors';
 
 const theme = createTheme({
     palette: {
@@ -25,7 +25,7 @@ const theme = createTheme({
             contrastText: blue[50]
         },
         text: {
-            main: ivory[50]
+            main: white[100]
         }
     }
 });

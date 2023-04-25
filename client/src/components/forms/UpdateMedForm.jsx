@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { createMedication } from '../../features/medications/medSlice';
+import { updateMedication } from '../../features/medications/medSlice';
 
 // MUI //
 import { TextField, Button, Stack, Select, MenuItem } from '@mui/material';
@@ -33,7 +33,7 @@ const style = {
   input: { color: 'primary.dark' }
 }
 
-const MedForm = (props) => {
+const UpdateMedForm = (props) => {
 
     const [name, setName] = useState('');
     const [strength, setStrength] = useState('');
@@ -51,7 +51,7 @@ const MedForm = (props) => {
     const onSubmit = (e) => {
       e.preventDefault();
 
-      dispatch(createMedication({name, strength, doseForm, directions, timeOfDay, prescriber}))
+      dispatch(updateMedication({name, strength, doseForm, directions, timeOfDay, prescriber}))
       setName('')
       setStrength('')
       setDoseForm('')
@@ -147,4 +147,4 @@ const MedForm = (props) => {
       );
 }
 
-export default MedForm
+export default UpdateMedForm
