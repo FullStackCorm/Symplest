@@ -135,18 +135,18 @@ export default function PainCard() {
                                         onChange={(e) => setType(e.target.value)} defaultValue='Select Pain Type' placeholder='Select Pain Type'
                                         sx={style}
                                     >
+                                        <MenuItem value='Select Pain Type'>Select Pain Type</MenuItem>
                                         <MenuItem value='Headache'>Headache</MenuItem>
                                         <MenuItem value='Neck'>Neck</MenuItem>
                                         <MenuItem value='Shoulder'>Shoulder</MenuItem>
                                         <MenuItem value='Wrist'>Wrist</MenuItem>
-                                        <MenuItem value='Back (upper)'>Back (upper)</MenuItem>
-                                        <MenuItem value='Back (mid)'>Back (mid)</MenuItem>
-                                        <MenuItem value='Back (lower)'>Back (lower)</MenuItem>
+                                        <MenuItem value='Back'>Back</MenuItem>
                                         <MenuItem value='Hip'>Hip</MenuItem>
                                         <MenuItem value='Leg'>Leg</MenuItem>
                                         <MenuItem value='Knee'>Knee</MenuItem>
                                         <MenuItem value='Foot'>Feet</MenuItem>
                                         <MenuItem value='Nerve Pain'>Nerve Pain</MenuItem>
+                                        <MenuItem value='Other'>Other</MenuItem>
                                     </Select>
 
                                     <Typography variant='body1' color='primary.contrastText'>
@@ -158,12 +158,12 @@ export default function PainCard() {
                                                 <Box sx={{ width: 300}}>
                                                     <Slider
                                                         aria-label='Pain'
-                                                        defaultValue={severity}
+                                                        defaultValue={0}
                                                         getAriaValueText={valueText}
                                                         valueLabelDisplay='auto'
                                                         step={1}
                                                         marks
-                                                        min={1}
+                                                        min={0}
                                                         max={10}
                                                         onChange={(e) => setSeverity(e.target.value)}
                                                     />
