@@ -10,19 +10,19 @@ import MoodChart from '../data/MoodChart';
 
 // MUI //
 import { styled, ThemeProvider, createTheme } from '@mui/material/styles';
-import { brown, blue, white, } from '../../colors';
+import { purple, white } from '../../colors';
 
 const theme = createTheme({
     palette: {
         primary: {
-            main: blue[700],
-            light: blue[400],
-            dark: blue[800],
-            contrastText: brown[50]
+            main: purple[700],
+            light: purple[400],
+            dark: purple[800],
+            contrastText: white[100]
         },
         secondary: {
-            main: brown[50],
-            contrastText: blue[50]
+            main: white[100],
+            contrastText: purple[50]
         },
         text: {
             main: white[100]

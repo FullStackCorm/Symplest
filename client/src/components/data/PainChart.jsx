@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import LineChartt from '../common/LineChart';
 import 'chartjs-adapter-date-fns';
 import { ResponsiveContainer, LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts';
 import { format, compareAsc } from 'date-fns'
@@ -50,37 +49,30 @@ const style = {
     }
 };
 
-const MoodChart = (props) => {
+const PainChart = (props) => {
 
     const { user } = useSelector((state) => state.auth)
-    const { moods } = useSelector((state) => state.moods)
+    const { pain } = useSelector((state) => state.pain)
 
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
     // Data Mapping //
-    function createData(rating, note, date, _id) {
-        return { rating, note, date, _id };
+    function createData(severity, note, date, _id) {
+        return { severity, note, date, _id };
     };
 
     const data = []
 
-    if (moods) {
-        moods.map(mood =>
+    if (pain) {
+        pain.map(pain =>
             {
-                data.push(createData(mood.rating, mood.note, mood.date, mood._id))
+                data.push(createData(pain.severity, pain.note, pain.date, pain._id))
             }
         );
     };
-
-    // const sortedDates = data.filter((e) => {
-    //     const newDate = new Date(e.date);
-    //     const options = {year: 'numeric', month: 'short', day: 'numeric'};
-
-    //     return (new Intl.DateTimeFormat('en-US').format(newDate))
-    // })
-
+    
 
     // Must sort dates since users can enter symptom data after a date has already passed //
     const sortedDates = data.sort(function (a, b) {
@@ -99,10 +91,10 @@ const MoodChart = (props) => {
                 keepMounted
             >
                 <Box sx={style}>
-                    <Typography variant='h6' component='h2' textAlign='center'>Mood Ratings</Typography>
+                    <Typography variant='h6' component='h2' textAlign='center'>Pain History</Typography>
                     <ResponsiveContainer width={600} height={'80%'}>
                         <LineChart data={data} margin={{ top: 5, right: 5, bottom: 5, left: 5 }}>
-                            <Line type='monotone' dataKey='rating' stroke='#369a00' strokeWidth={3} />
+                            <Line type='monotone' dataKey='severity' stroke='#7a43f1' strokeWidth={3} />
                             <CartesianGrid stroke='#ccc' strokeDashArray='5 5' />
                             <XAxis dataKey='date' />
                             <YAxis />
@@ -115,4 +107,4 @@ const MoodChart = (props) => {
     );
 }
 
-export default MoodChart
+export default PainChart

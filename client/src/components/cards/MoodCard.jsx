@@ -22,10 +22,10 @@ import { blue, purple, white } from '../../colors';
 const theme = createTheme({
     palette: {
         primary: {
-        main: purple[700],
-        light: purple[400],
-        dark: purple[800],
-        contrastText: white[100]
+            main: purple[700],
+            light: purple[400],
+            dark: purple[800],
+            contrastText: purple[600]
         },
         secondary: {
             main: white[100],
@@ -35,9 +35,9 @@ const theme = createTheme({
             main: white[100]
         },
     }
-  });
+});
 
-  const style = {
+const style = {
     color: 'primary.dark',
     backgroundColor: 'secondary.main',
     input: { color: 'primary.dark' },
@@ -48,10 +48,10 @@ const theme = createTheme({
     '& .MuiIcon-root': {
         color: 'primary.main'
     },
-    '& .MuiFormControl-root': {
-        
+    '& .MuiSvgIcon-root': {
+        color: 'primary.main'
     }
-  }
+}
 
 const ExpandMore = styled((props) => {
     const { expand, ...other } = props;
@@ -117,7 +117,7 @@ export default function MoodCard() {
                 <Card sx={style}>
                     <CardHeader
                         avatar={<MoodIcon />}
-                        title='Mood'
+                        title='Mood Rating'
                         action={
                             <IconButton aria-label='charts'>
                                 <MoodChartModal />
@@ -147,7 +147,7 @@ export default function MoodCard() {
                                         clearable='true'
                                         style={style}
                                     />
-                                    <Typography variant='body1' color='text.main'>
+                                    <Typography variant='body1' color='primary.contrastText'>
                                         How was your day?
                                     </Typography>
                                     <form onSubmit={onSubmit}>
@@ -164,9 +164,6 @@ export default function MoodCard() {
                                                     </div>
                                                 ))}
                                             </Stack>
-                                            <Typography variant='body2' color='text.primary'>
-                                                Note:
-                                            </Typography>
                                             <TextField
                                                 type='text'
                                                 variant='outlined'
