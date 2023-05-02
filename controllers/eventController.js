@@ -18,6 +18,7 @@ const events = await Event.find({ user: req.user.id })
 const createEvent = asyncHandler(async (req, res) => {
   if(!req.body.name) {
     res.status(400)
+    // TODO extract magic strings into a json file for language suppport
     throw new Error('This field is required')
   }
 
@@ -71,16 +72,19 @@ const deleteEvent = asyncHandler(async (req, res) => {
 
   if(!event) {
     res.status(400)
+    // TODO extract magic strings into a json file for language suppport
     throw new Error('Event not found')
   }
 
   if(!req.user) {
     res.status(401)
+    // TODO extract magic strings into a json file for language suppport
     throw new Error('User not found')
   }
 
   if(event.user.toString() !== req.user.id){
     res.status(401)
+    // TODO extract magic strings into a json file for language suppport
     throw new Error('User not authorized to perform this action')
   }
 

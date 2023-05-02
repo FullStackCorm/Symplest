@@ -1,0 +1,35 @@
+error: 
+  user_info:
+    enter_name: "Please enter a name"
+    valid_email: "Please enter avalid email address"
+    valid_pwd: "Please enter a password"
+    all_fields: "Please add all fields"
+  generic:
+    text_req: "Text entry is required"
+    title_req: "Title is required"
+    field_req: "This field is required"
+  meds:
+    missing: "Medication not found"
+    name_req: "Medication name is required"
+    str_req: "Medication strength is required"
+    dir_req: "Directions are required"
+    name_str_dir_req: "Medication name, strength, and directions are required"
+  symptom:
+    missing: "Symptom not found"
+  note: 
+    missing: "Note not found"
+  calendar:
+    evt_missing: "Event not found"
+    entry_missing: "Entry not found"
+  mood:
+    sel_req: "Mood selection is required"
+    missing: "Mood not found"
+  auth:
+    user_exists: "User already exists"
+    invalid_user: "Invalid user data"
+    user_missing: "User not found"
+    invalid_creds: "Invalid credentials"
+    not: "Not authorized"
+#   could be combined with above
+#   no_auth: "User not authorized to perform this action"
+    no_token: "Not authorized, no token found"

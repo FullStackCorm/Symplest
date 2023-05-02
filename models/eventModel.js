@@ -9,6 +9,7 @@ const eventSchema = mongoose.Schema(
   },
   title: {
     type: String,
+    // TODO extract magic strings into a json file for language suppport
     required: [true, 'Title is required']
   },
   description: {
