@@ -32,7 +32,33 @@ export const blue = {
     700: '#3479de',
     800: '#3167cc',
     900: '#2b48ac' 
-}
+};
+
+export const cyan = {
+    50: '#dbfffe',
+    100: '#a0fffd',
+    200: '#38ffff',
+    300: '#00fbff',
+    400: '#00f6fe',
+    500: '#00f1ff',
+    600: '#00dfeb',
+    700: '#00c7ce',
+    800: '#00b2b5',
+    900: '#008c83',
+};
+
+export const orange = {
+    50: '#fff9e5',
+    100: '#ffefbc',
+    200: '#ffe591',
+    300: '#ffdc68',
+    400: '#ffd24f',
+    500: '#ffcb45',
+    600: '#ffbd3f',
+    700: '#ffab3b',
+    800: '#ff9c38',
+    900: '#fc8033'
+};
 
 export const periBlue = {
     50: '#e9edfc',

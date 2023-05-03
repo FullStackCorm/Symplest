@@ -80,8 +80,7 @@ const deleteSymptom = asyncHandler(async (req, res) => {
     throw new Error('User not authorized to perform this action')
   }
 
-  await symptom.deleteOne()
-  
+  await symptom.deleteOne()  
   res.status(200).json({ id: req.params.id })
 })
 

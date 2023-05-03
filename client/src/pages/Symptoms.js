@@ -3,13 +3,19 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { getSymptoms } from '../features/symptoms/symptomSlice';
 import { reset } from '../features/auth/authSlice';
+
+// Components //
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import Spinner from '../components/Spinner';
 import SymptomItem from '../components/items/SymptomItem';
-import { Grid, Container } from '@mui/material';
 import SymptomCategoryCheckbox from '../components/forms/SymptomCheckboxForm';
 import MoodCard from '../components/cards/MoodCard';
+import PainCard from '../components/cards/PainCard';
+import SymptomCard from '../components/cards/SymptomCard';
+
+// MUI //
+import { Box, Stack, Grid, Container } from '@mui/material';
 
 function Symptoms () {
     const navigate = useNavigate();
@@ -25,13 +31,13 @@ function Symptoms () {
         if (!user) {
             navigate('/login')
         }
-  
+
         dispatch(getSymptoms())
         return () => {
             dispatch(reset())
         }
     }, [user, navigate, isError, message, dispatch])
-  
+
     if (isLoading) {
         return <Spinner />
     }
@@ -49,15 +55,17 @@ function Symptoms () {
                 >
                     <Grid
                         container
-                        spacing={0}
+                        spacing={2}
                         direction='column'
                         alignItems='center'
                         justifyContent='center'
                     >
                         <Container>
                             <h1 style={{color: 'white'}}>Symptoms</h1>
-                            <section className='content'>
+                            <Box className='content'>
                                 <MoodCard />
+                                <PainCard />
+                                <SymptomCard />
                                 {/* {symptoms && symptoms.length > 0 ? (
                                     <div>
                                         {symptoms.map((symptom) => (
@@ -70,7 +78,7 @@ function Symptoms () {
                                         <SymptomCategoryCheckbox />
                                     </div>
                                     )} */}
-                            </section>
+                            </Box>
                         </Container>
                     </Grid>
                 </div>
