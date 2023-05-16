@@ -4,32 +4,10 @@ import { createMedication } from '../../features/medications/medSlice';
 
 // MUI //
 import { TextField, Button, Stack, Select, MenuItem } from '@mui/material';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { blue, white, purple } from '../../colors';
-
-const theme = createTheme({
-  palette: {
-      primary: {
-      main: purple[700],
-      light: purple[400],
-      dark: purple[800],
-      contrastText: blue[50]
-      },
-      secondary: {
-          main: blue[100],
-          light: blue[50],
-          dark: blue[400],
-          contrastText: blue[700]
-      },
-      text: {
-          main: white[100]
-      }
-  }
-});
 
 const style = {
   color: 'primary.dark',
-  backgroundColor: '#fafafa',
+  backgroundColor: 'input.main',
   input: { color: 'primary.dark' }
 }
 
@@ -62,7 +40,7 @@ const MedForm = (props) => {
     };
 
     return (
-      <ThemeProvider theme={theme}>
+      <div>
         <form onSubmit={onSubmit} sx={style}>
           <Stack
             direction='column'
@@ -131,19 +109,21 @@ const MedForm = (props) => {
             <Button
               type='submit'
               sx={{
-                bgcolor: 'primary.dark',
+                bgcolor: 'button.main',
                 color: 'text.main',
                 '&:hover': {
-                  bgcolor: 'primary.main',
+                  bgcolor: 'button.darkHover',
                   color: 'text.main'
-                }
+                },
+                borderRadius: 5
               }}
+              variant='contained'
             >
               Submit
             </Button>
           </Stack>
         </form>
-      </ThemeProvider>
+      </div>
       );
 }
 

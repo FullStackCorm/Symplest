@@ -8,8 +8,6 @@ import Spinner from '../components/Spinner';
 import Footer from '../components/Footer';
 import SymplestImage from '../images/symplest.png';
 import CssBaseline from '@mui/material/CssBaseline';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { brown, blue } from '../colors';
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -59,22 +57,7 @@ function Login() {
     return <Spinner />
   }
 
-  const theme = createTheme({
-    palette: {
-      primary: {
-        main: brown[500],
-        light: brown[50]
-      },
-      secondary: {
-        main: blue[700],
-        light: blue[300],
-        dark: blue[800]
-      },
-    }
-  })
-
   return (
-    <ThemeProvider theme={theme}>
       <Container component='main' maxWidth='xs'>
         <CssBaseline />
         <AppBar position='fixed' elevation={0} sx={{ bgcolor: 'primary.dark', color: 'text.main' }} >
@@ -118,7 +101,7 @@ function Login() {
                 value={email}
                 onChange={onChange}
                 required
-                sx={{ width: 1 }}
+                sx={{ width: 1, bgcolor: 'primary.dark' }}
               />
               <TextField
                 margin='normal'
@@ -131,23 +114,20 @@ function Login() {
                 value={password}
                 onChange={onChange}
                 required
-                sx={{ width: 1, '&:focus': { bgcolor: 'primary.light' } }}
+                sx={{ width: 1, bgcolor: 'primary.dark' }}
               />
               <Button
                 type='submit'
                 variant='contained'
-                sx={{ width: 1, mt: 3, mb: 2, borderRadius: 5, bgcolor: 'secondary.main', '&:hover': { bgcolor: 'secondary.dark' }}}
+                sx={{ width: 1, mt: 3, mb: 2, borderRadius: 5, bgcolor: 'button.main', '&:hover': { bgcolor: 'button.hover' }}}
               >
                 Sign In
               </Button>
               <span><Link to='/register' color='secondary.main'>Create an Account</Link></span>
             </Box>       
           </Box>        
-
         <Footer />
       </Container>
-    </ThemeProvider> 
-    
   );
 }
 

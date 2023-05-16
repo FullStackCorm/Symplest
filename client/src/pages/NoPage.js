@@ -9,24 +9,7 @@ import { Box, Button, Container, Grid, Typography } from '@mui/material';
 
 function NoPage() {
     const navigate = useNavigate();
-
-    // const { user } = useSelector((state) => state.auth)
-    // const { notes, isLoading, isError, message } = useSelector((state) => state.notes)
-
-    // useEffect(() => {
-    //     if (isError) {
-    //         console.log(message)
-    // }
-    //     if (!user) {
-    //         navigate('/login')
-    //     }
-
-    // }, [user, navigate, isError, message])
-
-    // if (isLoading) {
-    //     return <Spinner />
-    // }
-
+    
     const onClick = () => {
         navigate('/')
     }

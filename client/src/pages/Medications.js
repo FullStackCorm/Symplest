@@ -12,30 +12,9 @@ import { getMedications } from '../features/medications/medSlice';
 import { reset } from '../features/auth/authSlice';
 
 // MUI //
-import { Typography, Grid } from '@mui/material';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { blue, pink, purple, white } from '../colors';
+import { Typography, Grid, Paper } from '@mui/material';
 
 function Medications() {
-
-  const theme = createTheme({
-    palette: {
-        primary: {
-            main: purple[200],
-            light: blue[100],
-            dark: purple[500],
-            contrastText: blue[50]
-        },
-        secondary: {
-            main: pink[100],
-            contrastText: pink[50]
-        },
-        text: {
-            main: white[50]
-        }
-    }
-
-  });
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -62,18 +41,16 @@ function Medications() {
   }
 
     return (
-      <ThemeProvider theme={theme}>
-        <div>
-          <Navbar />
+    
+        <Paper elevation={3} sx={{ bgcolor: 'primary.dark', p: '2rem', borderRadius: 5 }}>
             <div
               style={{
                 margin: 'auto',
-                marginTop: '5rem',
               }}>
               <section>
                   <Grid container justifyContent='center'>
                     <Grid item md={12} xs={10}>
-                      <Typography component='h1' variant='h3' sx={{ color: 'black' }}> All Medications</Typography>
+                      <Typography component='h2' variant='h4' sx={{ color: 'text.light' }}>Medications</Typography>
                       <MedFormModal />
                       <hr />
                       <MedDataGridTable />
@@ -81,9 +58,7 @@ function Medications() {
                   </Grid>                      
               </section>
             </div>
-          <Footer />
-        </div>
-      </ThemeProvider>       
+        </Paper>     
       );
 }
 

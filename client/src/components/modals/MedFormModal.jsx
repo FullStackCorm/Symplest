@@ -8,28 +8,6 @@ import FilterMedsMenu from '../FilterMedsMenu';
 
 // MUI //
 import { Modal, Typography, Button, Box, Grid } from '@mui/material';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { blue, purple, white } from '../../colors';
-
-const theme = createTheme({
-  palette: {
-      primary: {
-      main: purple[700],
-      light: purple[400],
-      dark: purple[800],
-      contrastText: blue[50]
-      },
-      secondary: {
-          main: blue[100],
-          light: blue[50],
-          dark: blue[300],
-          contrastText: blue[700]
-      },
-      text: {
-          main: white[100]
-      }
-  }
-});
 
 const style = {
   position: 'absolute',
@@ -37,7 +15,8 @@ const style = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: 400,
-  bgcolor: 'secondary.light',
+  bgcolor: 'background.light',
+  color: 'text.contrastText',
   border: '2px solid #004e87',
   borderRadius: 5,
   boxShadow: 24,
@@ -73,15 +52,12 @@ const MedFormModal = (props) => {
     };
 
     return (
-        <ThemeProvider theme={theme}>
           <form onSubmit={onSubmit}>
               <Grid container justifyContent='center'>
                   <Button 
-                    sx={{ bgcolor: 'primary.main', color: 'text.main', borderRadius: 5, m: 1,
-                    '&:hover': {
-                      backgroundColor: 'primary.light',
-                      color: 'text.main',
-                    } }}
+                    sx={{ bgcolor: 'button.main', color: 'text.light', borderRadius: 5, m: 1, 
+                    '&:hover': { bgcolor: 'button.hover' }}}
+                    variant='contained'
                     onClick={handleOpen}>
                       + Add New Medication
                   </Button>
@@ -95,14 +71,13 @@ const MedFormModal = (props) => {
               keepMounted
             >
               <Box sx={style}>
-                <Typography id='modal-modal-title' variant='h6' component='h2' color='primary.main' marginBottom='1em'>
+                <Typography id='modal-modal-title' variant='h6' component='h2' color='text.light' marginBottom='1em'>
                     Add a New Medication
                 </Typography> 
                 <MedForm />
               </Box>
             </Modal>
           </form>     
-      </ThemeProvider>
       );
 }
 

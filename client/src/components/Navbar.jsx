@@ -7,8 +7,6 @@ import { logout, reset } from '../features/auth/authSlice';
 import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { AppBar, Box, IconButton, Typography, Menu, Container, Button, Toolbar, Tooltip, MenuItem } from '@mui/material';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { brown, blue, white } from '../colors';
 
 function NavbarTop() {
 
@@ -23,48 +21,30 @@ function NavbarTop() {
     const navbarHeader = pages.find(el => el.page === location.pathname)?.text
 
     const handleLogout = () => {
-      dispatch(logout());
-      dispatch(reset());
-      navigate('/');
+        dispatch(logout());
+        dispatch(reset());
+        navigate('/');
     };
 
     const handleOpenNavMenu = (event) => {
-      setAnchorElNav(event.currentTarget);
+        setAnchorElNav(event.currentTarget);
     };
     const handleOpenUserMenu = (event) => {
-      setAnchorElUser(event.currentTarget);
-    };
-  
-    const handleCloseNavMenu = () => {
-      setAnchorElNav(null);
-    };
-  
-    const handleCloseUserMenu = () => {
-      setAnchorElUser(null);
+        setAnchorElUser(event.currentTarget);
     };
 
-    const theme = createTheme({
-        palette: {
-          primary: {
-            main: brown[200],
-            light: brown[100],
-            dark: brown[500], 
-            contrastText: brown[50]
-          },
-          secondary: {
-            main: blue[100],
-            contrastText: blue[50]
-          },
-          text: {
-            main: white[100]
-          }
-        }
-      });
+    const handleCloseNavMenu = () => {
+        setAnchorElNav(null);
+    };
+
+    const handleCloseUserMenu = () => {
+        setAnchorElUser(null);
+    };
 
     return (
-        <ThemeProvider theme={theme}>
-            <div className='ml-auto mb-6'>
-                <AppBar position='fixed' elevation={0} sx={{ bgcolor: 'primary.dark', color: 'text.main' }} >
+        <div>
+            <div>
+                <AppBar position='fixed' elevation={0} sx={{ bgcolor: 'background.main', color: 'text.main' }} >
                     <Container maxWidth='xl'>
                         <Toolbar disableGutters>
                             <Box sx={{ flexGrow: 1, display: { sx: 'flex', md: 'none'} }}>
@@ -150,42 +130,42 @@ function NavbarTop() {
                                     onClick={handleCloseNavMenu}
                                     sx={{ my:2, color: 'white', display: 'block' }}
                                 >
-                                     Home
+                                    Home
                                 </Button>
-                                <Button  
+                                {/* <Button  
                                     href='/medications'
                                     onClick={handleCloseNavMenu}
                                     sx={{ my:2, color: 'white', display: 'block', '&:hover': {color: '#f8f8f8'} }}
                                 >
-                                     Medications
-                                </Button>
+                                    Medications
+                                </Button> */}
                                 <Button  
                                     href='/symptoms'
                                     onClick={handleCloseNavMenu}
                                     sx={{ my:2, color: 'white', display: 'block' }}
                                 >
-                                     Symptoms
+                                    Symptoms
                                 </Button>
                                 {/* <Button  
                                     href='/appointments'
                                     onClick={handleCloseNavMenu}
                                     sx={{ my:2, color: 'white', display: 'block' }}
                                 >
-                                     Appointments
+                                    Appointments
                                 </Button>
                                 <Button  
                                     href='/events'
                                     onClick={handleCloseNavMenu}
                                     sx={{ my:2, color: 'white', display: 'block' }}
                                 >
-                                     Calendar
+                                    Calendar
                                 </Button>  */}
                                 <Button  
                                     href='/notes'
                                     onClick={handleCloseNavMenu}
                                     sx={{ my:2, color: 'white', display: 'block' }}
                                 >
-                                     Notes
+                                    Notes
                                 </Button>        
                             </Box>     
                             <Box sx={{ flexGrow: 1, display: { xs:'none', md: 'flex' } }}>
@@ -198,7 +178,7 @@ function NavbarTop() {
                                         fontWeight: 400,
                                         letterSpacing: '0.1rem',
                                         textAlign: 'center',
-                                        color: 'text.main'
+                                        color: 'text.light'
                                     }}
                                 >
                                     {navbarHeader}
@@ -213,7 +193,7 @@ function NavbarTop() {
                                     </IconButton>
                                 </Tooltip>
                                 <Menu
-                                    sx={{ mt: '45px' }}
+                                    sx={{ mt: '45px'}}
                                     id='menu-appbar'
                                     anchorEl={anchorElUser}
                                     anchorOrigin={{
@@ -229,13 +209,13 @@ function NavbarTop() {
                                     onClose={handleCloseUserMenu}
                                 >
                                     <MenuItem onClick={handleCloseUserMenu}>
-                                        <Typography textAlign='center' onClick={handleCloseUserMenu}>Account</Typography>
+                                        <Typography textAlign='center' onClick={handleCloseUserMenu} sx={{ color: 'text.contrastText' }} >Account</Typography>
                                     </MenuItem>
                                     <MenuItem onClick={handleCloseUserMenu}>
-                                        <Typography textAlign='center' onClick={handleCloseUserMenu}>Settings</Typography>
+                                        <Typography textAlign='center' onClick={handleCloseUserMenu} sx={{ color: 'text.contrastText' }} >Settings</Typography>
                                     </MenuItem>
                                     <MenuItem onClick={handleCloseUserMenu}>
-                                        <Typography textAlign='center' onClick={handleLogout}>Logout</Typography>
+                                        <Typography textAlign='center' onClick={handleLogout} sx={{ color: 'text.contrastText' }} >Logout</Typography>
                                     </MenuItem>
                                 </Menu>
                             </Box>
@@ -243,7 +223,7 @@ function NavbarTop() {
                     </Container>
                 </AppBar>
             </div>
-        </ThemeProvider>
+        </div>
         
     );
 }

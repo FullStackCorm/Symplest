@@ -13,7 +13,6 @@ import Layout from './components/Layout';
 
 // Pages //
 import Dashboard from './pages/Dashboard';
-import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Appointments from './pages/Appointments';

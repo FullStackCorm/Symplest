@@ -11,6 +11,18 @@ export const brown = {
     900: '#230c11'
 };
 
+export const brand = {
+    50: '#F8F8F8',
+    100: '#CBC0C0',
+    200: '#CBC0C0',
+    300: '#C69F9F',
+    400: '#524747',
+    500: '#3D3737',
+    600: '#1e1e1e',
+    700: '#E89D9D',
+    800: '#3D3737'
+};
+
 export const pink = {
     50: '#c69f9f',
     100: '#facfd3',

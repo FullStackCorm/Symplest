@@ -12,7 +12,7 @@ body {
   text-align: center;
   min-height: 100vh;
   max-height: 100vh;
-  background-color: #eae6e6;
+  background-color: #1e1e1e;
 }
 
 .App-logo {
@@ -56,15 +56,15 @@ body {
 } */
 
 a {
-  color: #009ddb;
+  color: #E89D9D;
 }
 
 span a:visited {
-  color: #009ddb;
+  color: #E89D9D;
 }
 
 a:hover {
-  color: #0090cd;
+  color: #E89D9D;
 }
 
 nav > a {
@@ -91,13 +91,12 @@ h2 {
   font-weight: 300;
 }
 
-.page {
+/* .page {
   height: 100%;
   width: 100%;
   min-height: 100vh;
   min-width: 100px;
-  color: black;
-}
+} */
 
 .card-item {
   height: inherit;
@@ -138,68 +137,13 @@ li {
   overflow-y: auto;
 }
 
-/*
-colors
-  #3D0038
-  #DAC4F7
-  #FAC2AE
-  #FAB9AF
-  #FCF0C5
-  #ACECF7
-
-  brand: #DA6464
-  darkest: #272121
-  dark: #272121
-  mid: #BFA9A9
-  light: #E0CCCC
-  lightest: #FFFFFF
-  darkestBlue: #0B2C39
-  darkBlue: #164E63
-  midBlue: #5F98AE
-  lightBlue: #E5E7EB
-*/
-
-.brand {
-  background-color: #DA6464;
+.MuiButtonBase-root {
+  color: #f8f8f8 !important;
 }
 
-.darkest {
-  background-color: #272121;
-}
 
-.mid {
-  background-color: #BFA9A9;
-}
-
-.light {
-  background-color: #e0cccc;
-}
-
-.lightest {
-  background-color: #FFFFFF;
-}
-
-.darkestBlue {
-  background-color: #0B2C39;
-}
-
-.darkBlue {
-  background-color: #164E63;
-}
-
-.midBlue {
-  background-color: #5F98AE;
-  color: #FFFFFF;
-}
-
-.lightBlue {
-  background-color: #E5E7EB;
-}
-
-.skyBlue {
-  background-color: #4EACCE;
-}
-
-.MuiInputBase-input:focus {
-  outline: 1;
-}
+/* @content-padding: 2.5%;
+@brick-padding: 25px;
+@content-background: #fff;
+@chart-size: 250px;
+@chart-swatch-size: 12px; */

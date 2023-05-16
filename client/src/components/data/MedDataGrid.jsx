@@ -8,32 +8,27 @@ import ConfirmDelete from '../common/ConfirmDelete';
 import UpdateMedModal from '../modals/UpdateMedModal';
 
 // MUI //
-import { Box, Button, Table, TableHead, TableBody, TableFooter, TableCell, TableContainer, TableRow, TablePagination, Paper } from '@mui/material';
+import { Box, Button, Paper, Table, TableHead, TableBody, TableFooter, TableCell, TableContainer, TableRow, TablePagination } from '@mui/material';
 import { KeyboardArrowLeft, KeyboardArrowRight, } from '@mui/icons-material';
-import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
 import FirstPageIcon from '@mui/icons-material/FirstPage';
 import LastPageIcon from '@mui/icons-material/LastPage';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { blue, pink, purple, white } from '../../colors';
+import { brand } from '../../colors';
 
 
 function TablePaginationActions(props) {
 
     const theme = createTheme({
         palette: {
-            primary: {
-                main: purple[200],
-                light: blue[100],
-                dark: purple[500],
-                contrastText: blue[50]
-            },
             text: {
-                main: white[100]
+                light: brand[50]
+            },
+            button: {
+                light: brand[50]
             }
-        }
-
+        },
     });
 
     // Table Controls //
@@ -55,11 +50,12 @@ function TablePaginationActions(props) {
     return (
         
         <ThemeProvider theme={theme}>
-            <Box sx={{ flexShrink: 0, ml: 2.5 }}>
+            <Box sx={{ flexShrink: 0, ml: 2.5, color: 'text.light' }} >
                 <IconButton
                     onClick={handleFirstPageButtonClick}
                     disabled={page === 0}
                     aria-label="first page"
+                    sx={{ color: 'button.light' }}
                 >
                     {theme.direction === 'rtl' ? <LastPageIcon /> : <FirstPageIcon />}
                 </IconButton>
@@ -101,18 +97,14 @@ TablePaginationActions.propTypes = {
 export default function MedDataGridTable() {
     const rows = []
 
-    // Constants, Hooks, Event Handlers, etc. //
-    const theme = createTheme({
-        palette: {
-            primary: {
-            main: purple[700],
-            dark: purple[800],
-            },
-            text: {
-                main: white[100]
-            }
-        }
-    });
+    // Constants, Hooks, etc. //
+    // const theme = createTheme({
+    //     palette: {
+    //         text: {
+    //             light: brand[50]
+    //         }
+    //     }
+    // });
     
     const dispatch = useDispatch()    
     const { medications } = useSelector(state => state.medications)
@@ -145,51 +137,51 @@ export default function MedDataGridTable() {
     };
 
     return (
-        <ThemeProvider theme={theme}>
+        <div>
             <TableContainer sx={{ maxHeight: 500 }}>
                 <Table size='small' sx={{ margin: 'auto', mt: 5, maxWidth: 1200, }} aria-label='medication table'>
                     <TableHead>
-                        <TableRow sx={{ color: 'primary.dark'}}>
-                            <TableCell sx={{ color: 'primary.dark', fontSize: 18 }}>Medication</TableCell>
-                            <TableCell sx={{ color: 'primary.dark', fontSize: 18 }} align='center'>Directions</TableCell>
-                            <TableCell sx={{ color: 'primary.dark', fontSize: 18 }} align='center'>Time of Day</TableCell>
-                            <TableCell sx={{ color: 'primary.dark', fontSize: 18 }} align='center'>Prescriber</TableCell>
-                            <TableCell sx={{ color: 'primary.dark', fontSize: 18 }} align='center'>Edit/Delete</TableCell>
+                        <TableRow sx={{ color: 'text.contrastText'}}>
+                            <TableCell sx={{ color: 'text.contrastText', fontSize: 18 }}>Medication</TableCell>
+                            <TableCell sx={{ color: 'text.contrastText', fontSize: 18 }} align='center'>Directions</TableCell>
+                            <TableCell sx={{ color: 'text.contrastText', fontSize: 18 }} align='center'>Time of Day</TableCell>
+                            <TableCell sx={{ color: 'text.contrastText', fontSize: 18 }} align='center'>Prescriber</TableCell>
+                            <TableCell sx={{ color: 'text.contrastText', fontSize: 18 }} align='center'>Edit/Delete</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
                     {(rowsPerPage > 0
                         ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                        : rows
+                        : rows && rows.id
                     ).map((row) => (
-                        <TableRow key={row.name}>
-                            <TableCell component="th" scope="row">
+                        <TableRow key={medications.id}>
+                            <TableCell component="th" scope="row" sx={{ color: 'text.light' }}>
                                 {row.name}
                             </TableCell>
-                            <TableCell align='center'>
+                            <TableCell align='center' sx={{ color: 'text.light' }}>
                                 {row.directions}
                             </TableCell>
-                            <TableCell align='center'>
+                            <TableCell align='center' sx={{ color: 'text.light' }}>
                                 {row.timeOfDay}
                             </TableCell>
-                            <TableCell align='center'>
+                            <TableCell align='center' sx={{ color: 'text.light' }}>
                                 {row.prescriber}
                             </TableCell>
                             <TableCell align='center' sx={{ fontSize: 16, pt: 0.5, pb: 0.5 }} >
-                                    <Button sx={{ color: 'primary.main' }}>
+                                    <Button>
                                         <UpdateMedModal />
                                     </Button>
                                     {/* <ConfirmDelete /> */}
                                     <Button
-                                        onClick={() => dispatch(deleteMedication(row._id))} sx={{ color: 'primary.main', pt: 0.5, pb: 0.5 }}><DeleteIcon />
+                                        onClick={() => dispatch(deleteMedication(row._id))} sx={{ color: 'button.light', pt: 0.5, pb: 0.5 }}><DeleteIcon />
                                     </Button>    
-                                </TableCell>
+                            </TableCell>
                         </TableRow>
                     ))}
 
                     {emptyRows > 0 && (
                         <TableRow style={{ height: 53 * emptyRows }}>
-                            <TableCell colSpan={6} />
+                            <TableCell colSpan={6} sx={{ color: 'text.light' }} />
                         </TableRow>
                     )}
                     
@@ -211,12 +203,15 @@ export default function MedDataGridTable() {
                                 onPageChange={handleChangePage}
                                 onRowsPerPageChange={handleChangeRowsPerPage}
                                 ActionsComponent={TablePaginationActions}
+                                sx={{ color: 'text.contrastText' }}
                             />
                         </TableRow>
                     </TableFooter>
                 </Table>
             </TableContainer>
-        </ThemeProvider>
-        
+        </div>
     );
 }
+
+
+
