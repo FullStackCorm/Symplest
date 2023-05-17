@@ -16,34 +16,15 @@ import SentimentDissatisfiedIcon from '@mui/icons-material/SentimentDissatisfied
 import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { blue, purple, white } from '../../colors';
-
-const theme = createTheme({
-    palette: {
-        primary: {
-            main: purple[700],
-            light: purple[400],
-            dark: purple[800],
-            contrastText: purple[600]
-        },
-        secondary: {
-            main: white[100],
-            light: blue[50]
-        },
-        text: {
-            main: white[100]
-        },
-    }
-});
 
 const style = {
     color: 'primary.dark',
-    backgroundColor: 'secondary.main',
+    backgroundColor: '#fff',
     input: { color: 'primary.dark' },
     maxWidth: 400,
     height: 'auto',
     margin: 'auto',
+    marginTop: 1,
 
     '& .MuiIcon-root': {
         color: 'primary.main'
@@ -112,7 +93,7 @@ export default function MoodCard() {
     ]
 
     return (
-        <ThemeProvider theme={theme}>
+        <div>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <Card sx={style}>
                     <CardHeader
@@ -147,7 +128,7 @@ export default function MoodCard() {
                                         clearable='true'
                                         style={style}
                                     />
-                                    <Typography variant='body1' color='primary.contrastText'>
+                                    <Typography variant='body1' color='text.light'>
                                         How was your day?
                                     </Typography>
                                     <form onSubmit={onSubmit}>
@@ -173,7 +154,19 @@ export default function MoodCard() {
                                                 onChange={(e) => setNote(e.target.value)}
                                                 sx={style}
                                             />
-                                            <Button type='submit'>
+                                            <Button
+                                                type='submit'
+                                                sx={{
+                                                    bgcolor: 'button.dark',
+                                                    color: 'text.light',
+                                                    '&:hover': {
+                                                    bgcolor: 'button.darkHover',
+                                                    color: 'text.light'
+                                                    },
+                                                    borderRadius: 5
+                                                }}
+                                                variant='contained'
+                                            >
                                                 Submit
                                             </Button>
                                         </Stack>                                    
@@ -184,8 +177,7 @@ export default function MoodCard() {
                     </Stack>                      
                 </Card>
             </LocalizationProvider>
-        </ThemeProvider>
-
-    )
+        </div>
+    );
 }
 

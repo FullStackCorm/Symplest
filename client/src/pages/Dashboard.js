@@ -4,13 +4,15 @@ import {useSelector, useDispatch} from 'react-redux';
 import Spinner from '../components/Spinner';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import NoteForm from '../components/forms/NoteForm';
 import { getNotes } from '../features/notes/noteSlice';
 import { reset } from '../features/auth/authSlice';
+
+// Components //
 import Medications from './Medications';
+import Symptoms from './Symptoms';
 
 // MUI //
-import { Box, Grid, Container } from '@mui/material';
+import { Grid, Container } from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { brand } from '../colors';
 
@@ -19,38 +21,23 @@ export default function Dashboard () {
     const theme = createTheme({
       palette: {
         primary: {
-          main: brand[400],
-          light: brand[300],
-          dark: brand[600],
-        },
-        secondary: {
-          main: brand[300],
-          light: brand[200],
-          dark: brand[700]
-        },
-        background: {
-          main: brand[600],
-          light: brand[400],
-          lightest: brand[300],
-          dark: brand[800]
-        },
-        paper: {
-          main: brand[600]
+          main: brand[200], // dark pink
+          light: brand[50], // light pink
+          dark: brand[600], // slate
         },
         text: {
-          main: brand[800],
+          main: brand[500],
           light: brand[50],
+          dark: brand[600],
           contrastText: brand[700]
         },
         button: {
-          main: brand[500],
-          hover: brand[400],
-          light: brand[50],
-          lightHover: brand[100],
-          dark: brand[600],
-          darkHover: brand[800],
-          contrast: brand[100],
-          bright: brand[700]
+          main: brand[400],
+          hover: brand[300],
+          light: brand[100],
+          lightHover: brand[50],
+          dark: brand[500],
+          darkHover: brand[600],
         },
         input: {
           main: brand[50],
@@ -86,14 +73,14 @@ export default function Dashboard () {
 
     return (
       <ThemeProvider theme={theme}>
-        <Container sx={{ minHeight: '100vh', maxHeight: '100vh'}}>
+        <Container sx={{ minHeight: '100vh', maxHeight: '100vh', maxWidth: '100vw', }}>
             <Navbar />
             <div 
             className='container'
             style={{
               margin: 'auto',
               marginTop: '5rem',
-              bgcolor: 'background.main'
+              bgcolor: 'primary.main'
             }}
             >
               <Grid
@@ -103,9 +90,17 @@ export default function Dashboard () {
                 alignItems='center'
                 justifyContent='center'
               >
-                <Box>
+                { /* Med Chart */}
+                {/* <Grid item xs={8}>
                   <Medications />
-                </Box>              
+                </Grid> */}
+
+                {/* <Grid item md={4}>
+                  <Symptoms />    
+                </Grid>   */}
+
+                { /* Symptoms */}  
+    
               </Grid>              
             </div>
             <Footer />

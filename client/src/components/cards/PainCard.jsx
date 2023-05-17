@@ -9,34 +9,13 @@ import PainChartModal from '../modals/PainChartModal';
 // MUI //
 import { styled, Box, Card, CardHeader, CardContent, CardActions, Collapse, IconButton, MenuItem, Typography, Select, Stack, Slider, Button, TextField } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import EditNoteIcon from '@mui/icons-material/EditNote';
 import MedicalInformationIcon from '@mui/icons-material/MedicalInformation';
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { blue, purple, white } from '../../colors';
-
-const theme = createTheme({
-    palette: {
-        primary: {
-            main: purple[700],
-            light: purple[400],
-            dark: purple[800],
-            contrastText: purple[600]
-        },
-        secondary: {
-            main: white[100],
-            light: blue[50]
-        },
-        text: {
-            main: white[100]
-        },
-    }
-});
 
 const style = {
     color: 'primary.dark',
-    backgroundColor: 'secondary.main',
+    backgroundColor: '#fff',
     input: { color: 'primary.dark' },
     maxWidth: 400,
     height: 'auto',
@@ -93,7 +72,7 @@ export default function PainCard() {
     }
 
     return (
-        <ThemeProvider theme={theme}>
+        <div>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <Card sx={style}>
                     <CardHeader
@@ -178,7 +157,19 @@ export default function PainCard() {
                                                 onChange={(e) => setNote(e.target.value)}
                                                 sx={style}
                                             />
-                                            <Button type='submit'>
+                                            <Button
+                                                type='submit'
+                                                sx={{
+                                                    bgcolor: 'button.dark',
+                                                    color: 'text.light',
+                                                    '&:hover': {
+                                                    bgcolor: 'button.darkHover',
+                                                    color: 'text.light'
+                                                    },
+                                                    borderRadius: 5
+                                                }}
+                                                variant='contained'
+                                            >
                                                 Submit
                                             </Button>
                                         </Stack>                                    
@@ -189,8 +180,7 @@ export default function PainCard() {
                     </Stack>                      
                 </Card>
             </LocalizationProvider>
-        </ThemeProvider>
-
+        </div>
     )
 }
 

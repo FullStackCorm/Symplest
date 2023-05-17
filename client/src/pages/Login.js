@@ -58,7 +58,7 @@ function Login() {
   }
 
   return (
-      <Container component='main' maxWidth='xs'>
+      <Container component='main' maxWidth={12}>
         <CssBaseline />
         <AppBar position='fixed' elevation={0} sx={{ bgcolor: 'primary.dark', color: 'text.main' }} >
           <Container maxWidth='xl'>
@@ -101,7 +101,7 @@ function Login() {
                 value={email}
                 onChange={onChange}
                 required
-                sx={{ width: 1, bgcolor: 'primary.dark' }}
+                sx={{ width: 1 }}
               />
               <TextField
                 margin='normal'
@@ -114,16 +114,16 @@ function Login() {
                 value={password}
                 onChange={onChange}
                 required
-                sx={{ width: 1, bgcolor: 'primary.dark' }}
+                sx={{ width: 1 }}
               />
               <Button
                 type='submit'
                 variant='contained'
-                sx={{ width: 1, mt: 3, mb: 2, borderRadius: 5, bgcolor: 'button.main', '&:hover': { bgcolor: 'button.hover' }}}
+                sx={{ width: 1, mt: 3, mb: 2, borderRadius: 5, bgcolor: 'button.dark', color: 'text.light', '&:hover': { bgcolor: 'button.darkHover', color: 'text.light' }}}
               >
                 Sign In
               </Button>
-              <span><Link to='/register' color='secondary.main'>Create an Account</Link></span>
+              <span><Link to='/register' color='text.main' className='reg-link'>Create an Account</Link></span>
             </Box>       
           </Box>        
         <Footer />

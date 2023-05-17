@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { brand } from './colors';
 import { Box } from '@mui/material';
 
 // Components //
@@ -27,20 +28,33 @@ function App() {
   const theme = createTheme({
     palette: {
       primary: {
-        main: '#3d3737', // mid brown
-        light: '#524747', // light brown
-        dark: '#343232', // darkest brown
-        contrastText: '#cbc0c0' // light brown-gray
+        main: brand[200], // dark pink
+        light: brand[50], // light pink
+        dark: brand[600], // slate
       },
-      secondary: {
-        main: '#e89d9d', // pink
-        contrastText: 'c69f9f' // pink-brown
-      },
+      // secondary: {
+      //   main: brand[300],
+      //   light: brand[200],
+      //   dark: brand[700]
+      // },
       text: {
-        main: '#f8f8f8' // whiteish
+        main: brand[500],
+        light: brand[50],
+        contrastText: brand[200]
+      },
+      button: {
+        main: brand[400],
+        hover: brand[300],
+        light: brand[100],
+        lightHover: brand[50],
+        dark: brand[500],
+        darkHover: brand[600],
+      },
+      input: {
+        main: brand[50],
       }
     }
-  });
+  })
 
   return (
     <ThemeProvider theme={theme}>

@@ -5,8 +5,6 @@ import { getSymptoms } from '../features/symptoms/symptomSlice';
 import { reset } from '../features/auth/authSlice';
 
 // Components //
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
 import Spinner from '../components/Spinner';
 import SymptomItem from '../components/items/SymptomItem';
 import SymptomCategoryCheckbox from '../components/forms/SymptomCheckboxForm';
@@ -15,7 +13,7 @@ import PainCard from '../components/cards/PainCard';
 import SymptomCard from '../components/cards/SymptomCard';
 
 // MUI //
-import { Box, Stack, Grid, Container } from '@mui/material';
+import { Box, Stack, Grid, Container, Typography } from '@mui/material';
 
 function Symptoms () {
     const navigate = useNavigate();
@@ -44,45 +42,41 @@ function Symptoms () {
 
     return (
         <div>
-            <Navbar />
-                <div
-                    className='container'
+            <Grid
+                container
+                spacing={2}
+                direction='column'
+                alignItems='center'
+                justifyContent='center'
+            >
+                <Container
                     style={{
+                        minWidth: '50em',
                         maxWidth: 800,
                         margin: 'auto',
                         marginTop: '5rem'
                     }}
                 >
-                    <Grid
-                        container
-                        spacing={2}
-                        direction='column'
-                        alignItems='center'
-                        justifyContent='center'
-                    >
-                        <Container>
-                            <h1 style={{color: 'white'}}>Symptoms</h1>
-                            <Box className='content'>
-                                <MoodCard />
-                                <PainCard />
-                                <SymptomCard />
-                                {/* {symptoms && symptoms.length > 0 ? (
-                                    <div>
-                                        {symptoms.map((symptom) => (
-                                            <SymptomItem key={symptom._id} symptom={symptom} />
-                                        ))}
-                                    </div>
-                                ) : (
-                                    <div>
-                                        <h4>No symptom categories have been added yet.</h4>
-                                        <SymptomCategoryCheckbox />
-                                    </div>
-                                    )} */}
-                            </Box>
-                        </Container>
-                    </Grid>
-                </div>
-            <Footer />
+                    <Typography component='h2' variant='h4' style={{color: 'white'}}>Symptoms</Typography>
+                    <Box className='content'>
+                        <MoodCard />
+                        <PainCard />
+                        <SymptomCard />
+                        {/* {symptoms && symptoms.length > 0 ? (
+                            <div>
+                                {symptoms.map((symptom) => (
+                                    <SymptomItem key={symptom._id} symptom={symptom} />
+                                ))}
+                            </div>
+                        ) : (
+                            <div>
+                                <h4>No symptom categories have been added yet.</h4>
+                                <SymptomCategoryCheckbox />
+                            </div>
+                            )} */}
+                    </Box>
+                </Container>
+            </Grid>
         </div>
     );
 }

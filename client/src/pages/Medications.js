@@ -3,8 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 // Components //
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
 import Spinner from '../components/Spinner';
 import MedDataGridTable from '../components/data/MedDataGrid';
 import MedFormModal from '../components/modals/MedFormModal';
@@ -42,21 +40,18 @@ function Medications() {
 
     return (
     
-        <Paper elevation={3} sx={{ bgcolor: 'primary.dark', p: '2rem', borderRadius: 5 }}>
+        <Paper elevation={3} sx={{ bgcolor: 'white', p: '2rem', borderRadius: 5, border: 1, borderColor: 'text.light'  }}>
             <div
               style={{
                 margin: 'auto',
               }}>
-              <section>
-                  <Grid container justifyContent='center'>
+                  <Grid container sx={{ justifyContent: 'center'}}>
                     <Grid item md={12} xs={10}>
-                      <Typography component='h2' variant='h4' sx={{ color: 'text.light' }}>Medications</Typography>
+                      <Typography component='h2' variant='h5' sx={{ color: 'text.dark' }}>Medications</Typography>
                       <MedFormModal />
-                      <hr />
                       <MedDataGridTable />
                     </Grid>
                   </Grid>                      
-              </section>
             </div>
         </Paper>     
       );

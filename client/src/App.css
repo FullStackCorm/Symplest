@@ -12,38 +12,7 @@ body {
   text-align: center;
   min-height: 100vh;
   max-height: 100vh;
-  background-color: #1e1e1e;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-  
+  background-color: #f2e2e1;
 }
 
 /* a {
@@ -56,15 +25,15 @@ body {
 } */
 
 a {
-  color: #E89D9D;
+  color: #f2d4d6;
 }
 
 span a:visited {
-  color: #E89D9D;
+  color: #f2d4d6;
 }
 
 a:hover {
-  color: #E89D9D;
+  color: #f2d4d6;
 }
 
 nav > a {
@@ -81,6 +50,17 @@ nav > a:visited {
   font-size: 1rem;
 } */
 
+.reg-link {
+  color: #1f1f23 !important;
+}
+
+.reg-link:visited {
+  color: #1f1f23 !important;
+}
+
+.reg-link:hover {
+  color: #1f1f23 !important;
+}
 
 h2 {
   font-size: 1em;
@@ -107,16 +87,8 @@ select {
   border: none;
 }
 
-nav, .footer {
-  background-color: #0B2C39;
+nav dxz{
   color: #E5E7EB;
-}
-
-.footer {
-  position: absolute;
-  bottom: 0px;
-  width: 100%;
-  color: white;
 }
 
 li {
@@ -128,20 +100,13 @@ li {
   margin: 40px auto;
 }
 
-.grid-container {
-  height: calc(100% - 64px);
-}
-
-.grid-column {
-  height: 100%;
-  overflow-y: auto;
-}
-
 .MuiButtonBase-root {
-  color: #f8f8f8 !important;
+  color: #f8f8f8;
 }
 
-
+.foot {
+  border: 1px solid red;
+}
 /* @content-padding: 2.5%;
 @brick-padding: 25px;
 @content-background: #fff;

@@ -95,17 +95,9 @@ TablePaginationActions.propTypes = {
 
 
 export default function MedDataGridTable() {
-    const rows = []
 
     // Constants, Hooks, etc. //
-    // const theme = createTheme({
-    //     palette: {
-    //         text: {
-    //             light: brand[50]
-    //         }
-    //     }
-    // });
-    
+    const rows = []
     const dispatch = useDispatch()    
     const { medications } = useSelector(state => state.medications)
 
@@ -138,8 +130,9 @@ export default function MedDataGridTable() {
 
     return (
         <div>
-            <TableContainer sx={{ maxHeight: 500 }}>
-                <Table size='small' sx={{ margin: 'auto', mt: 5, maxWidth: 1200, }} aria-label='medication table'>
+            <TableContainer sx={{ maxHeight: 500, }}>
+                {/* <Table size='small' sx={{ margin: 'auto', mt: 5, maxWidth: 1200, }} aria-label='medication table'> */}
+                <Table size='small' xs={4} sx={{ margin: 'auto', mt: 5, maxWidth: 1200, }} aria-label='medication table'>
                     <TableHead>
                         <TableRow sx={{ color: 'text.contrastText'}}>
                             <TableCell sx={{ color: 'text.contrastText', fontSize: 18 }}>Medication</TableCell>
@@ -155,16 +148,16 @@ export default function MedDataGridTable() {
                         : rows && rows.id
                     ).map((row) => (
                         <TableRow key={medications.id}>
-                            <TableCell component="th" scope="row" sx={{ color: 'text.light' }}>
+                            <TableCell component="th" scope="row" sx={{ color: 'text.main' }}>
                                 {row.name}
                             </TableCell>
-                            <TableCell align='center' sx={{ color: 'text.light' }}>
+                            <TableCell align='center' sx={{ color: 'text.main' }}>
                                 {row.directions}
                             </TableCell>
-                            <TableCell align='center' sx={{ color: 'text.light' }}>
+                            <TableCell align='center' sx={{ color: 'text.main' }}>
                                 {row.timeOfDay}
                             </TableCell>
-                            <TableCell align='center' sx={{ color: 'text.light' }}>
+                            <TableCell align='center' sx={{ color: 'text.main' }}>
                                 {row.prescriber}
                             </TableCell>
                             <TableCell align='center' sx={{ fontSize: 16, pt: 0.5, pb: 0.5 }} >
