@@ -1,12 +1,13 @@
 import '../App.css';
 import Favicon from '../images/favicon-32x32.png';
-import * as React from 'react';
+import { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout, reset } from '../features/auth/authSlice';
 import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { AppBar, Box, IconButton, Typography, Menu, Container, Button, Toolbar, Tooltip, MenuItem } from '@mui/material';
+import AdbIcon from '@mui/icons-material/Adb';
 
 function NavbarTop() {
 
@@ -14,8 +15,8 @@ function NavbarTop() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const { user } = useSelector((state) => state.auth);
-    const [anchorElNav, setAnchorElNav] = React.useState(null);
-    const [anchorElUser, setAnchorElUser] = React.useState(null);
+    const [anchorElNav, setAnchorElNav] = useState(null);
+    const [anchorElUser, setAnchorElUser] = useState(null);
 
     const pages = [{ page:'/', text: "Dashboard"}, { page: '/medications', text: "Medication Management" }, { page: '/symptoms', text: "Symptom Tracking"}, { page: '/appointments', text: "Appointments" }, { page: '/events', text: "Calendar" }, { page: '/notes', text: "Notes" },]
     const navbarHeader = pages.find(el => el.page === location.pathname)?.text
@@ -44,10 +45,13 @@ function NavbarTop() {
     return (
         <div>
             <div>
-                <AppBar position='fixed' elevation={0} sx={{ bgcolor: 'background.main', color: 'text.main' }} >
+                <AppBar position='fixed' elevation={0} sx={{ bgcolor: 'primary.dark', color: 'text.light', }} >
                     <Container maxWidth='xl'>
                         <Toolbar disableGutters>
-                            <Box sx={{ flexGrow: 1, display: { sx: 'flex', md: 'none'} }}>
+                                <img id='logo' src={Favicon} alt={'Symplest Favicon'} sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }}  />
+                            
+
+                            <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none'} }}>
                                 <IconButton
                                     size='large'
                                     aria-label='account of current user'
@@ -61,7 +65,6 @@ function NavbarTop() {
 
                                 {/** Mobile Menu */}
                                 <Menu
-                                    id='menu-appbar'
                                     anchorEl={anchorElNav}
                                     anchorOrigin={{
                                         vertical: 'bottom',
@@ -103,10 +106,7 @@ function NavbarTop() {
                             </Box>
 
                             {/** Desktop Menu */}
-                            <Link to='/'>
-                                <img src={Favicon} alt={'Symplest Favicon'} sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-                            </Link>
-                            <Typography
+                            {/* <Typography
                                 variant='h5'
                                 noWrap
                                 component='a'
@@ -123,7 +123,7 @@ function NavbarTop() {
                                 }}
                             >
                                 Symplest
-                            </Typography>
+                            </Typography> */}
                             <Box sx={{ flexGrow: 1, display: { xs:'none', md: 'flex' } }}>
                                 <Button  
                                     href='/'
@@ -139,13 +139,13 @@ function NavbarTop() {
                                 >
                                     Medications
                                 </Button> */}
-                                <Button  
+                                {/* <Button  
                                     href='/symptoms'
                                     onClick={handleCloseNavMenu}
                                     sx={{ my:2, color: 'white', display: 'block' }}
                                 >
                                     Symptoms
-                                </Button>
+                                </Button> */}
                                 {/* <Button  
                                     href='/appointments'
                                     onClick={handleCloseNavMenu}
@@ -168,7 +168,7 @@ function NavbarTop() {
                                     Notes
                                 </Button>        
                             </Box>     
-                            <Box sx={{ flexGrow: 1, display: { xs:'none', md: 'flex' } }}>
+                            {/* <Box sx={{ flexGrow: 1, display: { xs:'none', md: 'flex' } }}>
                                 <Typography
                                     variant='h4'
                                     noWrap
@@ -183,7 +183,7 @@ function NavbarTop() {
                                 >
                                     {navbarHeader}
                                 </Typography>
-                            </Box>
+                            </Box> */}
 
                             {/** Settings/Logout Menu */}
                             <Box sx={{ flexGrow: 0}}>
