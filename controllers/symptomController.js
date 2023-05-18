@@ -18,6 +18,7 @@ const symptoms = await Symptom.find({ user: req.user.id })
 const createSymptom = asyncHandler(async (req, res) => {
   if(!req.body.text) {
     res.status(400)
+    // TODO extract magic strings into a json file for language suppport 
     throw new Error('Text entry is required')
   }
 
@@ -37,6 +38,7 @@ const updateSymptom = asyncHandler(async (req, res) => {
 
   if(!symptom) {
     res.status(400)
+    // TODO extract magic strings into a json file for language suppport
     throw new Error('Symptom not found')
   }
 
@@ -44,11 +46,13 @@ const updateSymptom = asyncHandler(async (req, res) => {
 
   if(!req.user) {
     res.status(401)
+    // TODO extract magic strings into a json file for language suppport
     throw new Error('User not found')
   }
 
   if(symptom.user.toString() !== user.id){
     res.status(401)
+    // TODO extract magic strings into a json file for language suppport
     throw new Error('User not authorized to perform this action')
   }
 
@@ -67,16 +71,19 @@ const deleteSymptom = asyncHandler(async (req, res) => {
 
   if(!symptom) {
     res.status(400)
+    // TODO extract magic strings into a json file for language suppport
     throw new Error('Symptom not found')
   }
 
   if(!req.user) {
     res.status(401)
+    // TODO extract magic strings into a json file for language suppport
     throw new Error('User not found')
   }
 
   if(symptom.user.toString() !== req.user.id){
     res.status(401)
+    // TODO extract magic strings into a json file for language suppport
     throw new Error('User not authorized to perform this action')
   }
 

@@ -23,12 +23,14 @@ const protecc = asyncHandler(async (req, res, next) => {
     } catch (error) {
       console.log(error)
       res.status(401)
+      // TODO extract magic strings into a json file for language suppport
       throw new Error('Not authorized')
     }
   }
 
   if (!token) {
     res.status(401)
+    // TODO extract magic strings into a json file for language suppport
     throw new Error('Not authorized, no token found')
   }
 })

@@ -18,6 +18,7 @@ const moods = await Mood.find({ user: req.user.id })
 const createMood = asyncHandler(async (req, res) => {
   if(req.body.rating < 0) {
     res.status(400)
+    // TODO extract magic strings into a json file for language suppport
     throw new Error('Mood selection is required')
   }
 
@@ -39,6 +40,7 @@ const updateMood = asyncHandler(async (req, res) => {
 
   if(!mood) {
     res.status(400)
+    // TODO extract magic strings into a json file for language suppport
     throw new Error('Mood not found')
   }
 
@@ -46,11 +48,13 @@ const updateMood = asyncHandler(async (req, res) => {
 
   if(!req.user) {
     res.status(401)
+    // TODO extract magic strings into a json file for language suppport
     throw new Error('User not found')
   }
 
   if(mood.user.toString() !== user.id){
     res.status(401)
+    // TODO extract magic strings into a json file for language suppport
     throw new Error('User not authorized to perform this action')
   }
 
@@ -69,16 +73,19 @@ const deleteMood = asyncHandler(async (req, res) => {
 
   if(!mood) {
     res.status(400)
+    // TODO extract magic strings into a json file for language suppport
     throw new Error('Mood not found')
   }
 
   if(!req.user) {
     res.status(401)
+    // TODO extract magic strings into a json file for language suppport
     throw new Error('User not found')
   }
 
   if(mood.user.toString() !== req.user.id){
     res.status(401)
+    // TODO extract magic strings into a json file for language suppport
     throw new Error('User not authorized to perform this action')
   }
 

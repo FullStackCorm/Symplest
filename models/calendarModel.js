@@ -9,6 +9,7 @@ const calendarSchema = mongoose.Schema(
   },
   text: {
     type: String,
+    // TODO extract magic strings into a json file for language suppport
     required: [true, 'Text entry is required']
   }
 }, {

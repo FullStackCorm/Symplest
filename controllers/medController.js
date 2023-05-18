@@ -17,6 +17,7 @@ const getMedications = asyncHandler(async (req, res) => {
 const createMedication = asyncHandler(async (req, res) => {
     if(!req.body.name || !req.body.strength || !req.body.directions) {
         res.status(400)
+        // TODO extract magic strings into a json file for language suppport
         throw new Error('Medication name, strength, and directions are required')
     }
     
@@ -41,6 +42,7 @@ const updateMedication = asyncHandler(async (req, res) => {
 
     if(!medication) {
         res.status(400)
+        // TODO extract magic strings into a json file for language suppport
         throw new Error('Medication not found')
     }
 
@@ -48,12 +50,14 @@ const updateMedication = asyncHandler(async (req, res) => {
 
     if(!req.user) {
         res.status(401)
+        // TODO extract magic strings into a json file for language suppport
         throw new Error('User not found')
     }
 
     // ensures only the currently logged in user's meds are found
     if(medication.user.toString() !== user.id) {
         res.status(401)
+        // TODO extract magic strings into a json file for language suppport
         throw new Error('User not authorized to perform this action')
     }
 
@@ -70,16 +74,19 @@ const deleteMedication = asyncHandler(async (req, res) => {
 
     if(!medication) {
         res.status(400)
+        // TODO extract magic strings into a json file for language suppport
         throw new Error('Medication not found')
     }
 
     if(!req.user) {
         res.status(401)
+        // TODO extract magic strings into a json file for language suppport
         throw new Error('User not found')
     }
 
     if(medication.user.toString() !== req.user.id) {
         res.status(401)
+        // TODO extract magic strings into a json file for language suppport
         throw new Error('User not authorized to perform this action')
     }
 

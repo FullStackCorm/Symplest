@@ -8,10 +8,12 @@ const MedSchema = new mongoose.Schema({
     },
     name: {
         type: String,
+        // TODO extract magic strings into a json file for language suppport
         required: [true, 'Medication name is required']
     },
     strength: {
         type: String,
+        // TODO extract magic strings into a json file for language suppport
         required: [true, 'Medication strength is required']
     },
     doseForm: {
@@ -19,6 +21,7 @@ const MedSchema = new mongoose.Schema({
     },
     directions: {
         type: String,
+        // TODO extract magic strings into a json file for language suppport
         required: [true, 'Directions are required']
     },
     timeOfDay: {

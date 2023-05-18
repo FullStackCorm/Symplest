@@ -11,6 +11,7 @@ const registerUser = asyncHandler(async (req, res) => {
 
   if (!name || !email || !password) {
     res.status(400);
+    // TODO extract magic strings into a json file for language suppport
     throw new Error("Please add all fields");
   }
 
@@ -19,6 +20,7 @@ const registerUser = asyncHandler(async (req, res) => {
 
   if (userExists) {
     res.status(400);
+    // TODO extract magic strings into a json file for language suppport
     throw new Error("User already exists");
   }
 
@@ -44,6 +46,7 @@ const registerUser = asyncHandler(async (req, res) => {
     });
   } else {
     res.status(400);
+    // TODO extract magic strings into a json file for language suppport
     throw new Error("Invalid user data");
   }
 });
@@ -66,6 +69,7 @@ const loginUser = asyncHandler(async (req, res) => {
     });
   } else {
     res.status(400);
+    // TODO extract magic strings into a json file for language suppport
     throw new Error("Invalid credentials");
   }
 });
