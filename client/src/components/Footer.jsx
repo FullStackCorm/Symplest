@@ -5,7 +5,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 
 function Copyright() {
     return (
-        <Typography variant="body2" color="text.dark">
+        <Typography variant="body2" color="text.contrastText">
             {'Copyright © '}
             <span color="#fafafa">
                 FullStackCorm
@@ -35,7 +35,7 @@ export default function Footer() {
                     <Container maxWidth='sm'>
                         <Typography variant='body1'>
                             <Link href={'https://www.github.com/FullStackCorm'}>
-                                <GitHubIcon sx={{ color: 'text.dark' }} />
+                                <GitHubIcon sx={{ color: 'text.contrastText' }} />
                             </Link>
                             <Copyright />
                         </Typography>

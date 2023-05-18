@@ -8,6 +8,7 @@ import FilterMedsMenu from '../FilterMedsMenu';
 
 // MUI //
 import { Modal, Typography, Button, Box, Grid } from '@mui/material';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
 
 const style = {
   position: 'absolute',
@@ -15,13 +16,23 @@ const style = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: 400,
-  bgcolor: 'background.light',
-  color: 'text.contrastText',
+  bgcolor: '#f2e2e1',
   border: '2px solid #004e87',
   borderRadius: 5,
   boxShadow: 24,
   p: 4,
-};
+  input: {
+    bgcolor: '#fff'
+  },
+  '& .MuiSelect-select': {
+    bgcolor: '#fff'
+  },
+  '& .MuiOutlinedInput-root': {
+    '&:hover fieldset': {
+      borderColor: 'primary.main',
+    },
+  },
+}
 
 const MedFormModal = (props) => {
 
@@ -53,15 +64,13 @@ const MedFormModal = (props) => {
 
     return (
           <form onSubmit={onSubmit}>
-              <Grid container justifyContent='center'>
+              <Grid item justifyContent='center'>
                   <Button 
-                    sx={{ bgcolor: 'button.main', color: 'text.light', borderRadius: 5, m: 1, 
-                    '&:hover': { bgcolor: 'button.hover' }}}
-                    variant='contained'
+                    sx={{ color: 'button.light', borderRadius: 5, }}
+                    variant='text'
                     onClick={handleOpen}>
-                      + Add New Medication
+                    <AddCircleIcon />
                   </Button>
-                  <FilterMedsMenu />
               </Grid>                   
             <Modal
               open={open}
@@ -71,7 +80,7 @@ const MedFormModal = (props) => {
               keepMounted
             >
               <Box sx={style}>
-                <Typography id='modal-modal-title' variant='h6' component='h2' color='text.light' marginBottom='1em'>
+                <Typography id='modal-modal-title' variant='h6' component='h2' color='text.main' marginBottom='1em'>
                     Add a New Medication
                 </Typography> 
                 <MedForm />

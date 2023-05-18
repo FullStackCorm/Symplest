@@ -9,6 +9,17 @@ import Footer from '../components/Footer';
 import SymplestImage from '../images/symplest.png';
 import CssBaseline from '@mui/material/CssBaseline';
 
+
+const style = {
+  color: 'primary.dark',
+  input: { bgcolor: '#fff', color: 'primary.dark' },
+  '& .MuiOutlinedInput-root': {
+    '&:hover fieldset': {
+      borderColor: 'primary.main',
+    },
+  },
+}
+
 function Login() {
   const [formData, setFormData] = useState({
     email: '',
@@ -58,15 +69,18 @@ function Login() {
   }
 
   return (
-      <Container component='main' maxWidth={12}>
+      <Container component='main' sx={style}>
         <CssBaseline />
+        
+        {/* Header */}
         <AppBar position='fixed' elevation={0} sx={{ bgcolor: 'primary.dark', color: 'text.main' }} >
           <Container maxWidth='xl'>
             <Toolbar disableGutters>
-
+              {/* blank top navbar */}
             </Toolbar>
           </Container>
         </AppBar>
+
           <Box
             sx={{
               marginTop: 8,
@@ -84,10 +98,13 @@ function Login() {
                 style={{ maxWidth: '100%', height: 'auto' }} 
               />
             </Container>
+            
             <Typography component="h1" variant="h5" paddingTop='1rem'>
               Sign in
             </Typography>
-            <Box component='form' onSubmit={onSubmit} sx={{ mt: 1 }}>
+
+            {/* Form */}
+            <Box component='form' onSubmit={onSubmit} sx={{ mt: 1, maxWidth: 'sm' }}>
               <TextField
                 margin='normal'
                 id='email'
@@ -97,7 +114,6 @@ function Login() {
                 name='email'
                 autoComplete='email'
                 autoFocus
-                placeholder='example@email.com'
                 value={email}
                 onChange={onChange}
                 required
@@ -123,7 +139,7 @@ function Login() {
               >
                 Sign In
               </Button>
-              <span><Link to='/register' color='text.main' className='reg-link'>Create an Account</Link></span>
+              <Typography sx={{ mt: 1 }}><Link to='/register' color='text.main' className='reg-link'>Create an Account</Link></Typography>
             </Box>       
           </Box>        
         <Footer />

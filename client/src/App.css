@@ -33,7 +33,7 @@ span a:visited {
 }
 
 a:hover {
-  color: #f2d4d6;
+  color: rgb(233, 190, 192);
 }
 
 nav > a {
@@ -44,11 +44,6 @@ nav > a {
 nav > a:visited {
   color: #f5f5f5;
 }
-
-/* .footer a {
-  color: #f5f5f5;
-  font-size: 1rem;
-} */
 
 .reg-link {
   color: #1f1f23 !important;
@@ -71,13 +66,6 @@ h2 {
   font-weight: 300;
 }
 
-/* .page {
-  height: 100%;
-  width: 100%;
-  min-height: 100vh;
-  min-width: 100px;
-} */
-
 .card-item {
   height: inherit;
   place-items: center;
@@ -95,20 +83,18 @@ li {
   list-style: none;
 }
 
-#calendar {
-  max-width: 1100px;
-  margin: 40px auto;
-}
-
 .MuiButtonBase-root {
   color: #f8f8f8;
 }
 
-.foot {
-  border: 1px solid red;
-}
 /* @content-padding: 2.5%;
 @brick-padding: 25px;
 @content-background: #fff;
 @chart-size: 250px;
 @chart-swatch-size: 12px; */
+
+@media screen and (max-width: 875px) {
+  #logo {
+    display: none;
+  }
+}

@@ -5,12 +5,6 @@ import { createMedication } from '../../features/medications/medSlice';
 // MUI //
 import { TextField, Button, Stack, Select, MenuItem } from '@mui/material';
 
-const style = {
-  color: 'primary.dark',
-  backgroundColor: 'input.main',
-  input: { color: 'primary.dark' }
-}
-
 const MedForm = (props) => {
 
     const [name, setName] = useState('');
@@ -41,7 +35,7 @@ const MedForm = (props) => {
 
     return (
       <div>
-        <form onSubmit={onSubmit} sx={style}>
+        <form onSubmit={onSubmit}>
           <Stack
             direction='column'
             spacing={2}
@@ -53,7 +47,6 @@ const MedForm = (props) => {
               name='name'
               value={name}
               onChange={(e) => setName(e.target.value)}
-              sx={style}
             />
             <TextField
               type='text'
@@ -62,12 +55,10 @@ const MedForm = (props) => {
               name='strength'
               value={strength}
               onChange={(e) => setStrength(e.target.value)}
-              sx={style}
             />
             <Select
               onChange={(e) => setDoseForm(e.target.value)}
               defaultValue='mg' placeholder='Dose Form'
-              sx={style}
             >
               <MenuItem value='mg'>mg</MenuItem>
               <MenuItem value='mcg'>mcg</MenuItem>
@@ -81,7 +72,6 @@ const MedForm = (props) => {
               name='directions'
               value={directions}
               onChange={(e) => setDirections(e.target.value)}
-              sx={style}
             />
             <TextField
               type='text'
@@ -90,12 +80,10 @@ const MedForm = (props) => {
               name='prescriber'
               value={prescriber}
               onChange={(e) => setPrescriber(e.target.value)}
-              sx={style}
             />
             <Select
               onChange={(e) => setTimeOfDay(e.target.value)}
               defaultValue='Morning' placeholder='Time of Day'
-              sx={style}
             >
               <MenuItem value='Morning'>Morning</MenuItem>
               <MenuItem value='Noon'>Noon</MenuItem>
@@ -109,11 +97,11 @@ const MedForm = (props) => {
             <Button
               type='submit'
               sx={{
-                bgcolor: 'button.main',
-                color: 'text.main',
+                bgcolor: 'button.dark',
+                color: '#fff',
                 '&:hover': {
                   bgcolor: 'button.darkHover',
-                  color: 'text.main'
+                  color: '#fff'
                 },
                 borderRadius: 5
               }}
