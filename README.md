@@ -87,7 +87,27 @@ Here's why:
 This app has been in development since late 2022 and will be ready for release in June 2023. After its release, I will continue developing features that will allow users to generate reports for their prescribers, an appointment schedule, and create customized symptom tracking parameters. You may also suggest changes by forking this repo and creating a pull request or opening an issue.
 
 
+## Screenshots
 
+### Login Page
+<div align="center">
+  <img src="client/src/images/login-screenshot.png" alt="Login page screenshot" />
+</div>
+
+### Registration Page
+<div align="center">
+  <img src="client/src/images/register-screenshot.png" alt="Registration page screenshot" />
+</div>
+
+### Symptom Logging
+<div align="center">
+  <img src="client/src/images/symptom-screenshot.png" alt="Symptom logging screenshot" />
+</div>
+
+### Medication Management
+<div align="center">
+  <img src="client/src/images/med-screenshot.png" alt="Medication management screenshot" />
+</div>
 
 ### Built With
 
