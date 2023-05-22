@@ -111,11 +111,7 @@ This app has been in development since late 2022 and will be ready for release i
 
 ### Built With
 
-* [![React][React.js]][React-url]
-* [![Express.js][Express.js]][Express-url]
-* [![Node.js][Node.js]][Node-url]
-* [![MongoDB][MongoDB]][MongoDB-url]
-* [![MaterialUI][MaterialUI]][MaterialUI-url]
+ [![MaterialUI][MaterialUI]][MaterialUI-url] [![React][React.js]][React-url] [![Node.js][Node.js]][Node-url] [![Express.js][Express.js]][Express-url] [![MongoDB][MongoDB]][MongoDB-url]
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
