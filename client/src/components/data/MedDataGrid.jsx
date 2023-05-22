@@ -182,7 +182,7 @@ export default function MedDataGridTable() {
                     <TableFooter style={{ align: 'right' }}>
                         <TableRow>
                             <TablePagination
-                                rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
+                                rowsPerPageOptions={[5, 10, 15]}
                                 colSpan={8}
                                 count={rows.length + 1}
                                 rowsPerPage={rowsPerPage}
