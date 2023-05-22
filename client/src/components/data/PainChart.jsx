@@ -5,42 +5,31 @@ import { ResponsiveContainer, Label, LineChart, Line, CartesianGrid, XAxis, YAxi
 import dayjs from 'dayjs';
 
 // MUI //
-import { Modal, Typography, IconButton, Box, FormControl, InputLabel, MenuItem, Select } from '@mui/material';
+import { Modal, Typography, Box, FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 import EqualizerIcon from '@mui/icons-material/Equalizer';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { purple, white } from '../../colors';
-
-const theme = createTheme({
-    
-    palette: {
-        primary: {
-            main: purple[700],
-            light: purple[400],
-            dark: purple[800],
-            contrastText: white[100]
-        },
-        secondary: {
-            main: white[100],
-            contrastText: purple[50]
-        },
-        text: {
-            main: white[100]
-        }
-    }
-});
 
 const style = {
     position: 'absolute',
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
+    height: 400,
+    width: 700,
     maxHeight: 450,
     maxWidth: 700,
-    bgcolor: 'secondary.main',
-    border: '2px solid #004e87',
+    bgcolor: '#fff',
+    border: '2px solid #f1e6e1', // modal border color
     borderRadius: 5,
     boxShadow: 24,
     p: 4,
+    '& .MuiSelect-select': {
+        bgcolor: '#fff'
+    },
+    '& .MuiOutlinedInput-root': {
+        '&:hover fieldset': {
+            borderColor: 'primary.main',
+        },
+    },
 
     MuiIconButton :{
         color: '#4831cc'
@@ -75,9 +64,9 @@ const PainChart = (props) => {
         function filterAndMapPainData(type) {
             const filteredData = pain.filter(obj => obj.hasOwnProperty('type') && obj.type === type); // Filters by type of pain, ex: Headache, Neck Pain, Back Pain, etc.
                 filteredData.sort((a, b) => dayjs(a.date).valueOf() - dayjs(b.date).valueOf());     // Sorts users' symptom entries by date selected when created, 
-                    const date = dayjs(pain.date).format(dateFormat);                               // since they can add symptom data after a date has already passed. 
-                    filteredData.forEach(pain => {
-                    painData.push(createData(pain.type, pain.severity, pain.note, date, pain._id));
+                    filteredData.forEach(pain => {                                                  // since they can add symptom data after a date has already passed. 
+                        const date = dayjs(pain.date).format(dateFormat); 
+                        painData.push(createData(pain.type, pain.severity, pain.note, date, pain._id));
                 });
         }
 
@@ -87,8 +76,8 @@ const PainChart = (props) => {
     }
 
     return (
-        <ThemeProvider theme={theme}>
-            <EqualizerIcon sx={{ color: '#4831cc' }} onClick={handleOpen}/>
+        <div>
+            <EqualizerIcon onClick={handleOpen}/>
             <Modal
                 open={open}
                 onClose={handleClose}
@@ -121,10 +110,23 @@ const PainChart = (props) => {
                                         <MenuItem value={'Other'}>Misc. Pain</MenuItem>        
                                     </Select>
                             </FormControl>
+                            <FormControl sx={{ width: '33%', alignContent: 'center', margin: '0.2rem' }}>
+                                <InputLabel id='time-duration-selector'>Time Interval</InputLabel>
+                                    <Select
+                                        labelId='day-interval'
+                                        id='day-interval'
+                                        label='Time Interval'
+                                        value={painType}
+                                    >
+                                        <MenuItem value={'Past 30 Days'}>Past 30 Days</MenuItem>
+                                        <MenuItem value={'Past Year'}>Past Year</MenuItem>
+
+                                    </Select>
+                            </FormControl>
                         </Box>
                     <ResponsiveContainer width={600} height={'80%'}>
                         <LineChart margin={{ top: 5, right: 5, bottom: 5, left: 5 }}>
-                            <Line data={painData} type='monotone' dataKey='severity' stroke='#7a43f1' strokeWidth={3} />
+                            <Line data={painData} type='monotone' dataKey='severity' stroke='#e1b0ac' strokeWidth={3} />
                             <CartesianGrid stroke='#ccc' strokeDashArray='5 5' />
                             <XAxis dataKey='date' />
                             <YAxis />
@@ -133,7 +135,7 @@ const PainChart = (props) => {
                     </ResponsiveContainer>               
                 </Box>
             </Modal>                
-        </ThemeProvider>
+        </div>
     );
 }
 

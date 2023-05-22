@@ -8,41 +8,6 @@ import { reset } from '../../features/auth/authSlice';
 import Spinner from '../Spinner';
 import PainChart from '../data/PainChart';
 
-// MUI //
-import { styled, ThemeProvider, createTheme } from '@mui/material/styles';
-import { purple, white } from '../../colors';
-
-const theme = createTheme({
-    palette: {
-        primary: {
-            main: purple[700],
-            light: purple[400],
-            dark: purple[800],
-            contrastText: white[100]
-        },
-        secondary: {
-            main: white[100],
-            contrastText: purple[50]
-        },
-        text: {
-            main: white[100]
-        }
-    }
-});
-
-const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 400,
-    bgcolor: 'secondary.main',
-    border: '2px solid #004e87',
-    borderRadius: 5,
-    boxShadow: 24,
-    p: 4,
-};
-
 const PainChartModal = (props) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -73,9 +38,7 @@ const PainChartModal = (props) => {
     }
 
     return (
-        <ThemeProvider theme={theme} style={style}>
             <PainChart />
-        </ThemeProvider>
     );
 }
 
