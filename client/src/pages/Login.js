@@ -18,6 +18,7 @@ const style = {
       borderColor: 'primary.main',
     },
   },
+  maxHeight: '100vh'
 }
 
 function Login() {
@@ -95,7 +96,7 @@ function Login() {
             >
               <img src={SymplestImage} 
                 alt={'Symplest: your data, your choice'} 
-                style={{ maxWidth: '100%', height: 'auto' }} 
+                style={{ maxWidth: '100%', height: 'auto',  }} 
               />
             </Container>
             

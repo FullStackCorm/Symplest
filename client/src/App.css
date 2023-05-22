@@ -87,13 +87,11 @@ li {
   color: #f8f8f8;
 }
 
-/* @content-padding: 2.5%;
-@brick-padding: 25px;
-@content-background: #fff;
-@chart-size: 250px;
-@chart-swatch-size: 12px; */
+.MuiPickersDay-root + .Mui-selected, .Mui-selected:hover, .Mui-selected:focus{
+  background-color: #f2d4d6cb !important;
+}
 
-@media screen and (max-width: 875px) {
+@media screen and (max-width: 899px) {
   #logo {
     display: none;
   }

@@ -17,17 +17,20 @@ const style = {
     color: 'primary.dark',
     backgroundColor: '#fff',
     input: { color: 'primary.dark' },
-    maxWidth: 400,
+    maxWidth: 350,
     height: 'auto',
     margin: 'auto',
     marginTop: 1,
+    input: {
+        textAlign: 'center'
+    },
 
     '& .MuiIcon-root': {
         color: 'primary.main'
     },
     '& .MuiSvgIcon-root': {
         color: 'primary.main'
-    }
+    },
 }
 
 const ExpandMore = styled((props) => {
@@ -78,6 +81,7 @@ export default function PainCard() {
                     <CardHeader
                         avatar={<MedicalInformationIcon />}
                         title='Pain Rating'
+                        titleTypographyProps={{variant:'h5' }}
                         action={
                             <IconButton aria-label='charts'>
                                 <PainChartModal />
@@ -107,7 +111,7 @@ export default function PainCard() {
                                         clearable='true'
                                         style={style}
                                     />
-                                    <Typography variant='body1' color='primary.contrastText'>
+                                    <Typography variant='h6' color='text.dark'>
                                         Where are you hurting?
                                     </Typography>
                                     <Select
@@ -128,7 +132,7 @@ export default function PainCard() {
                                         <MenuItem value='Other'>Other</MenuItem>
                                     </Select>
 
-                                    <Typography variant='body1' color='primary.contrastText'>
+                                    <Typography variant='body1' color='primary.contrastText' pt='0.25rem'>
                                         Use the slider to log your symptom
                                     </Typography>
                                     <form onSubmit={onSubmit}>
@@ -141,7 +145,7 @@ export default function PainCard() {
                                                         getAriaValueText={valueText}
                                                         valueLabelDisplay='auto'
                                                         step={1}
-                                                        marks
+                                                        
                                                         min={0}
                                                         max={10}
                                                         onChange={(e) => setSeverity(e.target.value)}
@@ -151,7 +155,7 @@ export default function PainCard() {
                                             <TextField
                                                 type='text'
                                                 variant='outlined'
-                                                placeholder='How is your symptom affecting you today?'
+                                                placeholder='How is your symptom affecting you?'
                                                 name='note'
                                                 value={note}
                                                 onChange={(e) => setNote(e.target.value)}

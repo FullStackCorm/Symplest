@@ -7,7 +7,7 @@ import MedForm from '../forms/MedForm';
 import FilterMedsMenu from '../FilterMedsMenu';
 
 // MUI //
-import { Modal, Typography, Button, Box, Grid } from '@mui/material';
+import { Modal, Typography, IconButton, Box } from '@mui/material';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 
 const style = {
@@ -63,15 +63,15 @@ const MedFormModal = (props) => {
     };
 
     return (
-          <form onSubmit={onSubmit}>
-              <Grid item justifyContent='center'>
-                  <Button 
-                    sx={{ color: 'button.light', borderRadius: 5, }}
-                    variant='text'
-                    onClick={handleOpen}>
-                    <AddCircleIcon />
-                  </Button>
-              </Grid>                   
+          <Box justifyContent='center' alignItems='center'>
+            <IconButton 
+              sx={{ color: 'button.light', maxWidth: '1rem' }}
+              variant='text'
+              size='small'
+              onClick={handleOpen}>
+              <AddCircleIcon />
+            </IconButton>       
+                    
             <Modal
               open={open}
               onClose={handleClose}
@@ -86,7 +86,7 @@ const MedFormModal = (props) => {
                 <MedForm />
               </Box>
             </Modal>
-          </form>     
+          </Box> 
       );
 }
 

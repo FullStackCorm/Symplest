@@ -12,6 +12,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoodIcon from '@mui/icons-material/Mood';
 import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAlt';
 import SentimentSatisfiedIcon from '@mui/icons-material/SentimentSatisfied';
+import SentimentNeutralIcon from '@mui/icons-material/SentimentNeutral';
 import SentimentDissatisfiedIcon from '@mui/icons-material/SentimentDissatisfied';
 import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
@@ -21,17 +22,19 @@ const style = {
     color: 'primary.dark',
     backgroundColor: '#fff',
     input: { color: 'primary.dark' },
-    maxWidth: 400,
+    maxWidth: 350,
     height: 'auto',
     margin: 'auto',
     marginTop: 1,
-
+    input: {
+        textAlign: 'center'
+    },
     '& .MuiIcon-root': {
         color: 'primary.main'
     },
     '& .MuiSvgIcon-root': {
         color: 'primary.main'
-    }
+    },
 }
 
 const ExpandMore = styled((props) => {
@@ -72,23 +75,18 @@ export default function MoodCard() {
     const moodIcons = [
         {
             icon: <SentimentVeryDissatisfiedIcon />,
-            text: 'Rough',
         },
         {
             icon: <SentimentDissatisfiedIcon />,
-            text: 'Not good',
         },
         {
-            icon: <SentimentSatisfiedIcon />,
-            text: 'Okay',
+            icon: <SentimentNeutralIcon />,
         },
         {
             icon: <SentimentSatisfiedAltIcon />,
-            text: 'Good',
         },
         {
             icon: <MoodIcon />,
-            text: 'Great!'
         }
     ]
 
@@ -98,7 +96,8 @@ export default function MoodCard() {
                 <Card sx={style}>
                     <CardHeader
                         avatar={<MoodIcon />}
-                        title='Mood Rating'
+                        title='Mood Tracking'
+                        titleTypographyProps={{variant:'h5' }}
                         action={
                             <IconButton aria-label='charts'>
                                 <MoodChartModal />
@@ -128,14 +127,14 @@ export default function MoodCard() {
                                         clearable='true'
                                         style={style}
                                     />
-                                    <Typography variant='body1' color='text.light'>
-                                        How was your day?
-                                    </Typography>
                                     <form onSubmit={onSubmit}>
                                         <Stack direction='column' spacing={2}>
+                                            <Typography variant='h6' color='text.dark' pt='0.25rem'>
+                                                How was your day?
+                                            </Typography>
                                             <Stack direction='row' spacing={2} justifyContent='center'>
                                                 {moodIcons.map((icon, i) => (
-                                                    // tracking moods from 1-5 on line graph, so setting mood to i + 1; will also simplify finding mood average //
+                                                    // tracking moods from 1-5 on line graph, so setting mood to i + 1; will also simplify finding mood averages later on //
                                                     <div onClick={() => setRating(i + 1)}
                                                         key={i}
                                                     >

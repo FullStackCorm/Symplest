@@ -18,18 +18,18 @@ function Copyright() {
 export default function Footer() {
 
     return (
-        <Container maxWidth='xl'>
+        <Container maxWidth='xl' position='fixed' bottom='0'>
             <Box sx={{
                 display: 'flex',
                 flexDirection: 'column',
-                minHeight: '100vh',
             }}>
                 <CssBaseline />
                 <Box
                     component='footer'
                     sx={{
                         py: 3,
-                        mt: '0.5em',
+                        px: 2,
+                        mt: 'auto',
                     }}
                 >
                     <Container maxWidth='sm'>

@@ -51,7 +51,7 @@ function Symptoms () {
             >
                 <Container
                     style={{
-                        minWidth: '50em',
+                        minWidth: '25vw',
                         maxWidth: 800,
                         margin: 'auto',
                         marginTop: '5rem'
@@ -61,7 +61,7 @@ function Symptoms () {
                     <Box className='content'>
                         <MoodCard />
                         <PainCard />
-                        <SymptomCard />
+                        {/* <SymptomCard /> */}
                         {/* {symptoms && symptoms.length > 0 ? (
                             <div>
                                 {symptoms.map((symptom) => (

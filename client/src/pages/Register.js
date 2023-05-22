@@ -3,18 +3,32 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { login, register, reset } from '../features/auth/authSlice';
-import TextField from '@mui/material/TextField';
+import { Box, Container, Button, TextField, Typography, AppBar, Toolbar } from '@mui/material';
 import Spinner from '../components/Spinner';
+import Footer from '../components/Footer';
+import SymplestImage from '../images/symplest.png';
+import CssBaseline from '@mui/material/CssBaseline';
+
+
+const style = {
+    color: 'primary.dark',
+    input: { bgcolor: '#fff', color: 'primary.dark' },
+    '& .MuiOutlinedInput-root': {
+        '&:hover fieldset': {
+        borderColor: 'primary.main',
+        },
+    },
+    maxHeight: '100vh'
+}
 
 export default function Register() {
     const [formData, setFormData] = useState({
-        name: '',
         email:'',
         password:'',
         confirmPwd: '',
     })
 
-    const { name, email, password, confirmPwd } = formData
+    const { email, password, confirmPwd } = formData
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -29,7 +43,7 @@ export default function Register() {
         }
 
         if (isSuccess || user) {
-            navigate('/dashboard')
+            navigate('/')
         }
 
         dispatch(reset())
@@ -46,14 +60,12 @@ export default function Register() {
         e.preventDefault()
 
         if (password !== confirmPwd) {
-            toast.error('Error: Passwords to not match.')
+            alert('Error: Passwords to not match.')
         } else {
             const userData = {
-                name,
                 email,
                 password,
             }
-
             dispatch(register(userData))
         }
     }
@@ -62,90 +74,94 @@ export default function Register() {
         return <Spinner />
     }
 
-    const handleKeyPress = (e) => {
-        if (e.keyCode === 13) {
-            onSubmit();
-        }
-    };
-
     return (
-        <div className='container'>
-            <div className='row justify-content-center mx-auto my-5 py-5'>
-                <div className='col-6'>
-                    <form 
-                        onSubmit={onSubmit}
-                        onKeyPress={(e) => handleKeyPress(e)}
-                        className='auth-form'
+        <Container component='main' sx={style}>
+            <CssBaseline />
+
+            {/* Header */}
+                <AppBar position='fixed' elevation={0} sx={{ bgcolor: 'primary.dark', color: 'text.main' }} >
+                    <Container maxWidth='xl'>
+                        <Toolbar disableGutters>
+                            {/* blank top navbar */}
+                        </Toolbar>
+                    </Container>
+                </AppBar>
+                
+                <Box sx={{
+                    marginTop: 8,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    maxWidth: 'lg'
+                }}>
+                    <Container
+                        margin='normal'
+                        maxWidth='sm'
+                        sx={{ width: 1 }}
                     >
-                        <h3 className='row justify-content-center'>Register</h3>
-                        <div className='UNAME-FIELD form-outline mb-4'>
-                            <label htmlFor='unameField'>Username</label>
-                            <input 
-                                id='name'
-                                value={name}
-                                variant='outlined'
-                                type='text'
-                                name='name'
-                                placeholder='Jane123'
-                                onChange={onChange}
-                                required
-                                className='form-control'
-                            />  
-                        </div>
-                        <div className='EMAIL-FIELD form-outline mb-4'>
-                            <label htmlFor='emailField'>Email Address</label>
-                            <input
-                                id='email'
-                                value={email}
-                                type='email'
-                                name='email'
-                                placeholder='example@email.com'
-                                onChange={onChange}
-                                required
-                                className='form-control'
-                            />
-                        </div>
-                        <div className='PASSWORD-FIELD form-outline mb-4'>
-                            <label htmlFor='passwordField'>Password</label>
-                            <input
-                                id='password'
-                                value={password}
-                                type='password'
-                                name='password'
-                                placeholder='********'
-                                onChange={onChange}
-                                required
-                                className='form-control'
-                            />
-                        </div>
-                        <div className='CONFIRMPWD-FIELD form-outline mb-4'>
-                            <label htmlFor='confirmPwdField'>Confirm Password</label>
-                            <input
-                            id='confirmPwd'
-                            value={confirmPwd}
-                            type='password'
-                            name='confirmPwd'
-                            placeholder='********'
+                        <img src={SymplestImage} 
+                        alt={'Symplest: your data, your choice'} 
+                        style={{ maxWidth: '100%', height: 'auto' }} 
+                        />
+                    </Container>
+                    <Typography component="h1" variant="h5" paddingTop='1rem'>
+                        Create an Account
+                    </Typography>
+
+                    {/* Form */}
+                    <Box component='form' onSubmit={onSubmit} sx={{ mt: 1, maxWidth: 'sm' }}>
+                        <TextField
+                            margin='normal'
+                            id='email'
+                            variant='outlined'
+                            label='Email Address'
+                            type='email'
+                            name='email'
+                            autoFocus
+                            value={email}
                             onChange={onChange}
                             required
-                            className='form-control'
+                            sx={{ width: 1 }}
                         />
-                        </div>
-                            <span className='row justify-content-center text-center'>By signing up, you agree to the Terms and Conditions.</span> 
-                        <br />
-                        <div className='text-center'>
-                            <button
-                                onClick={onSubmit}
-                                className='LOGIN-BTN form-outline btn midBlue'
-                                type='submit'
-                            >Sign up
-                            </button>
-                        </div>
-                        <span className='row justify-content-center text-center'><Link to='/login'>Already have an account? Sign in</Link></span>
-                    </form>
-                </div>
-            </div>
-        </div>
+                        <TextField
+                            margin='normal'
+                            id='password'
+                            variant='outlined'
+                            label='Password'
+                            type='password'
+                            name='password'
+                            autoFocus
+                            value={password}
+                            onChange={onChange}
+                            required
+                            sx={{ width: 1 }}
+                        />
+                        <TextField
+                            margin='normal'
+                            id='confirmPwd'
+                            variant='outlined'
+                            label='Confirm Password'
+                            type='password'
+                            name='confirmPwd'
+                            autoFocus
+                            value={confirmPwd}
+                            onChange={onChange}
+                            required
+                            sx={{ width: 1 }}
+                        />
+                        <Typography sx={{ mt: 2 }}>By signing up, you agree to the Terms and Conditions.</Typography> 
+                        <Button
+                            type='submit'
+                            variant='contained'
+                            sx={{ width: 1, mt: 3, mb: 2, borderRadius: 5, bgcolor: 'button.dark', color: 'text.light', '&:hover': { bgcolor: 'button.darkHover', color: 'text.light' }}}
+                        >
+                            Sign Up
+                        </Button>
+                        <Typography sx={{ mt: 1 }}><Link to='/login' color='text.main' className='reg-link'>Already have an account? Sign in</Link></Typography>
+                    </Box>
+                </Box>
+            <Footer />
+        </Container>
     )
 }
 

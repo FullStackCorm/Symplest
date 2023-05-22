@@ -40,15 +40,14 @@ function Medications() {
 
     return (
     
-        <Paper elevation={3} sx={{ bgcolor: 'white', p: '2rem', borderRadius: 5, border: 1, borderColor: 'text.light'  }}>
+        <Paper elevation={3} sx={{ bgcolor: 'white', p: '2rem', borderRadius: 5, border: 1, borderColor: 'text.light', maxWidth: 1200 }} xs={12}>
             <div
               style={{
                 margin: 'auto',
               }}>
                   <Grid container sx={{ justifyContent: 'center'}}>
-                    <Grid item md={12} xs={10}>
+                    <Grid item md={12} xs={8}>
                       <Typography component='h2' variant='h5' sx={{ color: 'text.dark' }}>Medications</Typography>
-                      <MedFormModal />
                       <MedDataGridTable />
                     </Grid>
                   </Grid>                      
