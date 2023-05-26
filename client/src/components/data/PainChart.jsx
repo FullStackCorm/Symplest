@@ -5,7 +5,7 @@ import { ResponsiveContainer, Label, LineChart, Line, CartesianGrid, XAxis, YAxi
 import dayjs from 'dayjs';
 
 // MUI //
-import { Modal, Typography, Box, FormControl, InputLabel, MenuItem, Select } from '@mui/material';
+import { Modal, Typography, Box, FormControl, InputLabel, MenuItem, Select, Stack } from '@mui/material';
 import EqualizerIcon from '@mui/icons-material/Equalizer';
 
 const style = {
@@ -22,6 +22,9 @@ const style = {
     borderRadius: 5,
     boxShadow: 24,
     p: 4,
+    MuiIconButton :{
+        color: '#4831cc'
+    },
     '& .MuiSelect-select': {
         bgcolor: '#fff'
     },
@@ -30,10 +33,6 @@ const style = {
             borderColor: 'primary.main',
         },
     },
-
-    MuiIconButton :{
-        color: '#4831cc'
-    }
 };
 
 const PainChart = (props) => {
@@ -45,11 +44,17 @@ const PainChart = (props) => {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
-    const [painType, setPainType] = useState('');
+    const [selectedPainType, setSelectedPainType] = useState('');
+    const [range, setRange] = useState('');
 
-    const handleSelect = (e) => {
-        setPainType(e.target.value);
+    const handlePainTypeSelect = (e) => {
+        setSelectedPainType(e.target.value);
+        console.log(range)
     };
+
+    const handleRangeSelect = (e) => {
+        setRange(e.target.value);
+    }
 
     // Data Mapping //
     const painData = []
@@ -63,16 +68,15 @@ const PainChart = (props) => {
 
         function filterAndMapPainData(type) {
             const filteredData = pain.filter(obj => obj.hasOwnProperty('type') && obj.type === type); // Filters by type of pain, ex: Headache, Neck Pain, Back Pain, etc.
-                filteredData.sort((a, b) => dayjs(a.date).valueOf() - dayjs(b.date).valueOf());     // Sorts users' symptom entries by date selected when created, 
-                    filteredData.forEach(pain => {                                                  // since they can add symptom data after a date has already passed. 
-                        const date = dayjs(pain.date).format(dateFormat); 
+                filteredData.sort((a, b) => dayjs(a.date).valueOf() - dayjs(b.date).valueOf());       // Sorts users' symptom entries by date selected when created, 
+                    filteredData.forEach(pain => {  
+                        const date = dayjs(pain.date).format(dateFormat);                             // since they can add symptom data after a date has already passed. 
                         painData.push(createData(pain.type, pain.severity, pain.note, date, pain._id));
                 });
         }
 
-        filterAndMapPainData(painType);
+        filterAndMapPainData(selectedPainType);
 
-        console.log(painData);
     }
 
     return (
@@ -87,15 +91,15 @@ const PainChart = (props) => {
             >
                 <Box sx={style}>
                     <Typography variant='h6' component='h2' textAlign='center'>Pain History</Typography>
-                        <Box>
-                            <FormControl sx={{ width: '33%', alignContent: 'center', margin: '0.2rem' }}>
+                        <Stack direction='row' justifyContent='center'>
+                            <FormControl size='small' sx={{ width: '33%', alignContent: 'center', margin: '0.2rem' }}>
                                 <InputLabel id='pain-type-selector'>Pain Type</InputLabel>
                                     <Select
                                         labelId='pain-type'
                                         id='pain-type'
-                                        value={painType}
                                         label='Pain Type'
-                                        onChange={handleSelect}
+                                        value={selectedPainType}
+                                        onChange={handlePainTypeSelect}
                                     >
                                         <MenuItem value={'Headache'}>Headaches</MenuItem>
                                         <MenuItem value={'Neck'}>Neck Pain</MenuItem>
@@ -110,26 +114,13 @@ const PainChart = (props) => {
                                         <MenuItem value={'Other'}>Misc. Pain</MenuItem>        
                                     </Select>
                             </FormControl>
-                            <FormControl sx={{ width: '33%', alignContent: 'center', margin: '0.2rem' }}>
-                                <InputLabel id='time-duration-selector'>Time Interval</InputLabel>
-                                    <Select
-                                        labelId='day-interval'
-                                        id='day-interval'
-                                        label='Time Interval'
-                                        value={painType}
-                                    >
-                                        <MenuItem value={'Past 30 Days'}>Past 30 Days</MenuItem>
-                                        <MenuItem value={'Past Year'}>Past Year</MenuItem>
-
-                                    </Select>
-                            </FormControl>
-                        </Box>
+                        </Stack>
                     <ResponsiveContainer width={600} height={'80%'}>
                         <LineChart margin={{ top: 5, right: 5, bottom: 5, left: 5 }}>
                             <Line data={painData} type='monotone' dataKey='severity' stroke='#e1b0ac' strokeWidth={3} />
-                            <CartesianGrid stroke='#ccc' strokeDashArray='5 5' />
+                            <CartesianGrid stroke='#ddd' strokeDashArray='5 5' />
                             <XAxis dataKey='date' />
-                            <YAxis />
+                            <YAxis ticks={[2, 4, 6, 8, 10]} />
                             <Tooltip />
                         </LineChart>
                     </ResponsiveContainer>               

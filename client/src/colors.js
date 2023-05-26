@@ -29,7 +29,8 @@ export const brand = {
     400: '#1f3984', // navy blue
     500: '#1f1f23', // slate
     600: '#1e1e1e', // dark slate
-    700: '#e89d9d'
+    700: '#e89d9d',
+    800: '#f2e2e1'
 };
 
 export const pink = {
