@@ -10,23 +10,19 @@ import MedicalInformationIcon from '@mui/icons-material/MedicalInformation';
 import EqualizerIcon from '@mui/icons-material/Equalizer';
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { brand } from '../../colors';
 
-const style = {
-  color: 'primary.dark',
-  backgroundColor: '#fff',
-  input: { color: 'primary.dark' },
-  maxWidth: 400,
-  height: 'auto',
-  margin: 'auto',
-  marginTop: 1,
-
-  '& .MuiIcon-root': {
-      color: 'primary.main'
+const theme = createTheme({
+  palette: {
+      text: {
+          light: brand[50]
+      },
+      button: {
+          light: brand[50]
+      }
   },
-  '& .MuiSvgIcon-root': {
-      color: 'primary.main'
-  }
-}
+});
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -65,9 +61,9 @@ export default function SymptomCard () {
     };
 
   return (
-    <div>
+    <ThemeProvider theme={theme}>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <Card sx={style}>
+        <Card >
           <CardHeader
             avatar={<MedicalInformationIcon />}
             title='Symptom'
@@ -97,7 +93,7 @@ export default function SymptomCard () {
                     showDaysOutsideCurrentMonth
                     onChange={(date) => setDate(date)}
                     clearable='true'
-                    style={style}
+                    
                   />
                   <form onSubmit={onSubmit}>
                       <Stack direction='column' spacing={2}>
@@ -111,7 +107,7 @@ export default function SymptomCard () {
                               name='note'
                               value={note}
                               onChange={(e) => setSymptomType(e.target.value)}
-                              sx={style}
+                          
                           />
                           <Button
                             type='submit'
@@ -135,6 +131,6 @@ export default function SymptomCard () {
             </Collapse>
         </Card>
       </LocalizationProvider>
-    </div>
+    </ThemeProvider>
   );
 };

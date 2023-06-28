@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 
 // Components //
 import { deleteMedication } from '../../features/medications/medSlice';
-import ConfirmDelete from '../common/ConfirmDelete';
 import UpdateMedModal from '../modals/UpdateMedModal';
+import MedFormModal from '../modals/MedFormModal';
 
 // MUI //
-import { Box, Button, Paper, Table, TableHead, TableBody, TableFooter, TableCell, TableContainer, TableRow, TablePagination } from '@mui/material';
+import { Box, Button, Table, TableHead, TableBody, TableFooter, TableCell, TableContainer, TableRow, TablePagination } from '@mui/material';
 import { KeyboardArrowLeft, KeyboardArrowRight, } from '@mui/icons-material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
@@ -80,6 +80,9 @@ function TablePaginationActions(props) {
                 >
                     {theme.direction === 'rtl' ? <FirstPageIcon /> : <LastPageIcon />}
                 </IconButton>
+                <IconButton>
+                    <MedFormModal />
+                </IconButton>
             </Box>
         </ThemeProvider>
 
@@ -131,12 +134,10 @@ export default function MedDataGridTable() {
     return (
         <div>
             <TableContainer sx={{ maxHeight: 500, }}>
-                {/* <Table size='small' sx={{ margin: 'auto', mt: 5, maxWidth: 1200, }} aria-label='medication table'> */}
                 <Table size='small' xs={4} sx={{ margin: 'auto', mt: 5, maxWidth: 1200, }} aria-label='medication table'>
                     <TableHead>
                         <TableRow sx={{ color: 'text.contrastText'}}>
                             <TableCell sx={{ color: 'text.contrastText', fontSize: 18 }}>Medication</TableCell>
-                            <TableCell sx={{ color: 'text.contrastText', fontSize: 18 }} align='center'>Directions</TableCell>
                             <TableCell sx={{ color: 'text.contrastText', fontSize: 18 }} align='center'>Time of Day</TableCell>
                             <TableCell sx={{ color: 'text.contrastText', fontSize: 18 }} align='center'>Prescriber</TableCell>
                             <TableCell sx={{ color: 'text.contrastText', fontSize: 18 }} align='center'>Edit/Delete</TableCell>
@@ -150,9 +151,6 @@ export default function MedDataGridTable() {
                         <TableRow key={medications.id}>
                             <TableCell component="th" scope="row" sx={{ color: 'text.main' }}>
                                 {row.name}
-                            </TableCell>
-                            <TableCell align='center' sx={{ color: 'text.main' }}>
-                                {row.directions}
                             </TableCell>
                             <TableCell align='center' sx={{ color: 'text.main' }}>
                                 {row.timeOfDay}

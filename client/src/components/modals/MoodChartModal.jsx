@@ -30,19 +30,6 @@ const theme = createTheme({
     }
 });
 
-const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 400,
-    bgcolor: 'secondary.main',
-    border: '2px solid #004e87',
-    borderRadius: 5,
-    boxShadow: 24,
-    p: 4,
-};
-
 const MoodChartModal = (props) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -73,7 +60,7 @@ const MoodChartModal = (props) => {
     }
 
     return (
-        <ThemeProvider theme={theme} style={style}>
+        <ThemeProvider theme={theme}>
             <MoodChart />
         </ThemeProvider>
     );

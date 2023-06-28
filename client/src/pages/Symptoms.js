@@ -6,14 +6,11 @@ import { reset } from '../features/auth/authSlice';
 
 // Components //
 import Spinner from '../components/Spinner';
-import SymptomItem from '../components/items/SymptomItem';
-import SymptomCategoryCheckbox from '../components/forms/SymptomCheckboxForm';
 import MoodCard from '../components/cards/MoodCard';
 import PainCard from '../components/cards/PainCard';
-import SymptomCard from '../components/cards/SymptomCard';
 
 // MUI //
-import { Box, Stack, Grid, Container, Typography } from '@mui/material';
+import { Box, Grid, Container } from '@mui/material';
 
 function Symptoms () {
     const navigate = useNavigate();
@@ -54,10 +51,9 @@ function Symptoms () {
                         minWidth: '25vw',
                         maxWidth: 800,
                         margin: 'auto',
-                        marginTop: '5rem'
+                        marginTop: '1rem'
                     }}
                 >
-                    <Typography component='h2' variant='h4' style={{color: 'white'}}>Symptoms</Typography>
                     <Box className='content'>
                         <MoodCard />
                         <PainCard />

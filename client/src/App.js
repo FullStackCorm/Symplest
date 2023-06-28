@@ -1,16 +1,8 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import React, { useState } from 'react';
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { brand } from './colors';
-import { Box } from '@mui/material';
-
-// Components //
-import Header from './components/Header';
-import NavbarTop from './components/Navbar';
-import Footer from './components/Footer';
-import Layout from './components/Layout';
 
 // Pages //
 import Dashboard from './pages/Dashboard';
@@ -32,11 +24,6 @@ function App() {
         light: brand[50], // light pink
         dark: brand[600], // slate
       },
-      // secondary: {
-      //   main: brand[300],
-      //   light: brand[200],
-      //   dark: brand[700]
-      // },
       text: {
         main: brand[500],
         light: brand[50],
