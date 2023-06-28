@@ -55,7 +55,6 @@ function TablePaginationActions(props) {
                     onClick={handleFirstPageButtonClick}
                     disabled={page === 0}
                     aria-label="first page"
-                    sx={{ color: 'button.light' }}
                 >
                     {theme.direction === 'rtl' ? <LastPageIcon /> : <FirstPageIcon />}
                 </IconButton>
@@ -133,9 +132,9 @@ export default function MedDataGridTable() {
     };
 
     return (
-        <div>
-            <TableContainer style={{ overflowX: 'auto', width: '100%' }}>
-                <Table sx={{ overflowX: 'auto', width: '100%', maxWidth: '100%', minHeight: '300px' }}>
+        <div style={{ overflowX: 'auto'}}>
+            <TableContainer style={{ width: '100%' }}>
+                <Table sx={{ width: '100%', maxWidth: '100%', minHeight: '300px' }}>
                     <TableHead>
                         <TableRow>
                             <TableCell sx={{ color: 'text.contrastText', fontSize: 16 }} align='center'>Medication</TableCell>
@@ -144,7 +143,7 @@ export default function MedDataGridTable() {
                             <TableCell sx={{ color: 'text.contrastText', fontSize: 16 }} align='center'>Edit/Delete</TableCell>
                         </TableRow>
                     </TableHead>
-                    <TableBody>
+                    <TableBody >
                     {(rowsPerPage > 0
                         ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                         : rows && rows.id

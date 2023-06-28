@@ -4,11 +4,45 @@ import { useDispatch } from 'react-redux';
  // Components //
 import { createMedication } from '../../features/medications/medSlice';
 import MedForm from '../forms/MedForm';
-import FilterMedsMenu from '../FilterMedsMenu';
 
 // MUI //
-import { Modal, Typography, IconButton, Box } from '@mui/material';
+import { Modal, Typography, Box } from '@mui/material';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { brand } from '../../colors';
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: brand[200], // dark pink
+      light: brand[50], // light pink
+      dark: brand[600], // slate
+    },
+    text: {
+      main: brand[500], // slate
+      light: brand[50], // ivory
+      dark: brand[600], //dark slate
+      contrastText: brand[200] // light pink
+    },
+    button: {
+      main: brand[200],
+      hover: brand[100],
+      light: brand[100],
+      lightHover: brand[50],
+      dark: brand[600],
+      darkHover: brand[500],
+    },
+    input: {
+      main: brand[50],
+      light: brand[100],
+    },
+    bg: {
+      main: brand[800],
+      light: brand[50],
+      dark: brand[100],
+    }
+  }
+})
 
 const style = {
   position: 'absolute',
@@ -17,7 +51,7 @@ const style = {
   transform: 'translate(-50%, -50%)',
   width: 400,
   bgcolor: '#f2e2e1',
-  border: '2px solid #004e87',
+  border: '2px solid #f1e6e1',
   borderRadius: 5,
   boxShadow: 24,
   p: 4,
@@ -63,30 +97,33 @@ const MedFormModal = (props) => {
     };
 
     return (
-          <Box justifyContent='center' alignItems='center'>
-            <IconButton 
-              sx={{ color: 'button.light', maxWidth: '1rem' }}
-              variant='text'
-              size='small'
-              onClick={handleOpen}>
-              <AddCircleIcon />
-            </IconButton>       
-                    
-            <Modal
-              open={open}
-              onClose={handleClose}
-              aria-labelledby='modal-modal-title'
-              aria-describedby='modal-modal-description'
-              keepMounted
-            >
-              <Box sx={style}>
-                <Typography id='modal-modal-title' variant='h6' component='h2' color='text.main' marginBottom='1em'>
-                    Add a New Medication
-                </Typography> 
-                <MedForm />
-              </Box>
-            </Modal>
-          </Box> 
+      <ThemeProvider theme={theme}>
+        <Box>
+          <AddCircleIcon
+            onClick={handleOpen} 
+            sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center'
+            }}
+          >
+          </AddCircleIcon>                    
+          <Modal
+            open={open}
+            onClose={handleClose}
+            aria-labelledby='modal-modal-title'
+            aria-describedby='modal-modal-description'
+            keepMounted
+          >
+            <Box sx={style}>
+              <Typography id='modal-modal-title' variant='h6' component='h2' color='text.main' marginBottom='1em'>
+                  Add a New Medication
+              </Typography> 
+              <MedForm />
+            </Box>
+          </Modal>
+        </Box>
+      </ThemeProvider>
       );
 }
 
