@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import LineChartt from '../common/LineChart';
 import 'chartjs-adapter-date-fns';
 import { ResponsiveContainer, LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts';
-import { format, compareAsc } from 'date-fns'
 import dayjs from 'dayjs';
 
 // MUI //
-import { Modal, Typography, IconButton, Box, Stack } from '@mui/material';
+import { Modal, Typography, Box } from '@mui/material';
 import EqualizerIcon from '@mui/icons-material/Equalizer';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { purple, white } from '../../colors';
@@ -66,27 +64,24 @@ const MoodChart = (props) => {
 
     const data = []
 
-    if (moods) {
-        moods.map(mood =>
-            {
-                data.push(createData(mood.rating, mood.note, mood.date, mood._id))
-            }
-        );
+    if (moods && moods.length > 0) {
+        const dateFormat = 'MMM DD'
+
+        function sortData(moods) {
+            const moodData = [...moods];
+            const sortedData = moodData.sort(
+                (a, b) => dayjs(a.date).valueOf() - dayjs(b.date).valueOf()
+            );
+
+            // Must sort dates since users can enter symptom data after a date has already passed //
+            sortedData.forEach((mood) => {                                              
+                const formattedDate = dayjs(mood.date).format(dateFormat);
+                data.push(createData(mood.rating, mood.note, formattedDate, mood._id));
+            });
+        }
+
+        sortData(moods);
     };
-
-    // const sortedDates = data.filter((e) => {
-    //     const newDate = new Date(e.date);
-    //     const options = {year: 'numeric', month: 'short', day: 'numeric'};
-
-    //     return (new Intl.DateTimeFormat('en-US').format(newDate))
-    // })
-
-
-    // Must sort dates since users can enter symptom data after a date has already passed //
-    const sortedDates = data.sort(function (a, b) {
-        return new Date(a.date) - new Date(b.date);
-    });
-
 
     return (
         <ThemeProvider theme={theme}>
@@ -102,7 +97,7 @@ const MoodChart = (props) => {
                     <Typography variant='h6' component='h2' textAlign='center'>Mood Ratings</Typography>
                     <ResponsiveContainer width={600} height={'80%'}>
                         <LineChart data={data} margin={{ top: 5, right: 5, bottom: 5, left: 5 }}>
-                            <Line type='monotone' dataKey='rating' stroke='#369a00' strokeWidth={3} />
+                            <Line type='monotone' dataKey='rating' stroke='#e1b0ac' strokeWidth={3} />
                             <CartesianGrid stroke='#ccc' strokeDashArray='5 5' />
                             <XAxis dataKey='date' />
                             <YAxis />
