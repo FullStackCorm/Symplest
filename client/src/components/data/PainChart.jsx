@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import 'chartjs-adapter-date-fns';
 import { ResponsiveContainer, Label, LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts';
 import dayjs from 'dayjs';
 
@@ -22,9 +21,6 @@ const style = {
     borderRadius: 5,
     boxShadow: 24,
     p: 4,
-    MuiIconButton :{
-        color: '#4831cc'
-    },
     '& .MuiSelect-select': {
         bgcolor: '#fff'
     },
@@ -68,9 +64,10 @@ const PainChart = (props) => {
 
         function filterAndMapPainData(type) {
             const filteredData = pain.filter(obj => obj.hasOwnProperty('type') && obj.type === type); // Filters by type of pain, ex: Headache, Neck Pain, Back Pain, etc.
+
                 filteredData.sort((a, b) => dayjs(a.date).valueOf() - dayjs(b.date).valueOf());       // Sorts users' symptom entries by date selected when created, 
-                    filteredData.forEach(pain => {  
-                        const date = dayjs(pain.date).format(dateFormat);                             // since they can add symptom data after a date has already passed. 
+                    filteredData.forEach(pain => {                                                    // since they can add symptom data after a date has already passed. 
+                        const date = dayjs(pain.date).format(dateFormat);
                         painData.push(createData(pain.type, pain.severity, pain.note, date, pain._id));
                 });
         }
@@ -114,6 +111,23 @@ const PainChart = (props) => {
                                         <MenuItem value={'Other'}>Misc. Pain</MenuItem>        
                                     </Select>
                             </FormControl>
+                            {/* <FormControl size='small' sx={{ width: '33%', margin: '0.2rem' }}>
+                                <InputLabel id='time-duration-selector'>Time Interval</InputLabel>
+                                    <Select
+                                        labelId='day-interval'
+                                        id='day-interval'
+                                        label='Time Interval'
+                                        value={range}
+                                        defaultValue={100000000}
+                                        onChange={handleRangeSelect}
+
+                                    >
+                                        <MenuItem value={100000000}>All Data</MenuItem>
+                                        <MenuItem value={7}>Past 7 Days</MenuItem>
+                                        <MenuItem value={30}>Past 30 Days</MenuItem>
+                                        <MenuItem value={365}>Past Year</MenuItem>
+                                    </Select>
+                            </FormControl> */}
                         </Stack>
                     <ResponsiveContainer width={600} height={'80%'}>
                         <LineChart margin={{ top: 5, right: 5, bottom: 5, left: 5 }}>

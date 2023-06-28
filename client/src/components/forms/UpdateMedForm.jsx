@@ -1,31 +1,9 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { updateMedication } from '../../features/medications/medSlice';
 
 // MUI //
 import { TextField, Button, Stack, Select, MenuItem } from '@mui/material';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { blue, white, purple } from '../../colors';
-
-const theme = createTheme({
-  palette: {
-      primary: {
-      main: purple[700],
-      light: purple[400],
-      dark: purple[800],
-      contrastText: blue[50]
-      },
-      secondary: {
-          main: blue[100],
-          light: blue[50],
-          dark: blue[400],
-          contrastText: blue[700]
-      },
-      text: {
-          main: white[100]
-      }
-  }
-});
 
 const style = {
   color: 'primary.dark',
@@ -33,7 +11,7 @@ const style = {
   input: { color: 'primary.dark' }
 }
 
-const UpdateMedForm = (props) => {
+const UpdateMedForm = ({ medications }) => {
 
     const [name, setName] = useState('');
     const [strength, setStrength] = useState('');
@@ -41,12 +19,25 @@ const UpdateMedForm = (props) => {
     const [directions, setDirections] = useState('');
     const [timeOfDay, setTimeOfDay] = useState('');
     const [prescriber, setPrescriber] = useState('');
+    const [currentMedication, setCurrentMedication] = useState(null);
     
     const dispatch = useDispatch();
 
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+
+    const [showModal, setShowModal] = useState(false);
+
+    const handleEditClick = (medicationId) => {
+        setCurrentMedication(medications.find(medication => medication.id === medicationId));
+        setShowModal(true);
+    }
+
+    const handleFormSubmit = async (medicationData) => {
+        dispatch(updateMedication(currentMedication.id, medicationData));
+        setShowModal(false);
+    }
     
     const onSubmit = (e) => {
       e.preventDefault();
@@ -62,8 +53,8 @@ const UpdateMedForm = (props) => {
     };
 
     return (
-      <ThemeProvider theme={theme}>
-        <form onSubmit={onSubmit} sx={style}>
+      <div>
+        <form onSubmit={handleFormSubmit} sx={style}>
           <Stack
             direction='column'
             spacing={2}
@@ -129,21 +120,24 @@ const UpdateMedForm = (props) => {
               <MenuItem value='Three Times Daily'>Three Times Daily</MenuItem>
             </Select>
             <Button
+              onClick={() => dispatch(updateMedication())}
               type='submit'
               sx={{
-                bgcolor: 'primary.dark',
-                color: 'text.main',
+                bgcolor: 'button.dark',
+                color: '#fff',
                 '&:hover': {
-                  bgcolor: 'primary.main',
-                  color: 'text.main'
-                }
+                  bgcolor: 'button.darkHover',
+                  color: '#fff'
+                },
+                borderRadius: 5
               }}
+              variant='contained'
             >
               Submit
             </Button>
           </Stack>
         </form>
-      </ThemeProvider>
+      </div>
       );
 }
 

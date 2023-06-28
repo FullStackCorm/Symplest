@@ -17,7 +17,6 @@ import LastPageIcon from '@mui/icons-material/LastPage';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { brand } from '../../colors';
 
-
 function TablePaginationActions(props) {
 
     const theme = createTheme({
@@ -25,9 +24,12 @@ function TablePaginationActions(props) {
             text: {
                 light: brand[50]
             },
-            button: {
-                light: brand[50]
-            }
+        },
+        '& .MuiIcon-root': {
+            color: 'primary.main'
+        },
+        '& .MuiSvgIcon-root': {
+            color: 'primary.main'
         },
     });
 
@@ -118,6 +120,23 @@ export default function MedDataGridTable() {
         setPage(0);
     };
 
+    const theme = createTheme({
+        palette: {
+            primary: {
+                main: brand[200]
+            },
+            text: {
+                light: brand[50]
+            },
+        },
+        '& .MuiIcon-root': {
+            color: 'primary.main'
+        },
+        '& .MuiSvgIcon-root': {
+            color: 'primary.main'
+        },
+    });
+
     // Data Mapping //
     function createData(name, directions, timeOfDay, prescriber, _id) {
         return { name, directions, timeOfDay, prescriber, _id };
@@ -132,15 +151,16 @@ export default function MedDataGridTable() {
     };
 
     return (
-        <div style={{ overflowX: 'auto'}}>
+        <ThemeProvider theme={theme}>
+<div style={{ overflowX: 'auto'}}>
             <TableContainer style={{ width: '100%' }}>
                 <Table sx={{ width: '100%', maxWidth: '100%', minHeight: '300px' }}>
                     <TableHead>
                         <TableRow>
-                            <TableCell sx={{ color: 'text.contrastText', fontSize: 16 }} align='center'>Medication</TableCell>
-                            <TableCell sx={{ color: 'text.contrastText', fontSize: 16 }} align='center'>Time of Day</TableCell>
-                            <TableCell sx={{ color: 'text.contrastText', fontSize: 16 }} align='center'>Prescriber</TableCell>
-                            <TableCell sx={{ color: 'text.contrastText', fontSize: 16 }} align='center'>Edit/Delete</TableCell>
+                            <TableCell sx={{ color: 'primary.main', fontSize: 16 }} align='center'>Medication</TableCell>
+                            <TableCell sx={{ color: 'primary.main', fontSize: 16 }} align='center'>Time of Day</TableCell>
+                            <TableCell sx={{ color: 'primary.main', fontSize: 16 }} align='center'>Prescriber</TableCell>
+                            <TableCell sx={{ color: 'primary.main', fontSize: 16 }} align='center'>Edit/Delete</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody >
@@ -159,13 +179,13 @@ export default function MedDataGridTable() {
                                 {row.prescriber}
                             </TableCell>
                             <TableCell align='center' sx={{ fontSize: 16, pt: 0.25, pb: 0.25 }} >
-                                    <Button>
+                                    <IconButton>
                                         <UpdateMedModal />
-                                    </Button>
+                                    </IconButton>
                                     {/* <ConfirmDelete /> */}
-                                    <Button
-                                        onClick={() => dispatch(deleteMedication(row._id))} sx={{ color: 'button.light', pt: 0.5, pb: 0.5 }}><DeleteIcon />
-                                    </Button>    
+                                    <IconButton
+                                        onClick={() => dispatch(deleteMedication(row._id))} ><DeleteIcon />
+                                    </IconButton>    
                             </TableCell>
                         </TableRow>
                     ))}
@@ -196,6 +216,8 @@ export default function MedDataGridTable() {
                     ActionsComponent={TablePaginationActions}
                 />
         </div>
+        </ThemeProvider>
+        
     );
 }
 
