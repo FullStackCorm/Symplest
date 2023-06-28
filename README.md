@@ -85,7 +85,7 @@ Here's why:
 * The FTC's Health Breach Notification Rule was not enforced for 13 years, beginning in 2009. The FTC only recently resumed enforcement of this rule on February 1, 2023.
 * It is especially important for women to retain whatever privacy they can in a post-Roe v. Wade world.
 
-This app has been in development since late 2022 and will be ready for release in June 2023. After its release, I will continue developing features that will allow users to generate reports for their prescribers, an appointment schedule, and create customized symptom tracking parameters. You may also suggest changes by forking this repo and creating a pull request or opening an issue.
+This app will be ready for release in July 2023. After its release, I will continue developing features that will allow users to generate reports for their prescribers, an appointment schedule, and create customized symptom tracking parameters. You may also suggest changes by forking this repo and creating a pull request or by opening an issue.
 
 
 ## Screenshots
