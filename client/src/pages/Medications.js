@@ -5,7 +5,6 @@ import { useSelector, useDispatch } from 'react-redux';
 // Components //
 import Spinner from '../components/Spinner';
 import MedDataGridTable from '../components/data/MedDataGrid';
-import MedFormModal from '../components/modals/MedFormModal';
 import { getMedications } from '../features/medications/medSlice';
 import { reset } from '../features/auth/authSlice';
 
@@ -40,13 +39,13 @@ function Medications() {
 
     return (
     
-        <Paper elevation={3} sx={{ bgcolor: 'white', p: '2rem', borderRadius: 5, border: 1, borderColor: 'text.light', maxWidth: 1200 }} xs={12}>
+        <Paper elevation={3} sx={{ bgcolor: 'white', p: '2rem', borderRadius: 5, border: 1, borderColor: 'text.light' }} xs={12}>
             <div
               style={{
                 margin: 'auto',
               }}>
                   <Grid container sx={{ justifyContent: 'center'}}>
-                    <Grid item md={12} xs={8}>
+                    <Grid item>
                       <Typography component='h2' variant='h5' sx={{ color: 'text.dark' }}>Medications</Typography>
                       <MedDataGridTable />
                     </Grid>

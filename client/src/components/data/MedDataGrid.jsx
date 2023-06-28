@@ -102,8 +102,9 @@ export default function MedDataGridTable() {
     // Constants, Hooks, etc. //
     const rows = []
     const dispatch = useDispatch()    
-    const { medications } = useSelector(state => state.medications)
+    const { medications, isLoading } = useSelector(state => state.medications)
 
+    // Pagination State //
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(5);
 
@@ -133,14 +134,14 @@ export default function MedDataGridTable() {
 
     return (
         <div>
-            <TableContainer sx={{ maxHeight: 500, }}>
-                <Table size='small' xs={4} sx={{ margin: 'auto', mt: 5, maxWidth: 1200, }} aria-label='medication table'>
+            <TableContainer style={{ overflowX: 'auto', width: '100%' }}>
+                <Table sx={{ overflowX: 'auto', width: '100%', maxWidth: '100%', minHeight: '300px' }}>
                     <TableHead>
-                        <TableRow sx={{ color: 'text.contrastText'}}>
-                            <TableCell sx={{ color: 'text.contrastText', fontSize: 18 }}>Medication</TableCell>
-                            <TableCell sx={{ color: 'text.contrastText', fontSize: 18 }} align='center'>Time of Day</TableCell>
-                            <TableCell sx={{ color: 'text.contrastText', fontSize: 18 }} align='center'>Prescriber</TableCell>
-                            <TableCell sx={{ color: 'text.contrastText', fontSize: 18 }} align='center'>Edit/Delete</TableCell>
+                        <TableRow>
+                            <TableCell sx={{ color: 'text.contrastText', fontSize: 16 }} align='center'>Medication</TableCell>
+                            <TableCell sx={{ color: 'text.contrastText', fontSize: 16 }} align='center'>Time of Day</TableCell>
+                            <TableCell sx={{ color: 'text.contrastText', fontSize: 16 }} align='center'>Prescriber</TableCell>
+                            <TableCell sx={{ color: 'text.contrastText', fontSize: 16 }} align='center'>Edit/Delete</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -149,7 +150,7 @@ export default function MedDataGridTable() {
                         : rows && rows.id
                     ).map((row) => (
                         <TableRow key={medications.id}>
-                            <TableCell component="th" scope="row" sx={{ color: 'text.main' }}>
+                            <TableCell align='center' scope="row" sx={{ color: 'text.main' }}>
                                 {row.name}
                             </TableCell>
                             <TableCell align='center' sx={{ color: 'text.main' }}>
@@ -158,7 +159,7 @@ export default function MedDataGridTable() {
                             <TableCell align='center' sx={{ color: 'text.main' }}>
                                 {row.prescriber}
                             </TableCell>
-                            <TableCell align='center' sx={{ fontSize: 16, pt: 0.5, pb: 0.5 }} >
+                            <TableCell align='center' sx={{ fontSize: 16, pt: 0.25, pb: 0.25 }} >
                                     <Button>
                                         <UpdateMedModal />
                                     </Button>
@@ -171,35 +172,30 @@ export default function MedDataGridTable() {
                     ))}
 
                     {emptyRows > 0 && (
-                        <TableRow style={{ height: 53 * emptyRows }}>
+                        <TableRow>
                             <TableCell colSpan={6} sx={{ color: 'text.light' }} />
                         </TableRow>
                     )}
                     
                     </TableBody>
-                    <TableFooter style={{ align: 'right' }}>
-                        <TableRow>
-                            <TablePagination
-                                rowsPerPageOptions={[5, 10, 15]}
-                                colSpan={8}
-                                count={rows.length + 1}
-                                rowsPerPage={rowsPerPage}
-                                page={page}
-                                SelectProps={{
-                                    inputProps: {
-                                    'aria-label': 'use the arrows to change pages',
-                                    },
-                                    native: true,
-                                }}
-                                onPageChange={handleChangePage}
-                                onRowsPerPageChange={handleChangeRowsPerPage}
-                                ActionsComponent={TablePaginationActions}
-                                sx={{ color: 'text.contrastText' }}
-                            />
-                        </TableRow>
-                    </TableFooter>
                 </Table>
             </TableContainer>
+                <TablePagination
+                    rowsPerPageOptions={[5, 10, 15]}
+                    colSpan={8}
+                    count={rows.length + 1}
+                    rowsPerPage={rowsPerPage}
+                    page={page}
+                    SelectProps={{
+                        inputProps: {
+                        'aria-label': 'use the arrows to change pages',
+                        },
+                        native: true,
+                    }}
+                    onPageChange={handleChangePage}
+                    onRowsPerPageChange={handleChangeRowsPerPage}
+                    ActionsComponent={TablePaginationActions}
+                />
         </div>
     );
 }
