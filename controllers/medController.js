@@ -51,7 +51,6 @@ const updateMedication = asyncHandler(async (req, res) => {
         throw new Error('User not found')
     }
 
-    // ensures only the currently logged in user's meds are found
     if(medication.user.toString() !== user.id) {
         res.status(401)
         throw new Error('User not authorized to perform this action')

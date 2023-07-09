@@ -5,12 +5,6 @@ import { updateMedication } from '../../features/medications/medSlice';
 // MUI //
 import { TextField, Button, Stack, Select, MenuItem } from '@mui/material';
 
-const style = {
-  color: 'primary.dark',
-  backgroundColor: '#fafafa',
-  input: { color: 'primary.dark' }
-}
-
 const UpdateMedForm = ({ medications }) => {
 
     const [name, setName] = useState('');
@@ -54,7 +48,7 @@ const UpdateMedForm = ({ medications }) => {
 
     return (
       <div>
-        <form onSubmit={handleFormSubmit} sx={style}>
+        <form onSubmit={handleFormSubmit}>
           <Stack
             direction='column'
             spacing={2}
@@ -66,7 +60,6 @@ const UpdateMedForm = ({ medications }) => {
               name='name'
               value={name}
               onChange={(e) => setName(e.target.value)}
-              sx={style}
             />
             <TextField
               type='text'
@@ -75,12 +68,10 @@ const UpdateMedForm = ({ medications }) => {
               name='strength'
               value={strength}
               onChange={(e) => setStrength(e.target.value)}
-              sx={style}
             />
             <Select
               onChange={(e) => setDoseForm(e.target.value)}
               defaultValue='mg' placeholder='Dose Form'
-              sx={style}
             >
               <MenuItem value='mg'>mg</MenuItem>
               <MenuItem value='mcg'>mcg</MenuItem>
@@ -94,7 +85,6 @@ const UpdateMedForm = ({ medications }) => {
               name='directions'
               value={directions}
               onChange={(e) => setDirections(e.target.value)}
-              sx={style}
             />
             <TextField
               type='text'
@@ -103,12 +93,10 @@ const UpdateMedForm = ({ medications }) => {
               name='prescriber'
               value={prescriber}
               onChange={(e) => setPrescriber(e.target.value)}
-              sx={style}
             />
             <Select
               onChange={(e) => setTimeOfDay(e.target.value)}
               defaultValue='Morning' placeholder='Time of Day'
-              sx={style}
             >
               <MenuItem value='Morning'>Morning</MenuItem>
               <MenuItem value='Noon'>Noon</MenuItem>
@@ -120,7 +108,6 @@ const UpdateMedForm = ({ medications }) => {
               <MenuItem value='Three Times Daily'>Three Times Daily</MenuItem>
             </Select>
             <Button
-              onClick={() => dispatch(updateMedication())}
               type='submit'
               sx={{
                 bgcolor: 'button.dark',

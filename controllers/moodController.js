@@ -83,7 +83,6 @@ const deleteMood = asyncHandler(async (req, res) => {
   }
 
   await mood.deleteOne()
-  
   res.status(200).json({ id: req.params.id })
 })
 

@@ -8,6 +8,43 @@ import UpdateMedForm from '../forms/UpdateMedForm';
 // MUI //
 import { Modal, Typography, Box, Grid, } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { brand } from '../../colors';
+
+// Styling //
+
+const theme = createTheme({
+    palette: {
+        primary: {
+            main: brand[200], // dark pink
+            light: brand[50], // light pink
+            dark: brand[600], // slate
+        },
+        text: {
+            main: brand[500], // slate
+            light: brand[50], // ivory
+            dark: brand[600], //dark slate
+            contrastText: brand[200] // light pink
+        },
+        button: {
+            main: brand[200],
+            hover: brand[100],
+            light: brand[100],
+            lightHover: brand[50],
+            dark: brand[600],
+            darkHover: brand[500],
+        },
+            input: {
+            main: brand[50],
+            light: brand[100],
+        },
+        bg: {
+            main: brand[800],
+            light: brand[50],
+            dark: brand[100],
+        }
+    }
+});
 
 const style = {
     position: 'absolute',
@@ -23,21 +60,15 @@ const style = {
     input: {
         bgcolor: '#fff'
     },
-    '& .MuiSelect-select': {
+        '& .MuiSelect-select': {
         bgcolor: '#fff'
     },
-    '& .MuiOutlinedInput-root': {
+        '& .MuiOutlinedInput-root': {
         '&:hover fieldset': {
-        borderColor: 'primary.main',
+            borderColor: 'primary.main',
         },
     },
-    '& .MuiIcon-root': {
-        color: 'primary.main'
-    },
-    '& .MuiSvgIcon-root': {
-        color: 'primary.main'
-    },
-};
+}
 
 const UpdateMedModal = (props) => {
 
@@ -46,8 +77,9 @@ const UpdateMedModal = (props) => {
     const handleClose = () => setOpen(false);
 
     return (
-        <Box>
-            <EditIcon sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} onClick={handleOpen} />
+        <ThemeProvider theme={theme}>
+            <Box>
+                <EditIcon onClick={handleOpen} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} />
                 <Modal
                     open={open}
                     onClose={handleClose}
@@ -61,8 +93,9 @@ const UpdateMedModal = (props) => {
                     </Typography> 
                     <UpdateMedForm />
                 </Box>
-            </Modal>   
-        </Box>
+                </Modal>   
+            </Box>
+        </ThemeProvider>
     );
 }
 

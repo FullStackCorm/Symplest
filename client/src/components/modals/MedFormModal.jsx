@@ -11,6 +11,8 @@ import AddCircleIcon from '@mui/icons-material/AddCircle';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { brand } from '../../colors';
 
+// Styling //
+
 const theme = createTheme({
   palette: {
     primary: {
@@ -42,7 +44,7 @@ const theme = createTheme({
       dark: brand[100],
     }
   }
-})
+});
 
 const style = {
   position: 'absolute',
@@ -124,7 +126,7 @@ const MedFormModal = (props) => {
           </Modal>
         </Box>
       </ThemeProvider>
-      );
+    );
 }
 
 export default MedFormModal
