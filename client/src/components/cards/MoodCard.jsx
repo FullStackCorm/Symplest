@@ -11,7 +11,6 @@ import { styled, Card, CardHeader, CardContent, CardActions, Collapse, IconButto
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoodIcon from '@mui/icons-material/Mood';
 import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAlt';
-import SentimentSatisfiedIcon from '@mui/icons-material/SentimentSatisfied';
 import SentimentNeutralIcon from '@mui/icons-material/SentimentNeutral';
 import SentimentDissatisfiedIcon from '@mui/icons-material/SentimentDissatisfied';
 import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
@@ -40,13 +39,16 @@ const style = {
 const ExpandMore = styled((props) => {
     const { expand, ...other } = props;
     return <IconButton {...other} />;
-})(({ theme, expand }) => ({
-    transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
-    marginLeft: 'auto',
-    transition: theme.transitions.create('transform', {
-        duration: theme.transitions.duration.shortest,
-    }),
-}));
+})
+    (
+        ({ theme, expand }) => ({
+            transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
+            marginLeft: 'auto',
+            transition: theme.transitions.create('transform', {
+                duration: theme.transitions.duration.shortest,
+            }),
+        })
+    );
 
 export default function MoodCard() {
 

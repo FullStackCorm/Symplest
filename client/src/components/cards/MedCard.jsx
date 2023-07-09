@@ -18,34 +18,11 @@ function MedCard({medication}) {
         justifyContent='center' 
       > 
         <Grid item xs={12}>
-          <Card sx={{ height: 250, width: 330, backgroundColor: '#FFFFFF', borderRadius: 2 }}>
+          <Card sx={{ backgroundColor: '#FFFFFF', borderRadius: 2 }}>
             <CardContent>
-              <Box
-                sx={{ color: '#343232', backgroundColor: '#F8F8F8', borderRadius: 3 }}
-              >
-                <CardHeader
-                  variant='h1' 
-                  title={`${medication.name} ${medication.strength}${medication.doseForm}`}
-                  />
-                <Typography variant='body1'>
-                  Directions: {medication.directions}
-                </Typography>
-                <Typography variant='body2'>
-                Time of Day: {medication.timeOfDay} | Prescriber: {medication.prescriber}
-                </Typography>
-                <br />
-                <Typography variant='button'>
-                  <Button sx={{ color: '#08b19c', p: 2 }}>
-                    <EditIcon />
-                  </Button>
-                  <Button
-                    onClick={() => dispatch(deleteMedication(medication._id))} 
-                    sx={{ color: '#372186', p: 2 }}
-                  >
-                    <DeleteIcon />
-                  </Button>
-                </Typography>
-              </Box> 
+              <Typography variant='h5' component='div'>
+                Medications
+              </Typography>
             </CardContent>
           </Card>
         </Grid>

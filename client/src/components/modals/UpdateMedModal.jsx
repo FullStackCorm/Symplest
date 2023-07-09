@@ -79,7 +79,7 @@ const UpdateMedModal = (props) => {
     return (
         <ThemeProvider theme={theme}>
             <Box>
-                <EditIcon onClick={handleOpen} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} />
+                <EditIcon onClick={handleOpen} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', }} />
                 <Modal
                     open={open}
                     onClose={handleClose}

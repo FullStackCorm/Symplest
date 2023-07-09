@@ -38,42 +38,27 @@ function Symptoms () {
     }
 
     return (
-        <div>
-            <Grid
-                container
-                spacing={2}
-                direction='column'
-                alignItems='center'
-                justifyContent='center'
+        <Grid
+            container
+            spacing={2}
+            direction='column'
+            alignItems='center'
+            justifyContent='center'
+        >
+            <Container
+                style={{
+                    minWidth: '20vw',
+                    maxWidth: 800,
+                    margin: 'auto',
+                    marginTop: '1rem'
+                }}
             >
-                <Container
-                    style={{
-                        minWidth: '25vw',
-                        maxWidth: 800,
-                        margin: 'auto',
-                        marginTop: '1rem'
-                    }}
-                >
-                    <Box className='content'>
-                        <MoodCard />
-                        <PainCard />
-                        {/* <SymptomCard /> */}
-                        {/* {symptoms && symptoms.length > 0 ? (
-                            <div>
-                                {symptoms.map((symptom) => (
-                                    <SymptomItem key={symptom._id} symptom={symptom} />
-                                ))}
-                            </div>
-                        ) : (
-                            <div>
-                                <h4>No symptom categories have been added yet.</h4>
-                                <SymptomCategoryCheckbox />
-                            </div>
-                            )} */}
-                    </Box>
-                </Container>
-            </Grid>
-        </div>
+                <Box className='content'>
+                    <MoodCard />
+                    <PainCard />
+                </Box>
+            </Container>
+        </Grid>
     );
 }
 

@@ -8,7 +8,7 @@ import UpdateMedModal from '../modals/UpdateMedModal';
 import MedFormModal from '../modals/MedFormModal';
 
 // MUI //
-import { Box, Button, Table, TableHead, TableBody, TableFooter, TableCell, TableContainer, TableRow, TablePagination } from '@mui/material';
+import { Box, Table, TableHead, TableBody, TableCell, TableContainer, TableRow, TablePagination } from '@mui/material';
 import { KeyboardArrowLeft, KeyboardArrowRight, } from '@mui/icons-material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
@@ -152,53 +152,53 @@ export default function MedDataGridTable() {
 
     return (
         <ThemeProvider theme={theme}>
-<div style={{ overflowX: 'auto'}}>
-            <TableContainer style={{ width: '100%' }}>
-                <Table sx={{ width: '100%', maxWidth: '100%', minHeight: '300px' }}>
-                    <TableHead>
-                        <TableRow>
-                            <TableCell sx={{ color: 'primary.main', fontSize: 16 }} align='center'>Medication</TableCell>
-                            <TableCell sx={{ color: 'primary.main', fontSize: 16 }} align='center'>Time of Day</TableCell>
-                            <TableCell sx={{ color: 'primary.main', fontSize: 16 }} align='center'>Prescriber</TableCell>
-                            <TableCell sx={{ color: 'primary.main', fontSize: 16 }} align='center'>Edit/Delete</TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody >
-                    {(rowsPerPage > 0
-                        ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                        : rows && rows.id
-                    ).map((row) => (
-                        <TableRow key={medications.id}>
-                            <TableCell align='center' scope="row" sx={{ color: 'text.main' }}>
-                                {row.name}
-                            </TableCell>
-                            <TableCell align='center' sx={{ color: 'text.main' }}>
-                                {row.timeOfDay}
-                            </TableCell>
-                            <TableCell align='center' sx={{ color: 'text.main' }}>
-                                {row.prescriber}
-                            </TableCell>
-                            <TableCell align='center' sx={{ fontSize: 16, pt: 0.25, pb: 0.25 }} >
-                                    <IconButton>
-                                        <UpdateMedModal />
-                                    </IconButton>
-                                    {/* <ConfirmDelete /> */}
-                                    <IconButton
-                                        onClick={() => dispatch(deleteMedication(row._id))} ><DeleteIcon />
-                                    </IconButton>    
-                            </TableCell>
-                        </TableRow>
-                    ))}
+            <div style={{ overflowX: 'auto', maxHeight: 500 }}>
+                <TableContainer style={{ width: '100%' }}>
+                    <Table sx={{ width: '100%', maxWidth: '100%', minHeight: '300px' }}>
+                        <TableHead>
+                            <TableRow>
+                                <TableCell sx={{ color: 'primary.main', fontSize: 16 }} align='center'>Medication</TableCell>
+                                <TableCell sx={{ color: 'primary.main', fontSize: 16 }} align='center'>Time of Day</TableCell>
+                                <TableCell sx={{ color: 'primary.main', fontSize: 16 }} align='center'>Prescriber</TableCell>
+                                <TableCell sx={{ color: 'primary.main', fontSize: 16 }} align='center'>Edit/Delete</TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody >
+                        {(rowsPerPage > 0
+                            ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                            : rows && rows.id
+                        ).map((row) => (
+                            <TableRow key={medications.id}>
+                                <TableCell align='center' scope="row" sx={{ color: 'text.main' }}>
+                                    {row.name}
+                                </TableCell>
+                                <TableCell align='center' sx={{ color: 'text.main' }}>
+                                    {row.timeOfDay}
+                                </TableCell>
+                                <TableCell align='center' sx={{ color: 'text.main' }}>
+                                    {row.prescriber}
+                                </TableCell>
+                                <TableCell align='center' sx={{ fontSize: 16, pt: 0.25, pb: 0.25 }} >
+                                        <IconButton>
+                                            <UpdateMedModal />
+                                        </IconButton>
+                                        {/* <ConfirmDelete /> */}
+                                        <IconButton
+                                            onClick={() => dispatch(deleteMedication(row._id))} ><DeleteIcon />
+                                        </IconButton>    
+                                </TableCell>
+                            </TableRow>
+                        ))}
 
-                    {emptyRows > 0 && (
-                        <TableRow>
-                            <TableCell colSpan={6} sx={{ color: 'text.light' }} />
-                        </TableRow>
-                    )}
-                    
-                    </TableBody>
-                </Table>
-            </TableContainer>
+                        {emptyRows > 0 && (
+                            <TableRow>
+                                <TableCell colSpan={6} sx={{ color: 'text.light' }} />
+                            </TableRow>
+                        )}
+
+                        </TableBody>
+                    </Table>
+                </TableContainer>
                 <TablePagination
                     rowsPerPageOptions={[5, 10, 15]}
                     colSpan={8}
@@ -215,9 +215,8 @@ export default function MedDataGridTable() {
                     onRowsPerPageChange={handleChangeRowsPerPage}
                     ActionsComponent={TablePaginationActions}
                 />
-        </div>
-        </ThemeProvider>
-        
+            </div>
+        </ThemeProvider>      
     );
 }
 

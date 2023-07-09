@@ -80,8 +80,7 @@ const deleteNote = asyncHandler(async (req, res) => {
     throw new Error('User not authorized to perform this action')
   }
 
-  await note.deleteOne()
-  
+  await note.deleteOne()  
   res.status(200).json({ id: req.params.id })
 })
 

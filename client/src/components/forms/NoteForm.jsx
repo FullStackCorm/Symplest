@@ -1,7 +1,23 @@
 import { useState } from "react"
 import {useDispatch} from 'react-redux'
 import {createNote} from '../../features/notes/noteSlice'
-import { Button } from '@mui/material';
+
+// MUI //
+import { Button, TextField, Stack  } from '@mui/material';
+
+
+const style = {
+  color: 'primary.dark',
+  input: { 
+    color: 'primary.dark', 
+    textAlign: 'center' 
+  },
+  minWidth: 250,
+  maxWidth: 350,
+  height: 'auto',
+  margin: 'auto',
+  marginTop: 1,
+}
 
 function NoteForm() {
   const [text, setText] = useState('')
@@ -16,33 +32,37 @@ function NoteForm() {
   }
 
   return (
-    <div className=''>
-      <div className='container'>
         <form onSubmit={onSubmit}>
-          <div className="form-group">
-            {/* <label htmlFor="text" className='mx-2 '>Note: </label> */}
-            <textarea 
-              type='text' 
-              name='text' 
-              id='text'
+          <Stack sx={style} direction='column' spacing={2}>
+            <TextField 
+              multiline 
+              variant='outlined'
+              rows={3}
+              maxRows={3}
               placeholder='Remember to drink water and stretch 3 times a day' 
               value={text} 
               onChange={(e) => setText(e.target.value)}
               className='form-control'
-              rows='5' 
+              style={{ backgroundColor: '#fff', borderRadius: 4 }}
             />
-          </div>
-          <div className="form-group">
-            <button 
+            <Button
               type='submit'
-              className='btn btn-primary btn-block'>
+              sx={{
+                bgcolor: 'button.dark',
+                color: 'text.light',
+                '&:hover': {
+                bgcolor: 'button.darkHover',
+                color: 'text.light'
+                },
+                borderRadius: 5
+            }}
+            variant='contained'
+            >
               Add Note
-            </button>
-          </div>
+            </Button>
+          </Stack>          
         </form>
-      </div>
-    </div>
-  )
+  );
 }
 
 export default NoteForm;
