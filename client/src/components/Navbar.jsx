@@ -7,7 +7,6 @@ import { logout, reset } from '../features/auth/authSlice';
 import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { AppBar, Box, IconButton, Typography, Menu, Container, Button, Toolbar, Tooltip, MenuItem } from '@mui/material';
-import AdbIcon from '@mui/icons-material/Adb';
 
 function NavbarTop() {
 
@@ -52,7 +51,7 @@ function NavbarTop() {
                             
 
                             <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none'} }}>
-                                <IconButton
+                                {/* <IconButton
                                     size='large'
                                     aria-label='account of current user'
                                     aria-controls='menu-appbar'
@@ -61,10 +60,10 @@ function NavbarTop() {
                                     color='inherit'
                                 >
                                     <MenuIcon />
-                                </IconButton>
+                                </IconButton> */}
 
                                 {/** Mobile Menu */}
-                                <Menu
+                                {/* <Menu
                                     anchorEl={anchorElNav}
                                     anchorOrigin={{
                                         vertical: 'bottom',
@@ -102,7 +101,7 @@ function NavbarTop() {
                                             <Link to='/notes'>Notes</Link>
                                         </Typography>
                                     </MenuItem>
-                                </Menu>
+                                </Menu> */}
                             </Box>
 
                             {/** Desktop Menu */}
@@ -125,13 +124,14 @@ function NavbarTop() {
                                 Symplest
                             </Typography> */}
                             <Box sx={{ flexGrow: 1, display: { xs:'none', md: 'flex' } }}>
-                                <Button  
+                                <Typography component='h1' variant='h5' margin='0.5rem'>Symplest</Typography>
+                                {/* <Button  
                                     href='/'
                                     onClick={handleCloseNavMenu}
                                     sx={{ my:2, color: 'white', display: 'block' }}
                                 >
                                     Home
-                                </Button>
+                                </Button> */}
                                 {/* <Button  
                                     href='/medications'
                                     onClick={handleCloseNavMenu}
@@ -160,13 +160,13 @@ function NavbarTop() {
                                 >
                                     Calendar
                                 </Button>  */}
-                                <Button  
+                                {/* <Button  
                                     href='/notes'
                                     onClick={handleCloseNavMenu}
                                     sx={{ my:2, color: 'white', display: 'block' }}
                                 >
                                     Notes
-                                </Button>        
+                                </Button>         */}
                             </Box>     
                             {/* <Box sx={{ flexGrow: 1, display: { xs:'none', md: 'flex' } }}>
                                 <Typography
@@ -208,12 +208,12 @@ function NavbarTop() {
                                     open={Boolean(anchorElUser)}
                                     onClose={handleCloseUserMenu}
                                 >
-                                    <MenuItem onClick={handleCloseUserMenu}>
+                                    {/* <MenuItem onClick={handleCloseUserMenu}>
                                         <Typography textAlign='center' onClick={handleCloseUserMenu} sx={{ color: 'text.contrastText' }} >Account</Typography>
                                     </MenuItem>
                                     <MenuItem onClick={handleCloseUserMenu}>
                                         <Typography textAlign='center' onClick={handleCloseUserMenu} sx={{ color: 'text.contrastText' }} >Settings</Typography>
-                                    </MenuItem>
+                                    </MenuItem> */}
                                     <MenuItem onClick={handleCloseUserMenu}>
                                         <Typography textAlign='center' onClick={handleLogout} sx={{ color: 'text.contrastText' }} >Logout</Typography>
                                     </MenuItem>
@@ -223,8 +223,7 @@ function NavbarTop() {
                     </Container>
                 </AppBar>
             </div>
-        </div>
-        
+        </div>        
     );
 }
 

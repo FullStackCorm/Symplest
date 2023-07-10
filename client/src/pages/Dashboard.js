@@ -10,9 +10,7 @@ import { reset } from '../features/auth/authSlice';
 // Components //
 import Medications from './Medications';
 import Symptoms from './Symptoms';
-import MedFormModal from '../components/modals/MedFormModal';
-import PainChart from '../components/data/PainChart';
-import Notes from '../pages/Notes';
+import Notes from './Notes';
 
 // MUI //
 import { Box, Grid, Container } from '@mui/material';
@@ -57,8 +55,7 @@ export default function Dashboard () {
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
-    const {user} = useSelector((state) => state.auth)
-    const {notes, isLoading, isError, message} = useSelector((state) => state.notes)
+    const {user, isLoading, isError, message} = useSelector((state) => state.auth)
 
     useEffect(() => {
       if(isError) {
@@ -82,22 +79,25 @@ export default function Dashboard () {
 
     return (
       <ThemeProvider theme={theme}>
-        <Container maxWidth='xl' bgcolor='red'>
+        <Container maxWidth='xl' >
         <Navbar />
           <Box
             sx={{
               marginTop: 8,
               display: 'flex',
               flexDirection: 'column',
-              alignItems: 'center'
+              alignItems: 'center',
             }}
           >    
-            <Grid container spacing={2} sx={{ mt: 5, maxWidth: 'lg' }}>
-              <Grid item xs={12} sm={6}>
+            <Grid container spacing={2} sx={{ mt: 5, maxWidth: 'xl' }}>
+              <Grid item xs={12} md={5}>
                 <Medications />
               </Grid>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12} md={3}>
                 <Symptoms />
+              </Grid>
+              <Grid item xs={12} md={3}>
+                <Notes />
               </Grid>
             </Grid>
           </Box>       

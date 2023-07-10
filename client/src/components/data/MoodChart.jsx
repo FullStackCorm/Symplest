@@ -7,28 +7,6 @@ import dayjs from 'dayjs';
 // MUI //
 import { Modal, Typography, Box } from '@mui/material';
 import EqualizerIcon from '@mui/icons-material/Equalizer';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { purple, white } from '../../colors';
-
-
-const theme = createTheme({
-    
-    palette: {
-        primary: {
-            main: purple[700],
-            light: purple[400],
-            dark: purple[800],
-            contrastText: white[100]
-        },
-        secondary: {
-            main: white[100],
-            contrastText: purple[50]
-        },
-        text: {
-            main: white[100]
-        }
-    }
-});
 
 const style = {
     position: 'absolute',
@@ -37,15 +15,11 @@ const style = {
     transform: 'translate(-50%, -50%)',
     height: 400,
     width: 700,
-    bgcolor: 'secondary.main',
-    border: '2px solid #004e87',
+    bgcolor: '#fff',
+    border: '2px solid #f1e6e1',
     borderRadius: 5,
     boxShadow: 24,
     p: 4,
-
-    MuiIconButton :{
-        color: '#4831cc'
-    }
 };
 
 const MoodChart = (props) => {
@@ -84,8 +58,8 @@ const MoodChart = (props) => {
     };
 
     return (
-        <ThemeProvider theme={theme}>
-            <EqualizerIcon sx={{ color: '#4831cc' }} onClick={handleOpen}/>
+        <div>
+            <EqualizerIcon onClick={handleOpen}/>
             <Modal
                 open={open}
                 onClose={handleClose}
@@ -106,7 +80,7 @@ const MoodChart = (props) => {
                     </ResponsiveContainer>               
                 </Box>
             </Modal>                
-        </ThemeProvider>
+        </div>
     );
 }
 

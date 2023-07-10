@@ -1,10 +1,9 @@
-import { useState } from "react"
-import {useDispatch} from 'react-redux'
-import {createNote} from '../../features/notes/noteSlice'
+import { useState } from 'react';
+import {useDispatch} from 'react-redux';
+import {createNote} from '../../features/notes/noteSlice';
 
 // MUI //
 import { Button, TextField, Stack  } from '@mui/material';
-
 
 const style = {
   color: 'primary.dark',
@@ -20,9 +19,9 @@ const style = {
 }
 
 function NoteForm() {
-  const [text, setText] = useState('')
+  const [text, setText] = useState('');
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const onSubmit = e => {
     e.preventDefault()
