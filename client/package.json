@@ -33,7 +33,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "BUILD_PATH=../build && react-scripts build",
+    "build": "BUILD_PATH=../build && react-scripts build\" && rm -rf client/node_modules",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
