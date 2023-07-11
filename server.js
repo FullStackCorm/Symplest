@@ -29,10 +29,10 @@ app.use('/api/symptoms', require('./routes/symptomRoutes'));
 app.use('/api/moods', require('./routes/moodRoutes'));
 app.use('/api/pain', require('./routes/painRoutes'));
 
-app.use(express.static(path.join(__dirname, "../../client/build")));
+app.use(express.static(path.join(__dirname, "../client/build")));
 
 app.get("*", (req, res) =>
-  res.sendFile(path.resolve(__dirname, "../../client/build/index.html"))
+  res.sendFile(path.resolve(__dirname, "../client/build/index.html"))
 );
 
 const port = process.env.PORT || 5000;
