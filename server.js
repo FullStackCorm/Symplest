@@ -23,8 +23,6 @@ app.use(errorHandler);
 app.use('/api/users', require('./routes/userRoutes'));
 app.use('/api/medications', require('./routes/medRoutes'));
 app.use('/api/notes', require('./routes/noteRoutes'));
-app.use('/api/calendar', require('./routes/calendarRoutes'));
-app.use('/api/events', require('./routes/eventRoutes'));
 app.use('/api/symptoms', require('./routes/symptomRoutes'));
 app.use('/api/moods', require('./routes/moodRoutes'));
 app.use('/api/pain', require('./routes/painRoutes'));
@@ -33,13 +31,13 @@ app.use('/api/pain', require('./routes/painRoutes'));
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "build")));
 
-  app.get("/*", (req, res) =>
+  app.get("/", (req, res) =>
     res.sendFile(
       path.join(__dirname, "build ", "index.html")
     )
   );
 } else {
-  app.get("/*", (req, res) => res.send("Please set to production"));
+  app.get("/", (req, res) => res.send("Please set to production"));
 }
 
 const port = process.env.PORT || 5000;
