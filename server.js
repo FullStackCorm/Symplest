@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(errorHandler);
 
-// app.get('/', (req, res) => res.send('App is live'));
+// app.get('/', (req, res) => res.send('App is live''));
 
 // Routes //
 app.use('/api/users', require('./routes/userRoutes'));
