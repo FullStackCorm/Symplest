@@ -8,10 +8,8 @@ import { brand } from './colors';
 import Dashboard from './pages/Dashboard';
 import Login from './pages/Login';
 import Register from './pages/Register';
-import Appointments from './pages/Appointments';
 import Notes from './pages/Notes';
 import Medications from './pages/Medications';
-import Events from './pages/Events';
 import Symptoms from './pages/Symptoms';
 import NoPage from './pages/NoPage';
 
@@ -51,10 +49,8 @@ function App() {
               <Route path='/' element={<Dashboard />} />
               <Route path='/login' element={<Login />} />
               <Route path ='/register' element={<Register />} />
-              <Route path='/appointments' element={<Appointments />} />
               <Route path='/notes' element={<Notes />} />
               <Route path='/medications' element={<Medications />} />
-              <Route path='/events' element={<Events />} />
               <Route path='/symptoms' element={<Symptoms />} />
               <Route path='*' element={<NoPage />} />
             </Routes>
