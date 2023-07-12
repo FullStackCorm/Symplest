@@ -8,7 +8,7 @@
     "start": "node server.js && cd client && npm run start",
     "build": "cd client && npm run build",
     "dev": "nodemon server.js",
-    "postinstall": "cd client && npm install"
+    "postinstall": "node-prune"
   },
   "author": "",
   "license": "ISC",
@@ -27,7 +27,8 @@
     "express-async-handler": "^1.2.0",
     "express-session": "^1.17.3",
     "jsonwebtoken": "^9.0.0",
-    "mongoose": "^7.0.3"
+    "mongoose": "^7.0.3",
+    "node-prune": "^1.0.2"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"
