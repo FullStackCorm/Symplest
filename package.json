@@ -8,7 +8,7 @@
     "start": "node server.js && cd client && npm run start",
     "build": "cd client && npm run build",
     "dev": "nodemon server.js",
-    "postinstall": "node-prune"
+    "postinstall": "cd client && npm install && node-prune"
   },
   "author": "",
   "license": "ISC",
